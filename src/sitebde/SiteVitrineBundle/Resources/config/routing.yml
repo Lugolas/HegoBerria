@@ -1,0 +1,27 @@
+sitebde_siteVitrine_accueil:
+    path: /
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:accueil }
+
+sitebde_siteVitrine_listeActualites:
+    path: /actualites
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:listeActualites }
+
+sitebde_siteVitrine_detailsActualite:
+    path: /actualites/{idActu}
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:detailsActualite }
+
+sitebde_siteVitrine_listeEvenements:
+    path: /evenements
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:listeEvenements }
+    
+sitebde_siteVitrine_detailsEvenement:
+    path: /evenements/{idEvent}
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:detailsEvenement }
+    
+sitebde_siteVitrine_information:
+    path: /informations/{idInfo}
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:information }
+
+sitebde_siteVitrine_connexion:
+    path: /connexion
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:connexion }

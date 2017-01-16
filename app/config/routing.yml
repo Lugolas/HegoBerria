@@ -1,0 +1,7 @@
+sitebde_site_vitrine:
+    resource: "@sitebdeSiteVitrineBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

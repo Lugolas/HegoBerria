@@ -1,0 +1,9 @@
+{% extends 'vueMere.html.twig' %}
+
+{% block navbar %}
+    <p>Pour le navbar ça va être chaud patate... Pour le moment on va juste mettre un lien vers la ~<a href="{{ path('sitebde_siteVitrine_accueil') }}">page d'accueil</a>~</p>
+{% endblock %}
+
+{% block contenu %}
+    <p>Ici y'aura les détails de l'article de type {{ typeArticle }}.</p>
+{% endblock %}
