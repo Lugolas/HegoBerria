@@ -1,0 +1,3 @@
+sitebde_parrainage_homepage:
+    path:     /
+    defaults: { _controller: sitebdeParrainageBundle:Default:index }

@@ -1,68 +1,41 @@
-Symfony Standard Edition
-========================
+# Projet Hego Berria
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+## Présentation
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+Ceci est un **projet en cours de réalisation**, dans le cadre de nos études à l'*IUT de Bayonne et des Pays de l'Adour*.
 
-What's inside?
---------------
+Il consiste à créer :
+- Un **site web** pour le Bureau Des Etudiants du département Informatique de l'IUT, qui s'appelle Hego Berria
+- Un **système de parrainage** informatisé inclus dans ce site, sorte de **réseau social**
 
-The Symfony Standard Edition is configured with the following defaults:
+## Principe du système de parrainage
 
-  * An AppBundle you can use to start coding;
+Le principe est simple :
+1. Les étudiants des deux promotions (1re année et 2e année) s'**inscrivent**
+2. Ils **remplissent leur profil** (centres d'intérêt, loisirs, difficultés/forces scolaires)
+3. Ils effectuent des **recherches** d'autres étudiants en fonction des critères de leur choix (les mêmes que ceux de leur profil)
+4. Ils peuvent demander à l'étudiant de leur choix d'être leur **parrain/filleuil**
 
-  * Twig as the only configured template engine;
+Ils auront également des **suggestions d'étudiants** en fonction des renseignements qu'ils auront remplis sur leur profil.
 
-  * Doctrine ORM/DBAL;
+## Gestion de projet
 
-  * Swiftmailer;
+Ce projet est réalisé par un **groupe de 4 étudiants** dont je fais partie. Nous avons un enseignant-tuteur.
 
-  * Annotations enabled for everything.
+Il doit être réalisé avant mi-Mars 2017, et nous l'avons commencé en Septembre 2016.
 
-It comes pre-configured with the following bundles:
+Nous avons commencé par une phase de conception, avec production d'un **CDCF** contenant des **diagrammes UML** (cas d'utilisation, scénarios) ainsi que des **maquettes**.
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+Nous avons également établi une **planification**, avec un découpage des tâches, description des unités, et un **diagramme de Gantt**.
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+Nous en sommes actuellement à la phase de développement.
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+## Technologies utilisées
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+Nous avons choisi d'utiliser **Symfony2**, il nous paraissait adapté à notre projet et nous avions déjà codé avec.
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+Nous nous servons aussi de **Bootstrap 3** pour l'aspect visuel de notre application.
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+Nous codons sous **Cloud9**, qui est un IDE très pratique et efficace pour notre projet de groupe.
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/2.8/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/2.8/book/doctrine.html
-[8]:  https://symfony.com/doc/2.8/book/templating.html
-[9]:  https://symfony.com/doc/2.8/book/security.html
-[10]: https://symfony.com/doc/2.8/cookbook/email.html
-[11]: https://symfony.com/doc/2.8/cookbook/logging/monolog.html
-[13]: https://symfony.com/doc/2.8/bundles/SensioGeneratorBundle/index.html
+Par souci de sécurité, nous avons décidé de sauvegarder régulièrement notre code source via **Git**.
