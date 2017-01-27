@@ -7,8 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Matiere
  *
- * @ORM\Table(name="matiere")
- * @ORM\Entity(repositoryClass="sitebde\ParrainageBundle\Repository\MatiereRepository")
+ * @ORM\MappedSuperclass()
  */
 class Matiere
 {
@@ -19,14 +18,22 @@ class Matiere
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="libelle", type="string", length=50, unique=true)
      */
-    private $libelle;
+    protected $libelle;
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", length=50)
+     */
+    protected $categorie;
 
 
     /**
@@ -62,5 +69,28 @@ class Matiere
     {
         return $this->libelle;
     }
-}
 
+    /**
+     * Set categorie
+     *
+     * @param string $categorie
+     *
+     * @return Matiere
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return string
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+}

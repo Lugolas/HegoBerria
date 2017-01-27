@@ -10,4 +10,18 @@ namespace sitebde\SiteVitrineBundle\Repository;
  */
 class InformationRepository extends \Doctrine\ORM\EntityRepository
 {
+    // Retourne toutes les informations par ordre alphabétique
+    public function getInformationsTriees()
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntite->createQuery('SELECT i
+                                                          FROM sitebdeSiteVitrineBundle:Information i
+                                                          ORDER BY i.titre');
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
 }

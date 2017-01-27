@@ -3,8 +3,12 @@
 namespace sitebde\ParrainageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use sitebde\ParrainageBundle\Entity\Loisir;
+use sitebde\ParrainageBundle\Entity\Activite;
 use sitebde\ParrainageBundle\Entity\Matiere;
+use sitebde\ParrainageBundle\Entity\EtudiantLoisir;
+use sitebde\ParrainageBundle\Entity\EtudiantSport;
+use sitebde\ParrainageBundle\Entity\Loisir;
+use sitebde\ParrainageBundle\Entity\Sport;
 
 /**
  * Etudiant
@@ -86,26 +90,42 @@ class Etudiant
      */
     private $photo;
     
-    
-    /**
-     *
-     * @ORM\ManyToMany(targetEntity="sitebde\ParrainageBundle\Entity\Loisir")
-     */
-    private $loisirs;
+
     
     
     /**
      *
-     * @ORM\ManyToMany(targetEntity="sitebde\ParrainageBundle\Entity\Matiere")
+     * @ORM\ManyToMany(targetEntity="sitebde\ParrainageBundle\Entity\MatiereForte")
      */
-    private $matieres;
+    private $matieresFortes;
+    
+    
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="sitebde\ParrainageBundle\Entity\MatiereFaible")
+     */
+    private $matieresFaibles;
 
 
     /**
      *
      * @ORM\ManyToMany(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant")
      */
-    private $etudiants;
+    private $etudiantsLies;
+    
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantSport", mappedBy="etudiant")
+     */
+    private $sports;
+    
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantLoisir", mappedBy="etudiant")
+     */
+    private $loisirs;
 
 
     /**
@@ -339,77 +359,13 @@ class Etudiant
     public function __construct()
     {
         $this->loisirs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->matieres = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sports = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->matieresFortes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->matieresFaibles = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add loisir
-     *
-     * @param \sitebde\ParrainageBundle\Entity\Loisir $loisir
-     *
-     * @return Etudiant
-     */
-    public function addLoisir(\sitebde\ParrainageBundle\Entity\Loisir $loisir)
-    {
-        $this->loisirs[] = $loisir;
-
-        return $this;
-    }
-
-    /**
-     * Remove loisir
-     *
-     * @param \sitebde\ParrainageBundle\Entity\Loisir $loisir
-     */
-    public function removeLoisir(\sitebde\ParrainageBundle\Entity\Loisir $loisir)
-    {
-        $this->loisirs->removeElement($loisir);
-    }
-
-    /**
-     * Get loisirs
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLoisirs()
-    {
-        return $this->loisirs;
-    }
-
-    /**
-     * Add matiere
-     *
-     * @param \sitebde\ParrainageBundle\Entity\Matiere $matiere
-     *
-     * @return Etudiant
-     */
-    public function addMatiere(\sitebde\ParrainageBundle\Entity\Matiere $matiere)
-    {
-        $this->matieres[] = $matiere;
-
-        return $this;
-    }
-
-    /**
-     * Remove matiere
-     *
-     * @param \sitebde\ParrainageBundle\Entity\Matiere $matiere
-     */
-    public function removeMatiere(\sitebde\ParrainageBundle\Entity\Matiere $matiere)
-    {
-        $this->matieres->removeElement($matiere);
-    }
-
-    /**
-     * Get matieres
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMatieres()
-    {
-        return $this->matieres;
-    }
+   
 
     /**
      * Add etudiant
@@ -422,30 +378,30 @@ class Etudiant
     {
         if(etudiantConforme())
         {
-            $this->etudiants[] = $etudiant;
+            $this->etudiantsLies[] = $etudiant;
             return $this;
         }
         return -1;
     }
 
     /**
-     * Remove etudiant
+     * Remove etudiantLie
      *
      * @param \sitebde\ParrainageBundle\Entity\Etudiant $etudiant
      */
     public function removeEtudiant(\sitebde\ParrainageBundle\Entity\Etudiant $etudiant)
     {
-        $this->etudiants->removeElement($etudiant);
+        $this->etudiantsLies->removeElement($etudiant);
     }
 
     /**
-     * Get etudiants
+     * Get etudiantsLies
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEtudiants()
+    public function getEtudiantsLies()
     {
-        return $this->etudiants;
+        return $this->etudiantsLies;
     }
     
     
@@ -472,5 +428,164 @@ class Etudiant
         {
             return false;
         }
+    }
+
+
+
+
+    /**
+     * Add matiereForte
+     *
+     * @param \sitebde\ParrainageBundle\Entity\MatiereForte $matieresForte
+     *
+     * @return Etudiant
+     */
+    public function addMatiereForte(\sitebde\ParrainageBundle\Entity\MatiereForte $matiereForte)
+    {
+        $this->matieresFortes[] = $matiereForte;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereForte
+     *
+     * @param \sitebde\ParrainageBundle\Entity\MatiereForte $matiereForte
+     */
+    public function removeMatiereForte(\sitebde\ParrainageBundle\Entity\MatiereForte $matiereForte)
+    {
+        $this->matieresFortes->removeElement($matiereForte);
+    }
+
+    /**
+     * Get matieresFortes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatieresFortes()
+    {
+        return $this->matieresFortes;
+    }
+
+    /**
+     * Add matiereFaible
+     *
+     * @param \sitebde\ParrainageBundle\Entity\MatiereFaible $matiereFaible
+     *
+     * @return Etudiant
+     */
+    public function addMatiereFaible(\sitebde\ParrainageBundle\Entity\MatiereFaible $matiereFaible)
+    {
+        $this->matieresFaibles[] = $matiereFaible;
+
+        return $this;
+    }
+
+    /**
+     * Remove matiereFaible
+     *
+     * @param \sitebde\ParrainageBundle\Entity\MatiereFaible $matiereFaible
+     */
+    public function removeMatiereFaible(\sitebde\ParrainageBundle\Entity\MatiereFaible $matiereFaible)
+    {
+        $this->matieresFaibles->removeElement($matiereFaible);
+    }
+
+    /**
+     * Get matieresFaibles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMatieresFaibles()
+    {
+        return $this->matieresFaibles;
+    }
+
+  
+
+
+
+
+    
+
+    
+   
+
+   
+
+    /**
+     * Add sport
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantSport $sport
+     *
+     * @return Etudiant
+     */
+    public function addSport(\sitebde\ParrainageBundle\Entity\EtudiantSport $etudiantSport, \sitebde\ParrainageBundle\Entity\Sport $sport, $commentaire = null)
+    {
+        $etudiantSport->setEtudiant($this);
+        $etudiantSport->setSport($sport);
+        $etudiantSport->setCommentaire($commentaire);
+        $this->sports[] = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Remove sport
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantSport $sport
+     */
+    public function removeSport(\sitebde\ParrainageBundle\Entity\EtudiantSport $sport)
+    {
+        $sport->getSport()->removeEtudiant($sport);
+        $this->sports->removeElement($sport);
+    }
+
+    /**
+     * Get sports
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSports()
+    {
+        return $this->sports;
+    }
+
+    /**
+     * Add loisir
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantLoisir $loisir
+     *
+     * @return Etudiant
+     */
+    public function addLoisir(\sitebde\ParrainageBundle\Entity\EtudiantLoisir $etudiantLoisir, \sitebde\ParrainageBundle\Entity\Loisir $loisir, $commentaire  = null)
+    {
+        $etudiantLoisir->setEtudiant($this);
+        $etudiantLoisir->setCommentaire($commentaire);
+        $etudiantLoisir->setLoisir($loisir);
+        $this->loisirs[] = $loisir;
+
+        return $this;
+    }
+
+    /**
+     * Remove loisir
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantLoisir $loisir
+     */
+    public function removeLoisir(\sitebde\ParrainageBundle\Entity\EtudiantLoisir $loisir)
+    {
+        $loisir->getLoisir()->removeEtudiant($loisir);
+        $this->loisirs->removeElement($loisir);
+    }
+
+    /**
+     * Get loisirs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLoisirs()
+    {
+        return $this->loisirs;
     }
 }

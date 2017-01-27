@@ -8,12 +8,20 @@ class SiteVitrineController extends Controller
 {
     public function accueilAction()
     {
-        // Récupérer les 2-3 derniers évènements et actualites
-        $tabActualites = [];
-        $tabEvenements = [];
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer les repositories des entités Actualité, Evènement et Information
+        $repositoryActualites = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Actualite');
+        $repositoryEvenement = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Evenement');
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
+        // Récupérer les 3 derniers évènements et actualites
+        $tabActualites = $repositoryActualites->getTroisDernieresActualites();
+        $tabEvenements = $repositoryEvenement->getTroisDerniersEvenements();
         
         // Récupérer toutes les infos
-        $tabInfos = [];
+        $tabInfos = $repositoryInformation->getInformationsTriees();
         
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:accueil.html.twig', array('actualites' => $tabActualites,
                                                                                              'evenements' => $tabEvenements,
@@ -22,11 +30,18 @@ class SiteVitrineController extends Controller
     
     public function listeEvenementsAction()
     {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer les repositories des entités Evènement et Information
+        $repositoryEvenement = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Evenement');
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
         // Récupérer tous les évènements
-        $tabEvenements = [];
+        $tabEvenements = $repositoryEvenement->getEvenementsTries();
         
         // Récupérer toutes les infos
-        $tabInfos = [];
+        $tabInfos = $repositoryInformation->getInformationsTriees();
         
         $typeArticle = "evenements";
         
@@ -37,11 +52,18 @@ class SiteVitrineController extends Controller
     
     public function listeActualitesAction()
     {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer les repositories des entités Actualité et Information
+        $repositoryActualites = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Actualite');
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
         // Récupérer toutes les actualités
-        $tabActualites = [];
+        $tabActualites = $repositoryActualites->getActualitesTriees();
         
         // Récupérer toutes les infos
-        $tabInfos = [];
+        $tabInfos = $repositoryInformation->getInformationsTriees();
         
         $typeArticle = "actualites";
         
@@ -52,11 +74,18 @@ class SiteVitrineController extends Controller
     
     public function detailsEvenementAction($idEvent)
     {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer les repositories des entités Evènement et Information
+        $repositoryEvenement = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Evenement');
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
         // Récupérer l'évènement
-        $evenement = null;
+        $evenement = $repositoryEvenement->find($idEvent);
         
         // Récupérer toutes les infos
-        $tabInfos = [];
+        $tabInfos = $repositoryInformation->getInformationsTriees();
         
         $typeArticle = "evenement";
         
@@ -67,11 +96,18 @@ class SiteVitrineController extends Controller
     
     public function detailsActualiteAction($idActu)
     {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer les repositories des entités Actualité et Information
+        $repositoryActualites = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Actualite');
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
         // Récupérer l'actualité
-        $actualite = null;
+        $actualite = $repositoryActualites->find($idActu);
         
         // Récupérer toutes les infos
-        $tabInfos = [];
+        $tabInfos = $repositoryInformation->getInformationsTriees();
         
         $typeArticle = "actualite";
         
@@ -82,11 +118,17 @@ class SiteVitrineController extends Controller
     
     public function informationAction($idInfo)
     {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer le repository de l'entité Information
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
         // Récupérer l'information
-        $information = null;
+        $information = $repositoryInformation->find($idInfo);
         
         // Récupérer toutes les infos
-        $tabInfos = [];
+        $tabInfos = $repositoryInformation->getInformationsTriees();
         
         $typeArticle = "information";
         
@@ -97,8 +139,14 @@ class SiteVitrineController extends Controller
     
     public function connexionAction()
     {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer le repository de l'entité Information
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
         // Récupérer toutes les infos
-        $tabInfos = [];
+        $tabInfos = $repositoryInformation->getInformationsTriees();
         
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:connexion.html.twig', array('informations' => $tabInfos));
     }

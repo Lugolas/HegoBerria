@@ -18,4 +18,14 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
     }
+    
+    public function mentionsLegalesAction()
+    {
+        return $this->render('default/mentionsLegales.html.twig');
+    }
+    
+    public function contactAction()
+    {
+        return $this->render('default/contact.html.twig');
+    }
 }

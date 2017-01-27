@@ -12,8 +12,11 @@ Il consiste à créer :
 
 Le principe est simple :
 1. Les étudiants des deux promotions (1re année et 2e année) s'**inscrivent**
+
 2. Ils **remplissent leur profil** (centres d'intérêt, loisirs, difficultés/forces scolaires)
+
 3. Ils effectuent des **recherches** d'autres étudiants en fonction des critères de leur choix (les mêmes que ceux de leur profil)
+
 4. Ils peuvent demander à l'étudiant de leur choix d'être leur **parrain/filleuil**
 
 Ils auront également des **suggestions d'étudiants** en fonction des renseignements qu'ils auront remplis sur leur profil.

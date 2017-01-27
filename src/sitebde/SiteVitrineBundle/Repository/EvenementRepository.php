@@ -10,4 +10,34 @@ namespace sitebde\SiteVitrineBundle\Repository;
  */
 class EvenementRepository extends \Doctrine\ORM\EntityRepository
 {
+    // Retourne tous les évènements du plus récent au moins récent
+    public function getEvenementsTries()
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntite->createQuery('SELECT e
+                                                          FROM sitebdeSiteVitrineBundle:Evenement e
+                                                          ORDER BY e.datePublication DESC');
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
+    
+    // Retourne les 3 derniers évènements
+    public function getTroisDerniersEvenements()
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntite->createQuery('SELECT e
+                                                          FROM sitebdeSiteVitrineBundle:Evenement e
+                                                          ORDER BY e.datePublication DESC')->setFirstResult(0)
+                                                                                           ->setMaxResults(3);
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
 }

@@ -3,6 +3,7 @@
 namespace sitebde\ParrainageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use sitebde\ParrainageBundle\Entity\Activite;
 
 /**
  * Loisir
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="loisir")
  * @ORM\Entity(repositoryClass="sitebde\ParrainageBundle\Repository\LoisirRepository")
  */
-class Loisir
+class Loisir extends Activite
 {
     /**
      * @var int
@@ -19,14 +20,13 @@ class Loisir
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
+    protected $id;
+    
     /**
-     * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=50, unique=true)
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantLoisir", mappedBy="loisir", cascade={"persist"})
      */
-    private $libelle;
+    private $etudiants;
 
 
     /**
@@ -40,27 +40,45 @@ class Loisir
     }
 
     /**
-     * Set libelle
+     * Constructor
+     */
+    public function __construct()
+    {
+
+    }
+
+
+    /**
+     * Add etudiant
      *
-     * @param string $libelle
+     * @param \sitebde\ParrainageBundle\Entity\Loisir $etudiant
      *
      * @return Loisir
      */
-    public function setLibelle($libelle)
+    public function addEtudiant(\sitebde\ParrainageBundle\Entity\EtudiantLoisir $etudiant)
     {
-        $this->libelle = $libelle;
+        $this->etudiants[] = $etudiant;
 
         return $this;
     }
 
     /**
-     * Get libelle
+     * Remove etudiant
      *
-     * @return string
+     * @param \sitebde\ParrainageBundle\Entity\Loisir $etudiant
      */
-    public function getLibelle()
+    public function removeEtudiant(\sitebde\ParrainageBundle\Entity\EtudiantLoisir $etudiant)
     {
-        return $this->libelle;
+        $this->etudiants->removeElement($etudiant);
+    }
+
+    /**
+     * Get etudiants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtudiants()
+    {
+        return $this->etudiants;
     }
 }
-

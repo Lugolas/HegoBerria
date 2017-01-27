@@ -1,0 +1,50 @@
+<?php
+
+namespace sitebde\ParrainageBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use sitebde\ParrainageBundle\Entity\Activite;
+
+/**
+ * Sport
+ *
+ * @ORM\Table(name="sport")
+ * @ORM\Entity(repositoryClass="sitebde\ParrainageBundle\Repository\SportRepository")
+ */
+class Sport extends Activite
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\Loisir", mappedBy="sport")
+     */
+    private $etudiants;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->etudiantSport = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    
+
+}
