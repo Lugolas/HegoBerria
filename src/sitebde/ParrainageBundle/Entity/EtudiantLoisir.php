@@ -28,17 +28,20 @@ class EtudiantLoisir
      */
     private $commentaire;
     
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Loisir", inversedBy="etudiants")
-     */
-    private $loisir;
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="loisirs")
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="loisirs", cascade={"persist", "remove"})
      */
     private $etudiant;
+    
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Loisir", inversedBy="etudiants", cascade={"persist", "remove"})
+     */
+    private $loisir;
+
 
 
     /**
@@ -75,42 +78,6 @@ class EtudiantLoisir
         return $this->commentaire;
     }
 
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-
-    }
-
-   
-
-    /**
-     * Set loisir
-     *
-     * @param \sitebde\ParrainageBundle\Entity\Loisir $loisir
-     *
-     * @return EtudiantLoisir
-     */
-    public function setLoisir(\sitebde\ParrainageBundle\Entity\Loisir $loisir = null)
-    {
-        $loisir->addEtudiant($this);
-        $this->loisir = $loisir;
-
-        return $this;
-    }
-
-    /**
-     * Get loisir
-     *
-     * @return \sitebde\ParrainageBundle\Entity\Loisir
-     */
-    public function getLoisir()
-    {
-        return $this->loisir;
-    }
-
     /**
      * Set etudiant
      *
@@ -133,5 +100,30 @@ class EtudiantLoisir
     public function getEtudiant()
     {
         return $this->etudiant;
+    }
+
+    /**
+     * Set loisir
+     *
+     * @param \sitebde\ParrainageBundle\Entity\Loisir $loisir
+     *
+     * @return EtudiantLoisir
+     */
+    public function setLoisir(\sitebde\ParrainageBundle\Entity\Loisir $loisir = null)
+    {
+        $this->loisir = $loisir;
+        $loisir->addEtudiant($this);
+
+        return $this;
+    }
+
+    /**
+     * Get loisir
+     *
+     * @return \sitebde\ParrainageBundle\Entity\Loisir
+     */
+    public function getLoisir()
+    {
+        return $this->loisir;
     }
 }

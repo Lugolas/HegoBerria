@@ -18,7 +18,7 @@ class SiteVitrineController extends Controller
         
         // Récupérer les 3 derniers évènements et actualites
         $tabActualites = $repositoryActualites->getTroisDernieresActualites();
-        $tabEvenements = $repositoryEvenement->getTroisDerniersEvenements();
+        $tabEvenements = $repositoryEvenement->getTroisEvenementsAVenir();
         
         // Récupérer toutes les infos
         $tabInfos = $repositoryInformation->getInformationsTriees();

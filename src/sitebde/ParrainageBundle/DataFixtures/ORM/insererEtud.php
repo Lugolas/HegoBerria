@@ -19,183 +19,353 @@ class Etudiants  implements FixtureInterface
     // Dans l'argument de la méthode load, l'objet $manager est l'EntityManager
     public function load(ObjectManager $manager)
     {
+        
         /* *********************/
         /* CREATION SPORT 1    */
         /* *********************/
         
-        $sportun = new Sport();
-        $sportun->setLibelle("Handball");
-        $sportun->setCategorie("A plusieurs/Equipe");
+        $basket = new Sport();
+        $basket->setLibelle("BasketBall");
+        $basket->setCategorie("A plusieurs/Equipe");
         // On rend le sport persistant pour pouvoir y faire référence ensuite
-        $manager->persist($sportun);
+        $manager->persist($basket);
         
         /* *********************/
         /* CREATION SPORT 2    */
         /* *********************/
         
-        $sportdeux = new Sport();
-        $sportdeux->setLibelle("Bowling");
-        $sportdeux->setCategorie("Solos");
+        $bowling = new Sport();
+        $bowling->setLibelle("Bowling");
+        $bowling->setCategorie("Solos");
         // On rend le sport persistant pour pouvoir y faire référence ensuite
-        $manager->persist($sportdeux);
+        $manager->persist($bowling);
+        
+        /* *********************/
+        /* CREATION SPORT 3    */
+        /* *********************/
+        
+        $athletisme = new Sport();
+        $athletisme->setLibelle("Athlétisme");
+        $athletisme->setCategorie("Solos");
+        // On rend le sport persistant pour pouvoir y faire référence ensuite
+        $manager->persist($athletisme);
+        
+        /* *********************/
+        /* CREATION SPORT 4    */
+        /* *********************/
+        
+        $handball = new Sport();
+        $handball->setLibelle("Handball");
+        $handball->setCategorie("A plusieurs/Equipe");
+        // On rend le sport persistant pour pouvoir y faire référence ensuite
+        $manager->persist($handball);
+        
+        /* *********************/
+        /* CREATION SPORT 5    */
+        /* *********************/
+        
+        $artsMartiaux = new Sport();
+        $artsMartiaux->setLibelle("Arts martiaux");
+        $artsMartiaux->setCategorie("Solos");
+        // On rend le sport persistant pour pouvoir y faire référence ensuite
+        $manager->persist($artsMartiaux);
+        
+        /* *********************/
+        /* CREATION PasDeSport    */
+        /* *********************/
+        
+        $pasDeSport = new Sport();
+        $pasDeSport->setLibelle("Aucun sport");
+        $pasDeSport->setCategorie("Autre");
+        // On rend le sport persistant pour pouvoir y faire référence ensuite
+        $manager->persist($pasDeSport);
+        
+
         
         
         /* *********************/
         /* CREATION LOISIR   1 */
         /* *********************/
         
-        $loisirun = new Loisir();
-        $loisirun->setLibelle("Animes");
-        $loisirun->setCategorie("Activités audiovisuelles");
+        $animes = new Loisir();
+        $animes->setLibelle("Animes");
+        $animes->setCategorie("Audiovisuel");
         // On rend le loisir persistant pour pouvoir y faire référence ensuite
-        $manager->persist($loisirun);
+        $manager->persist($animes);
         
         
         /* *********************/
         /* CREATION LOISIR   2 */
         /* *********************/
         
-        $loisirdeux = new Loisir();
-        $loisirdeux->setLibelle("Lecture");
-        $loisirdeux->setCategorie("Romans");
+        $roman = new Loisir();
+        $roman->setLibelle("Romans");
+        $roman->setCategorie("Lecture");
         // On rend le loisir persistant pour pouvoir y faire référence ensuite
-        $manager->persist($loisirdeux);
+        $manager->persist($roman);
+        
+        /* *********************/
+        /* CREATION LOISIR   3 */
+        /* *********************/
+        
+        $films = new Loisir();
+        $films->setLibelle("Films");
+        $films->setCategorie("Audiovisuel");
+        // On rend le loisir persistant pour pouvoir y faire référence ensuite
+        $manager->persist($films);
+        
+        /* *********************/
+        /* CREATION LOISIR   4 */
+        /* *********************/
+        
+        $fetesJeudisSoir = new Loisir();
+        $fetesJeudisSoir->setLibelle("Fêtes - Jeudis soir");
+        $fetesJeudisSoir->setCategorie("Sorties sociales");
+        // On rend le loisir persistant pour pouvoir y faire référence ensuite
+        $manager->persist($fetesJeudisSoir);
+        
+        /* *********************/
+        /* CREATION LOISIR   5 */
+        /* *********************/
+        
+        $JDR = new Loisir();
+        $JDR->setLibelle("Jeux de rôles");
+        $JDR->setCategorie("Jeux");
+        // On rend le loisir persistant pour pouvoir y faire référence ensuite
+        $manager->persist($JDR);
+        
+
+
         
         
         /* ***************************/
         /* CREATION MATIERE FORTE 1  */
         /* ***************************/
         
-        $matiereforteun = new MatiereForte();
-        $matiereforteun->setLibelle("Base de données");
-        $matiereforteun->setCategorie("Informatique");
+        $BDForte = new MatiereForte();
+        $BDForte->setLibelle("Base de données");
+        $BDForte->setCategorie("Informatique");
         // On rend la matiere forte persistante pour pouvoir y faire référence ensuite
-        $manager->persist($matiereforteun);
+        $manager->persist($BDForte);
         
         /* ***************************/
         /* CREATION MATIERE FORTE 2  */
         /* ***************************/
         
-        $matierefortedeux = new MatiereForte();
-        $matierefortedeux->setLibelle("Programmation");
-        $matierefortedeux->setCategorie("Informatique");
+        $programmationForte = new MatiereForte();
+        $programmationForte->setLibelle("Programmation");
+        $programmationForte->setCategorie("Informatique");
         // On rend la matiere forte persistante pour pouvoir y faire référence ensuite
-        $manager->persist($matierefortedeux);
+        $manager->persist($programmationForte);
+        
+        /* ***************************/
+        /* CREATION MATIERE FORTE 3  */
+        /* ***************************/
+        
+        $bureautiqueForte = new MatiereForte();
+        $bureautiqueForte->setLibelle("Bureautique");
+        $bureautiqueForte->setCategorie("Informatique");
+        // On rend la matiere faible persistante pour pouvoir y faire référence ensuite
+        $manager->persist($bureautiqueForte);
+        
+        /* ***************************/
+        /* CREATION MATIERE FORTE 4  */
+        /* ***************************/
+        
+        $reseauFort = new MatiereForte();
+        $reseauFort->setLibelle("Réseau");
+        $reseauFort->setCategorie("Informatique");
+        // On rend la matiere faible persistante pour pouvoir y faire référence ensuite
+        $manager->persist($reseauFort);
+        
+
+
+
         
         /* ***************************/
         /* CREATION MATIERE FAIBLE 1 */
         /* ***************************/
         
-        $matierefaibleun = new MatiereFaible();
-        $matierefaibleun->setLibelle("Bureautique");
-        $matierefaibleun->setCategorie("Informatique");
+        $bureautiqueFaible = new MatiereFaible();
+        $bureautiqueFaible->setLibelle("Bureautique");
+        $bureautiqueFaible->setCategorie("Informatique");
         // On rend la matiere faible persistante pour pouvoir y faire référence ensuite
-        $manager->persist($matierefaibleun);
+        $manager->persist($bureautiqueFaible);
         
         /* ***************************/
         /* CREATION MATIERE FAIBLE 2  */
         /* ***************************/
         
-        $matierefaibledeux = new MatiereFaible();
-        $matierefaibledeux->setLibelle("Réseau");
-        $matierefaibledeux->setCategorie("Informatique");
+        $reseauFaible = new MatiereFaible();
+        $reseauFaible->setLibelle("Réseau");
+        $reseauFaible->setCategorie("Informatique");
         // On rend la matiere faible persistante pour pouvoir y faire référence ensuite
-        $manager->persist($matierefortedeux);
+        $manager->persist($reseauFaible);
+        
+        /* ***************************/
+        /* CREATION MATIERE FAIBLE 3 */
+        /* ***************************/
+        
+        $BDFaible = new MatiereFaible();
+        $BDFaible->setLibelle("Base de données");
+        $BDFaible->setCategorie("Informatique");
+        // On rend la matiere forte persistante pour pouvoir y faire référence ensuite
+        $manager->persist($BDFaible);
+        
+        /* ***************************/
+        /* CREATION MATIERE FAIBLE 4 */
+        /* ***************************/
+        
+        $programmationFaible = new MatiereFaible();
+        $programmationFaible->setLibelle("Programmation");
+        $programmationFaible->setCategorie("Informatique");
+        // On rend la matiere faible persistante pour pouvoir y faire référence ensuite
+        $manager->persist($programmationFaible);
+        
+
+
 
         /* *********************/
         /* CREATION ETUDIANT 1 */
         /* *********************/
 
-
-        $etudiantNumeroUn = new Etudiant();
-        $etudiantNumeroUn->setLogin("etud1");
-        $etudiantNumeroUn->setEstBDE("true");
-        $etudiantNumeroUn->setEstAdmin("false");
-        $etudiantNumeroUn->setNom("Etudiantun");
-        $etudiantNumeroUn->setPrenom("Petudun");
-        $etudiantNumeroUn->setSexe('M');
-        $etudiantNumeroUn->setNumAnnee("2");
-        $etudiantNumeroUn->setDescription("Description  etudiant 1");
-        $etudiantNumeroUn->setPhoto("student1.jpg");
-        $etudiantNumeroUn->addMatiereForte($matiereforteun);
-        $etudiantNumeroUn->addMatiereFaible($matierefaibleun);
-        $etudiantNumeroUn->addSport(new EtudiantSport(),$sportun);
-        $etudiantNumeroUn->addLoisir(new EtudiantLoisir(),$loisirdeux);
+        $etudiant = new Etudiant();
+        $etudiant->setLogin("ccaillet");
+        $etudiant->setEstBDE(true);
+        $etudiant->setEstAdmin(false);
+        $etudiant->setNom("Caillet");
+        $etudiant->setPrenom("XxDarkClaudia64xX");
+        $etudiant->setSexe('F');
+        $etudiant->setNumAnnee("2");
+        $etudiant->setDescription("Cette description n'est là que pour être assez longue pour pouvoir voir comment ça rend. Du coup, Je suis Claudia, je fais de l'escalade, je joue aux jeux vidéos, je mange des raclettes, je lis des mangas, je dessine, j'écris, je dors, je mange des bonbons, je dors, je suis méchante, je tape Hugo mon sous-fifre de 1ere année.");
+        $etudiant->setPhoto("student1.jpg");
+        $etudiant->addMatiereForte($BDForte);
+        $etudiant->addMatiereForte($programmationForte);
+        $etudiant->addMatiereFaible($bureautiqueFaible);
+        $etudiant->addSport($etudiantSport = new EtudiantSport(), $basket);
+        $etudiant->addLoisir($etudiantLoisir = new EtudiantLoisir(), $roman);
         
+        
+        $manager->persist($etudiantLoisir);
+        $manager->persist($etudiantSport);
+        
+        $etudiant->addSport($etudiantSport = new EtudiantSport(), $artsMartiaux, "J'te pète la gueule !");
+        $etudiant->addLoisir($etudiantLoisir = new EtudiantLoisir(), $films);
+        
+        $manager->persist($etudiantLoisir);
+        $manager->persist($etudiantSport);
+        
+        $etudiant->addSport($etudiantSport = new EtudiantSport(), $handball, "Le handball, c'est trop d'la balle !!!");
+        $etudiant->addLoisir($etudiantLoisir = new EtudiantLoisir(), $JDR);
+        
+        $manager->persist($etudiantLoisir);
+        $manager->persist($etudiantSport);
         
         
         // On rend l'étudiant persistant pour pouvoir y faire référence ensuite
-        $manager->persist($etudiantNumeroUn);
+        $manager->persist($etudiant);
         
         /* *********************/
         /* CREATION ETUDIANT 2 */
         /* *********************/
 
 
-        $etudiantNumeroDeux = new Etudiant();
-        $etudiantNumeroDeux->setLogin("etud2");
-        $etudiantNumeroDeux->setEstBDE("false");
-        $etudiantNumeroDeux->setEstAdmin("false");
-        $etudiantNumeroDeux->setNom("Etudiantdeux");
-        $etudiantNumeroDeux->setPrenom("Petuddeux");
-        $etudiantNumeroDeux->setSexe('F');
-        $etudiantNumeroDeux->setNumAnnee("1");
-        $etudiantNumeroDeux->setDescription("Description  etudiant 2");
-        $etudiantNumeroDeux->setPhoto("student2.jpg");
-        $etudiantNumeroDeux->addMatiereForte($matierefortedeux);
-        $etudiantNumeroDeux->addMatiereFaible($matierefaibleun);
-        $etudiantNumeroDeux->addSport(new EtudiantSport(),$sportdeux,"Je sais meme pas pourquoi je m'y suis inscrit");
-        $etudiantNumeroDeux->addLoisir(new EtudiantLoisir(),$loisirun,"Trop fun !!! Jacques");
+        $etudiant = new Etudiant();
+        $etudiant->setLogin("hsmenaut");
+        $etudiant->setEstBDE(false);
+        $etudiant->setEstAdmin(false);
+        $etudiant->setNom("Sallebert--Menaut");
+        $etudiant->setPrenom("Hugo");
+        $etudiant->setSexe('M');
+        $etudiant->setNumAnnee("1");
+        $etudiant->setDescription("Salut, moi c'est Lhugobert, l'archer Elfe des temps modernes armé de son fidèle bouclier, on me mieux sous le nom de Captain Amérindia ! Eh oui je suis un vrai héro ;) Et malgré mon statut de 1° année je gère une bande de bras cassés de 2° années pour faire leur site web");
+        $etudiant->setPhoto("student2.jpg");
+        $etudiant->addMatiereForte($programmationForte);
+        $etudiant->addMatiereFaible($bureautiqueFaible);
+        $etudiant->addSport($etudiantSport = new EtudiantSport(),$basket, "Je sais meme pas pourquoi je m'y suis inscrit");
+        $etudiant->addLoisir($etudiantLoisir = new EtudiantLoisir(),$animes, "Tiens, faudrait que je finisse shigatsu moi...");
+        
+        
+        $manager->persist($etudiantLoisir);
+        $manager->persist($etudiantSport);
+        
+        $etudiant->addSport($etudiantSport = new EtudiantSport(), $artsMartiaux, "Krab-Fu");
+        $etudiant->addLoisir($etudiantLoisir = new EtudiantLoisir(), $JDR, "Trop fun de ouf maggle !");
+        
+        $manager->persist($etudiantLoisir);
+        $manager->persist($etudiantSport);
         
         
         // On rend l'étudiant persistant pour pouvoir y faire référence ensuite
-        $manager->persist($etudiantNumeroDeux);
+        $manager->persist($etudiant); 
         
         /* *********************/
         /* CREATION ETUDIANT 3 */
         /* *********************/
 
 
-        $etudiantNumeroTrois = new Etudiant();
-        $etudiantNumeroTrois->setLogin("etud3");
-        $etudiantNumeroTrois->setEstBDE("true");
-        $etudiantNumeroTrois->setEstAdmin("true");
-        $etudiantNumeroTrois->setNom("Etudianttrois");
-        $etudiantNumeroTrois->setPrenom("Petudtrois");
-        $etudiantNumeroTrois->setSexe('M');
-        $etudiantNumeroTrois->setNumAnnee("2");
-        $etudiantNumeroTrois->setDescription("Description  etudiant 3");
-        $etudiantNumeroTrois->setPhoto("student3.jpg");
-        $etudiantNumeroTrois->addMatiereForte($matiereforteun);
-        $etudiantNumeroTrois->addMatiereFaible($matierefaibledeux);
-        $etudiantNumeroTrois->addSport(new EtudiantSport(),$sportun,"Sport permettant de devenir roi du Monde");
-        $etudiantNumeroTrois->addLoisir(new EtudiantLoisir(),$loisirun,"Pire loisir de la Terre");
+        $etudiant = new Etudiant();
+        $etudiant->setLogin("vmartinet");
+        $etudiant->setEstBDE(true);
+        $etudiant->setEstAdmin(true);
+        $etudiant->setNom("Martinet");
+        $etudiant->setPrenom("Vincent");
+        $etudiant->setSexe('M');
+        $etudiant->setNumAnnee("2");
+        $etudiant->setDescription("Mon papa, c'est Pierre Martinet ! En passant je suis le meilleurs joueur de DeautaDe de la région de Kanto ! En plus je suis gros parce que je fais pas de sport.");
+        $etudiant->setPhoto("student3.jpg");
+        $etudiant->addMatiereForte($BDForte);
+        $etudiant->addMatiereFaible($reseauFaible);
+        $etudiant->addMatiereFaible($bureautiqueFaible);
+        $etudiant->addMatiereFaible($programmationFaible);
+        $etudiant->addLoisir($etudiantLoisir = new EtudiantLoisir(),$roman, "Pire loisir de la Terre");
+        $etudiant->addSport($etudiantSport = new EtudiantSport(), $pasDeSport, "Le sport c'est pour les tarlouzes");
+        
+        
+        $manager->persist($etudiantLoisir);
+        $manager->persist($etudiantSport);
+        
+        $etudiant->addLoisir($etudiantLoisir = new EtudiantLoisir(),$fetesJeudisSoir);
+        
+        $manager->persist($etudiantLoisir);
+        
         
         // On rend l'étudiant persistant pour pouvoir y faire référence ensuite
-        $manager->persist($etudiantNumeroTrois);
+        $manager->persist($etudiant);
         
         /* *********************/
         /* CREATION ETUDIANT 4 */
         /* *********************/
 
 
-        $etudiantNumeroQuatre = new Etudiant();
-        $etudiantNumeroQuatre->setLogin("etud4");
-        $etudiantNumeroQuatre->setEstBDE("true");
-        $etudiantNumeroQuatre->setEstAdmin("false");
-        $etudiantNumeroQuatre->setNom("Etudiantquatre");
-        $etudiantNumeroQuatre->setPrenom("Petudquatre");
-        $etudiantNumeroQuatre->setSexe('F');
-        $etudiantNumeroQuatre->setNumAnnee("2");
-        $etudiantNumeroQuatre->setDescription("Description  etudiant 4");
-        $etudiantNumeroQuatre->setPhoto("student4.jpg");
-        $etudiantNumeroQuatre->addMatiereForte($matierefortedeux);
-        $etudiantNumeroQuatre->addMatiereFaible($matierefaibledeux);
-        $etudiantNumeroQuatre->addSport(new EtudiantSport(),$sportun, "Pas terrible comme sport");
-        $etudiantNumeroQuatre->addLoisir(new EtudiantLoisir(),$loisirun,"Loisir vraiment très fun");
+        $etudiant = new Etudiant();
+        $etudiant->setLogin("qlanusse");
+        $etudiant->setEstBDE(true);
+        $etudiant->setEstAdmin(false);
+        $etudiant->setNom("Lanusse");
+        $etudiant->setPrenom("Quentin");
+        $etudiant->setSexe('M');
+        $etudiant->setNumAnnee("2");
+        $etudiant->setDescription("Salut, moi c'est Quentin.");
+        $etudiant->setPhoto("student4.jpg");
+        $etudiant->addMatiereForte($programmationForte);
+        $etudiant->addMatiereFaible($reseauFaible);
+        $etudiant->addSport($etudiantSport = new EtudiantSport(), $basket, "Pas terrible comme sport");
+        $etudiant->addLoisir($etudiantLoisir = new EtudiantLoisir(), $animes);
+        
+
+        $manager->persist($etudiantSport);
+        $manager->persist($etudiantLoisir);
+        
+        $etudiant->addSport($etudiantSport = new EtudiantSport(),$athletisme, "Je serai bientôt le roi des pirates !");
+        
+        $manager->persist($etudiantSport);
         
         // On rend l'étudiant persistant pour pouvoir y faire référence ensuite
-        $manager->persist($etudiantNumeroQuatre);
+        $manager->persist($etudiant);
+ 
+
+ 
         
         /* ******************************************************* */
         /*                    Enregistrement en BD                 */

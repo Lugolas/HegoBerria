@@ -24,6 +24,12 @@ class MatiereForte extends Matiere
 
 
     /**
+     *
+     * @ORM\ManyToMany(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", mappedBy="matieresFortes")
+     */
+    protected $etudiants;
+
+    /**
      * Get id
      *
      * @return int
@@ -33,3 +39,4 @@ class MatiereForte extends Matiere
         return $this->id;
     }
 }
+

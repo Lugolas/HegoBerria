@@ -25,8 +25,8 @@ class EvenementRepository extends \Doctrine\ORM\EntityRepository
         return $requetePerso->getResult();
     }
     
-    // Retourne les 3 derniers évènements
-    public function getTroisDerniersEvenements()
+    // Retourne les 3 évènements à venir du plus proche au moins proche
+    public function getTroisEvenementsAVenir()
     {
         // Récupérer le gestionnaire d'entités
         $gestionnaireEntite = $this->_em;
@@ -34,8 +34,12 @@ class EvenementRepository extends \Doctrine\ORM\EntityRepository
         // Ecriture de la requête personnalisée
         $requetePerso = $gestionnaireEntite->createQuery('SELECT e
                                                           FROM sitebdeSiteVitrineBundle:Evenement e
-                                                          ORDER BY e.datePublication DESC')->setFirstResult(0)
-                                                                                           ->setMaxResults(3);
+                                                          WHERE e.dateEvenement > CURRENT_DATE()
+                                                          ORDER BY e.dateEvenement - CURRENT_DATE()');
+        
+        // Ne garder que les 3 premiers
+        $requetePerso->setFirstResult(0);
+        $requetePerso->setMaxResults(3);
         
         // Retourner les résultats de l'exécution de la requête
         return $requetePerso->getResult();

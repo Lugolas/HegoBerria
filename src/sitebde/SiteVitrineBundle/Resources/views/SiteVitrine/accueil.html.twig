@@ -48,7 +48,7 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">Parrainage</a></li>
+                            <li><a href="{{ path('sitebde_parrainage_accueil') }}">Parrainage</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                             <a href="{{ path('sitebde_siteVitrine_detailsActualite', {'idActu':actuCourante.id}) }}" class="list-group-item">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <img src="{{ asset('images/' ~ actuCourante.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                                        <img src="{{ asset('images/iconesActualites/' ~ actuCourante.icone) }}" alt="Logo" class="img-rounded img-responsive">
                                     </div>
                                     <div class="col-sm-9">
                                         {{ actuCourante.titre }}
@@ -97,7 +97,7 @@
                             <a href="{{ path('sitebde_siteVitrine_detailsEvenement', {'idEvent':evenementCourant.id}) }}" class="list-group-item">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <img src="{{ asset('images/' ~ evenementCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                                        <img src="{{ asset('images/iconesEvenements/' ~ evenementCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
                                     </div>
                                     <div class="col-sm-9">
                                         {{ evenementCourant.dateEvenement|date("d/m/Y") }} : {{ evenementCourant.titre }}

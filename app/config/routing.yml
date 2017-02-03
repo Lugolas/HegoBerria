@@ -1,6 +1,6 @@
 sitebde_parrainage:
     resource: "@sitebdeParrainageBundle/Resources/config/routing.yml"
-    prefix:   /parrainage
+    prefix:   /
 
 
 sitebde_site_vitrine:

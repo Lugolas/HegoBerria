@@ -23,15 +23,14 @@ class Matiere
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=50, unique=true)
+     * @ORM\Column(name="libelle", type="string", length=100)
      */
     protected $libelle;
-    
-    
+
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=50)
+     * @ORM\Column(name="categorie", type="string", length=100)
      */
     protected $categorie;
 
@@ -94,3 +93,4 @@ class Matiere
         return $this->categorie;
     }
 }
+

@@ -24,9 +24,9 @@ class Sport extends Activite
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\Loisir", mappedBy="sport")
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantSport", mappedBy="sport")
      */
-    private $etudiants;
+    protected $etudiants;
 
     /**
      * Get id
@@ -37,14 +37,5 @@ class Sport extends Activite
     {
         return $this->id;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->etudiantSport = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    
-
 }
+

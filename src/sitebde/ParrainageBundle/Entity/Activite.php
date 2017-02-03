@@ -23,23 +23,16 @@ class Activite
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=50, unique=true)
+     * @ORM\Column(name="libelle", type="string", length=100)
      */
     protected $libelle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=50)
+     * @ORM\Column(name="categorie", type="string", length=100)
      */
     protected $categorie;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="commentaire", type="string", length=100)
-     */
-    protected $commentaire;
 
 
     /**
@@ -99,28 +92,5 @@ class Activite
     {
         return $this->categorie;
     }
-
-    /**
-     * Set commentaire
-     *
-     * @param string $commentaire
-     *
-     * @return Activite
-     */
-    public function setCommentaire($commentaire)
-    {
-        $this->commentaire = $commentaire;
-
-        return $this;
-    }
-
-    /**
-     * Get commentaire
-     *
-     * @return string
-     */
-    public function getCommentaire()
-    {
-        return $this->commentaire;
-    }
 }
+

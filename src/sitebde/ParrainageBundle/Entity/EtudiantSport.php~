@@ -28,18 +28,18 @@ class EtudiantSport
      */
     private $commentaire;
 
-
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Sport", inversedBy="etudiants")
-     */
-    private $sport;
-
     /**
      *
      * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="sports")
      */
     private $etudiant;
+    
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Sport", inversedBy="etudiants")
+     */
+    private $sport;
 
     /**
      * Get id
@@ -74,62 +74,5 @@ class EtudiantSport
     {
         return $this->commentaire;
     }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sports = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-  
-
-    /**
-     * Set sport
-     *
-     * @param \sitebde\ParrainageBundle\Entity\Sport $sport
-     *
-     * @return EtudiantSport
-     */
-    public function setSport(\sitebde\ParrainageBundle\Entity\Sport $sport = null)
-    {
-        $this->sport = $sport;
-
-        return $this;
-    }
-
-    /**
-     * Get sport
-     *
-     * @return \sitebde\ParrainageBundle\Entity\Sport
-     */
-    public function getSport()
-    {
-        return $this->sport;
-    }
-
-    /**
-     * Set etudiant
-     *
-     * @param \sitebde\ParrainageBundle\Entity\Etudiant $etudiant
-     *
-     * @return EtudiantSport
-     */
-    public function setEtudiant(\sitebde\ParrainageBundle\Entity\Etudiant $etudiant = null)
-    {
-        $this->etudiant = $etudiant;
-
-        return $this;
-    }
-
-    /**
-     * Get etudiant
-     *
-     * @return \sitebde\ParrainageBundle\Entity\Etudiant
-     */
-    public function getEtudiant()
-    {
-        return $this->etudiant;
-    }
 }
+

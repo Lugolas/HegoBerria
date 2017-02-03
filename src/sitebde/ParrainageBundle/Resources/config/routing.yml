@@ -1,3 +1,19 @@
-sitebde_parrainage_homepage:
+sitebde_parrainage_accueil:
     path:     /parrainage
-    defaults: { _controller: sitebdeParrainageBundle:Default:index }
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:accueil }
+
+sitebde_parrainage_premieres_annees:
+    path:     /parrainage/premieres_annees
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:listePremieresAnnees }
+
+sitebde_parrainage_deuxiemes_annees:
+    path:     /parrainage/deuxiemes_annees
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:listeDeuxiemesAnnees }
+
+sitebde_parrainage_details_profil:
+    path:     /parrainage/details-{idEtudiant}
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:detailsProfil }
+
+sitebde_parrainage_profil:
+    path:     /parrainage/profil
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:profil }

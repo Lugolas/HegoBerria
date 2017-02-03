@@ -21,13 +21,12 @@ class Loisir extends Activite
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      *
-     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantLoisir", mappedBy="loisir", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantLoisir", mappedBy="loisir", cascade={"persist", "remove"})
      */
-    private $etudiants;
-
+    protected $etudiants;
 
     /**
      * Get id
@@ -38,26 +37,24 @@ class Loisir extends Activite
     {
         return $this->id;
     }
-
     /**
      * Constructor
      */
     public function __construct()
     {
-
+        $this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Add etudiant
      *
-     * @param \sitebde\ParrainageBundle\Entity\Loisir $etudiant
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantLoisir $etudiant
      *
      * @return Loisir
      */
     public function addEtudiant(\sitebde\ParrainageBundle\Entity\EtudiantLoisir $etudiant)
     {
-        $this->etudiants[] = $etudiant;
+        //$this->etudiants[] = $etudiant;
 
         return $this;
     }
@@ -65,7 +62,7 @@ class Loisir extends Activite
     /**
      * Remove etudiant
      *
-     * @param \sitebde\ParrainageBundle\Entity\Loisir $etudiant
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantLoisir $etudiant
      */
     public function removeEtudiant(\sitebde\ParrainageBundle\Entity\EtudiantLoisir $etudiant)
     {
@@ -77,8 +74,13 @@ class Loisir extends Activite
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEtudiants()
+    public function getEtudiants() /*Normalement devrait retourner un tableau d'ETUDIANT (et pas de EtudiantLoisir)*/
     {
-        return $this->etudiants;
+        $listeEtudiants = new \Doctrine\Common\Collections\ArrayCollection(); 
+        foreach($this->etudiants as $etudiantLoisir)
+        {
+            $listeEtudiants[] = $etudiantLoisir->getEtudiant();
+        }
+        return $listeEtudiants;
     }
 }

@@ -53,7 +53,7 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">Parrainage</a></li>
+                            <li><a href="{{ path('sitebde_parrainage_accueil') }}">Parrainage</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,10 +72,10 @@
                         <a href="{{ path('sitebde_siteVitrine_detailsActualite', {'idActu':articleCourant.id}) }}" class="list-group-item">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <img src="{{ asset('images/' ~ articleCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                                    <img src="{{ asset('images/iconesActualites/' ~ articleCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
                                 </div>
                                 <div class="col-sm-9">
-                                    <p><strong>{{ articleCourant.titre }}</strong></p>
+                                    <h4 class="list-group-item-heading">{{ articleCourant.titre }}</h4>
                                     {% if articleCourant.datePublication != articleCourant.dateActualisation %}
                                         <p><small>Date d'actualisation : {{ articleCourant.dateActualisation|date("d/m/Y") }}
                                          - Date de publication : {{ articleCourant.datePublication|date("d/m/Y") }}</small></p>
@@ -90,10 +90,10 @@
                         <a href="{{ path('sitebde_siteVitrine_detailsEvenement', {'idEvent':articleCourant.id}) }}" class="list-group-item">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <img src="{{ asset('images/' ~ articleCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                                    <img src="{{ asset('images/iconesEvenements/' ~ articleCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
                                 </div>
                                 <div class="col-sm-9">
-                                    <p><strong>{{ articleCourant.dateEvenement|date("d/m/Y") }} : {{ articleCourant.titre }}</strong></p>
+                                    <h4 class="list-group-item-heading">{{ articleCourant.dateEvenement|date("d/m/Y") }} : {{ articleCourant.titre }}</h4>
                                     {% if articleCourant.datePublication != articleCourant.dateActualisation %}
                                         <p><small>Date d'actualisation : {{ articleCourant.dateActualisation|date("d/m/Y") }}
                                          - Date de publication : {{ articleCourant.datePublication|date("d/m/Y") }}</small></p>

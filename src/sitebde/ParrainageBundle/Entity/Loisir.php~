@@ -21,13 +21,12 @@ class Loisir extends Activite
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      *
-     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\Loisir", mappedBy="loisir")
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantLoisir", mappedBy="loisir")
      */
-    private $etudiants;
-
+    protected $etudiants;
 
     /**
      * Get id
@@ -38,13 +37,5 @@ class Loisir extends Activite
     {
         return $this->id;
     }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->etudiantLoisir = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
 }
+

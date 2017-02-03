@@ -24,9 +24,9 @@ class Sport extends Activite
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantSport", mappedBy="sport", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantSport", mappedBy="sport", cascade={"persist", "remove"})
      */
-    private $etudiants;
+    protected $etudiants;
 
     /**
      * Get id
@@ -45,9 +45,6 @@ class Sport extends Activite
         $this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    
-
-
     /**
      * Add etudiant
      *
@@ -57,7 +54,7 @@ class Sport extends Activite
      */
     public function addEtudiant(\sitebde\ParrainageBundle\Entity\EtudiantSport $etudiant)
     {
-        $this->etudiants[] = $etudiant;
+        //$this->etudiants[] = $etudiant;
 
         return $this;
     }
@@ -77,8 +74,13 @@ class Sport extends Activite
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEtudiants()
+    public function getEtudiants() /*Normalement devrait retourner un tableau d'ETUDIANT (et pas de EtudiantSport)*/
     {
-        return $this->etudiants;
+        $listeEtudiants = new \Doctrine\Common\Collections\ArrayCollection();
+        foreach($this->etudiants as $etudiantSport)
+        {
+            $listeEtudiants[] = $etudiantSport->getEtudiant();
+        }
+        return $listeEtudiants;
     }
 }

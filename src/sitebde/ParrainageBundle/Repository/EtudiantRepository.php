@@ -10,4 +10,27 @@ namespace sitebde\ParrainageBundle\Repository;
  */
 class EtudiantRepository extends \Doctrine\ORM\EntityRepository
 {
+    // Retourne l'étudiant, ses loisirs et ses 
+    public function getEtudiantLoisirsEtSports($idEtudiant)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntite->createQuery('SELECT e, l, el, s, es, mft, mfb
+                                                          FROM sitebdeParrainageBundle:Etudiant e
+                                                          JOIN e.loisirs el
+                                                          JOIN el.loisir l
+                                                          JOIN e.sports es
+                                                          JOIN es.sport s
+                                                          JOIN e.matieresFortes mft
+                                                          JOIN e.matieresFaibles mfb
+                                                          WHERE e.id = :id
+                                                          ORDER BY l.categorie, s.categorie, mft.categorie, mfb.categorie');
+        
+        $requetePerso->setParameter('id', $idEtudiant);
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
 }

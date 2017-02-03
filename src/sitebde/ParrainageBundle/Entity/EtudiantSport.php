@@ -28,18 +28,18 @@ class EtudiantSport
      */
     private $commentaire;
 
-
     /**
      *
-     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Sport", inversedBy="etudiants")
-     */
-    private $sport;
-
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="sports")
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="sports", cascade={"persist", "remove"})
      */
     private $etudiant;
+    
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Sport", inversedBy="etudiants", cascade={"persist", "remove"})
+     */
+    private $sport;
 
     /**
      * Get id
@@ -76,41 +76,6 @@ class EtudiantSport
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-
-    }
-
-  
-
-    /**
-     * Set sport
-     *
-     * @param \sitebde\ParrainageBundle\Entity\Sport $sport
-     *
-     * @return EtudiantSport
-     */
-    public function setSport(\sitebde\ParrainageBundle\Entity\Sport $sport = null)
-    {
-        $sport->addEtudiant($this);
-        $this->sport = $sport;
-
-        return $this;
-    }
-
-    /**
-     * Get sport
-     *
-     * @return \sitebde\ParrainageBundle\Entity\Sport
-     */
-    public function getSport()
-    {
-        return $this->sport;
-    }
-
-    /**
      * Set etudiant
      *
      * @param \sitebde\ParrainageBundle\Entity\Etudiant $etudiant
@@ -132,5 +97,30 @@ class EtudiantSport
     public function getEtudiant()
     {
         return $this->etudiant;
+    }
+
+    /**
+     * Set sport
+     *
+     * @param \sitebde\ParrainageBundle\Entity\Sport $sport
+     *
+     * @return EtudiantSport
+     */
+    public function setSport(\sitebde\ParrainageBundle\Entity\Sport $sport = null)
+    {
+        $this->sport = $sport;
+        $sport->addEtudiant($this);
+
+        return $this;
+    }
+
+    /**
+     * Get sport
+     *
+     * @return \sitebde\ParrainageBundle\Entity\Sport
+     */
+    public function getSport()
+    {
+        return $this->sport;
     }
 }
