@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Matiere
  *
- * @ORM\MappedSuperclass()
+ * @ORM\Table(name="matiere")
+ * @ORM\Entity(repositoryClass="sitebde\ParrainageBundle\Repository\MatiereRepository")
  */
 class Matiere
 {
@@ -34,6 +35,17 @@ class Matiere
      */
     protected $categorie;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantMatiereForte", mappedBy="matiere", cascade={"persist", "remove"})
+     */
+    private $etudiantMatiereFortes;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible", mappedBy="etudiant", cascade={"persist", "remove"})
+     */
+    private $etudiantMatiereFaibles;
 
     /**
      * Get id
@@ -93,4 +105,3 @@ class Matiere
         return $this->categorie;
     }
 }
-

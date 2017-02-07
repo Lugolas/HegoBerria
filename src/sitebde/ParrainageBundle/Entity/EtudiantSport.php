@@ -30,14 +30,14 @@ class EtudiantSport
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="sports", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="etudiantSports")
      */
     private $etudiant;
     
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Sport", inversedBy="etudiants", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Sport", inversedBy="etudiantSports")
      */
     private $sport;
 
@@ -75,6 +75,21 @@ class EtudiantSport
         return $this->commentaire;
     }
 
+
+    /**
+     * Constructor
+     */
+    public function __construct(\sitebde\ParrainageBundle\Entity\Etudiant $etudiant, \sitebde\ParrainageBundle\Entity\Sport $sport, $commentaire = null)
+    {
+        $this->setEtudiant($etudiant);
+        $this->setSport($sport);
+        $this->setCommentaire($commentaire);
+    }
+
+
+
+
+
     /**
      * Set etudiant
      *
@@ -109,7 +124,7 @@ class EtudiantSport
     public function setSport(\sitebde\ParrainageBundle\Entity\Sport $sport = null)
     {
         $this->sport = $sport;
-        $sport->addEtudiant($this);
+        $sport->addEtudiantSport($this);
 
         return $this;
     }

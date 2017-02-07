@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Matiere
  *
- * @ORM\MappedSuperclass()
+ * @ORM\Table(name="matiere")
+ * @ORM\Entity(repositoryClass="sitebde\ParrainageBundle\Repository\MatiereRepository")
  */
 class Matiere
 {
@@ -34,6 +35,17 @@ class Matiere
      */
     protected $categorie;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantMatiereForte", mappedBy="matiere", cascade={"persist", "remove"})
+     */
+    private $etudiantMatiereFortes;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible", mappedBy="matiere", cascade={"persist", "remove"})
+     */
+    private $etudiantMatiereFaibles;
 
     /**
      * Get id
@@ -91,5 +103,97 @@ class Matiere
     public function getCategorie()
     {
         return $this->categorie;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->etudiantMatiereFortes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->etudiantMatiereFaibles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add etudiantMatiereForte
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantMatiereForte $etudiantMatiereForte
+     *
+     * @return Matiere
+     */
+    public function addEtudiantMatiereForte(\sitebde\ParrainageBundle\Entity\EtudiantMatiereForte $etudiantMatiereForte)
+    {
+        /*******************FONCTION VIDE******************/
+        /* Rendue obsolette par les opérations en cascade */
+        /**************************************************/
+        
+        //$this->etudiantMatiereFortes[] = $etudiantMatiereForte;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiantMatiereForte
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantMatiereForte $etudiantMatiereForte
+     */
+    public function removeEtudiantMatiereForte(\sitebde\ParrainageBundle\Entity\EtudiantMatiereForte $etudiantMatiereForte)
+    {
+        /*******************FONCTION VIDE******************/
+        /* Rendue obsolette par les opérations en cascade */
+        /**************************************************/
+        
+        //$this->etudiantMatiereFortes->removeElement($etudiantMatiereForte);
+    }
+
+    /**
+     * Get etudiantMatiereFortes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtudiantMatiereFortes()
+    {
+        return $this->etudiantMatiereFortes;
+    }
+
+    /**
+     * Add etudiantMatiereFaible
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible $etudiantMatiereFaible
+     *
+     * @return Matiere
+     */
+    public function addEtudiantMatiereFaible(\sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible $etudiantMatiereFaible)
+    {
+        /*******************FONCTION VIDE******************/
+        /* Rendue obsolette par les opérations en cascade */
+        /**************************************************/
+        
+        //$this->etudiantMatiereFaibles[] = $etudiantMatiereFaible;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiantMatiereFaible
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible $etudiantMatiereFaible
+     */
+    public function removeEtudiantMatiereFaible(\sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible $etudiantMatiereFaible)
+    {
+        /*******************FONCTION VIDE******************/
+        /* Rendue obsolette par les opérations en cascade */
+        /**************************************************/
+        
+        //$this->etudiantMatiereFaibles->removeElement($etudiantMatiereFaible);
+    }
+
+    /**
+     * Get etudiantMatiereFaibles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtudiantMatiereFaibles()
+    {
+        return $this->etudiantMatiereFaibles;
     }
 }

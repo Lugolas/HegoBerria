@@ -1,4 +1,4 @@
-{% extends 'vueMere.html.twig' %}
+{% extends 'sitebdeParrainageBundle::vueMereParrainage.html.twig' %}
 
 {% block navbar %}
     <div class="row">
@@ -16,13 +16,13 @@
                 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ path('sitebde_parrainage_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                            <li><a href="{{ path('sitebde_siteVitrine_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
                             <li><a href="{{ path('sitebde_parrainage_premieres_annees') }}">1° années</a></li>
                             <li><a href="{{ path('sitebde_parrainage_deuxiemes_annees') }}">2° années</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{{ path('sitebde_parrainage_profil') }}">Prénom Nom</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
                         </ul>
                     </div>
@@ -60,33 +60,28 @@
             <h4>{{ etudiantCourant.description }}</h4>
         </div>
         <div class="col-sm-4">
-            <button type="button" class="btn btn-success">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <h4><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></h4>
-                    </div>
-                    <div class="col-sm-10">
-                        <h4>Demander en marriage</h4>
-                    </div>
-                </div>
-            </button>
+            <form action="{{ path('sitebde_parrainage_demande_parrainage', {'idEtudiant':etudiantCourant.id}) }}">
+                <button class="btn btn-success" type="submit">
+                        <h5>Demander à <strong>parrainer/être parrainé</strong></h5>
+                </button>
+            </form>
         </div>
     </div>
     <div class="row top-buffer">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading parrainage">
                     <h3 class="panel-title text-center">Informations scolaires</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-6" style="border-right:1px dashed #888">
                             <h4 class="text-center">Matières fortes</h4>
-                            <dl class="dl-horizontal">
-                                {% if etudiantCourant.matieresFortes is not empty %}
+                            {% if etudiantCourant.etudiantMatiereFortes is not empty %}
+                                <dl class="dl-horizontal">
                                     {% set categoriePrecedente = "Patate" %}
-                                    {% for matiereForte in etudiantCourant.matieresFortes %}
+                                    {% for matiereForte in etudiantCourant.etudiantMatiereFortes %}
                                         {% set categorieCourante = matiereForte.categorie %}
                                         {% if categorieCourante != categoriePrecedente %}
                                             <dt>{{ matiereForte.categorie }}</dt>
@@ -94,15 +89,17 @@
                                         <dd>{{ matiereForte.libelle }}</dd>
                                         {% set categoriePrecedente = categorieCourante %}
                                     {% endfor %}
-                                {% endif %}
-                            </dl>
+                                </dl>
+                            {% else %}
+                                <p class="text-center">Rien à afficher</p>
+                            {% endif %}
                         </div>
                         <div class="col-sm-6">
                             <h4 class="text-center">Matières faibles</h4>
-                            <dl class="dl-horizontal">
-                                {% if etudiantCourant.matieresFaibles is not empty %}
+                            {% if etudiantCourant.etudiantMatiereFaibles is not empty %}
+                                <dl class="dl-horizontal">
                                     {% set categoriePrecedente = "Patate" %}
-                                    {% for matiereFaible in etudiantCourant.matieresFaibles %}
+                                    {% for matiereFaible in etudiantCourant.etudiantMatiereFaibles %}
                                         {% set categorieCourante = matiereFaible.categorie %}
                                         {% if categorieCourante != categoriePrecedente %}
                                             <dt>{{ matiereFaible.categorie }}</dt>
@@ -110,8 +107,10 @@
                                         <dd>{{ matiereFaible.libelle }}</dd>
                                         {% set categoriePrecedente = categorieCourante %}
                                     {% endfor %}
-                                {% endif %}
-                            </dl>
+                                </dl>
+                            {% else %}
+                                <p class="text-center">Rien à afficher</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -122,45 +121,49 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-5">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading parrainage">
                     <h3 class="panel-title text-center">Loisirs</h3>
                 </div>
                 <div class="panel-body">
-                    <dl class="dl-horizontal">
-                        {% if etudiantCourant.loisirs is not empty %}
+                    {% if etudiantCourant.loisirs is not empty %}
+                        <dl class="dl-horizontal">
                             {% set categoriePrecedente = "Patate" %}
-                            {% for loisir in etudiantCourant.loisirs %}
-                                {% set categorieCourante = loisir.loisir.categorie %}
+                            {% for etudiantLoisir in etudiantCourant.loisirs %}
+                                {% set categorieCourante = etudiantLoisir.loisir.categorie %}
                                 {% if categorieCourante != categoriePrecedente %}
-                                    <dt>{{ loisir.loisir.categorie }}</dt>
+                                    <dt>{{ etudiantLoisir.loisir.categorie }}</dt>
                                 {% endif %}
-                                <dd>{{ loisir.loisir.libelle }}{% if loisir.commentaire is not empty %} - <i>{{ loisir.commentaire }}</i>{% endif %}</dd>
+                                <dd>{{ etudiantLoisir.loisir.libelle }}{% if etudiantLoisir.commentaire is not empty %} - <i>{{ etudiantLoisir.commentaire }}</i>{% endif %}</dd>
                                 {% set categoriePrecedente = categorieCourante %}
                             {% endfor %}
-                        {% endif %}
-                    </dl>
+                        </dl>
+                    {% else %}
+                        <p class="text-center">Rien à afficher</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <div class="col-sm-5">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading parrainage">
                     <h3 class="panel-title text-center">Sports</h3>
                 </div>
                 <div class="panel-body">
-                    <dl class="dl-horizontal">
-                        {% if etudiantCourant.sports is not empty %}
+                    {% if etudiantCourant.etudiantSports is not empty %}
+                        <dl class="dl-horizontal">
                             {% set categoriePrecedente = "Patate" %}
-                            {% for sport in etudiantCourant.sports %}
-                                {% set categorieCourante = sport.sport.categorie %}
+                            {% for etudiantSport in etudiantCourant.etudiantSports %}
+                                {% set categorieCourante = etudiantSport.sport.categorie %}
                                 {% if categorieCourante != categoriePrecedente %}
-                                    <dt>{{ sport.sport.categorie }}</dt>
+                                    <dt>{{ etudiantSport.sport.categorie }}</dt>
                                 {% endif %}
-                                <dd>{{ sport.sport.libelle }}{% if sport.commentaire is not empty %} - <i>{{ sport.commentaire }}</i>{% endif %}</dd>
+                                <dd>{{ etudiantSport.sport.libelle }}{% if etudiantSport.commentaire is not empty %} - <i>{{ etudiantSport.commentaire }}</i>{% endif %}</dd>
                                 {% set categoriePrecedente = categorieCourante %}
                             {% endfor %}
-                        {% endif %}
-                    </dl>
+                        </dl>
+                    {% else %}
+                        <p class="text-center">Rien à afficher</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -169,7 +172,7 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading parrainage">
                     <h3 class="panel-title text-center">Liens</h3>
                 </div>
                 <div class="panel-body">

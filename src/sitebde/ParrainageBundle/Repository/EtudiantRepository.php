@@ -17,14 +17,16 @@ class EtudiantRepository extends \Doctrine\ORM\EntityRepository
         $gestionnaireEntite = $this->_em;
         
         // Ecriture de la requête personnalisée
-        $requetePerso = $gestionnaireEntite->createQuery('SELECT e, l, el, s, es, mft, mfb
+        $requetePerso = $gestionnaireEntite->createQuery('SELECT e, l, el, s, es, emft, mft, emfb, mfb
                                                           FROM sitebdeParrainageBundle:Etudiant e
-                                                          JOIN e.loisirs el
-                                                          JOIN el.loisir l
-                                                          JOIN e.sports es
-                                                          JOIN es.sport s
-                                                          JOIN e.matieresFortes mft
-                                                          JOIN e.matieresFaibles mfb
+                                                          LEFT JOIN e.etudiantLoisirs el
+                                                          LEFT JOIN el.loisir l
+                                                          LEFT JOIN e.etudiantSports es
+                                                          LEFT JOIN es.sport s
+                                                          LEFT JOIN e.etudiantMatiereFortes emft
+                                                          LEFT JOIN emft.matiere mft
+                                                          LEFT JOIN e.etudiantMatiereFaibles emfb
+                                                          LEFT JOIN emfb.matiere mfb
                                                           WHERE e.id = :id
                                                           ORDER BY l.categorie, s.categorie, mft.categorie, mfb.categorie');
         

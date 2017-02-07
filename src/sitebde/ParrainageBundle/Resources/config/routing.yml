@@ -17,3 +17,11 @@ sitebde_parrainage_details_profil:
 sitebde_parrainage_profil:
     path:     /parrainage/profil
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:profil }
+
+sitebde_parrainage_profil_edition:
+    path:     /parrainage/profil_edition
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:profilEdition }
+
+sitebde_parrainage_demande_parrainage:
+    path:     /parrainage/page_a_supprimer-{idEtudiant}
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:demandeParrainage }

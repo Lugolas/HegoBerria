@@ -1,0 +1,48 @@
+<?php
+
+namespace sitebde\ParrainageBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EtudiantMatiereForte
+ *
+ * @ORM\Table(name="etudiant_matiere_forte")
+ * @ORM\Entity(repositoryClass="sitebde\ParrainageBundle\Repository\EtudiantMatiereForteRepository")
+ */
+class EtudiantMatiereForte
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="etudiantMatiereFortes", cascade={"persist", "remove"})
+     */
+    private $etudiant;
+    
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Matiere", inversedBy="etudiantMatiereFortes", cascade={"persist", "remove"})
+     */
+    private $matiere;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+

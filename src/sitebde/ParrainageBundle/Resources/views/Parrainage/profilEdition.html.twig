@@ -17,11 +17,11 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="{{ path('sitebde_siteVitrine_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
-                            <li class="active"><a href="{{ path('sitebde_parrainage_premieres_annees') }}">1° années</a></li>
+                            <li><a href="{{ path('sitebde_parrainage_premieres_annees') }}">1° années</a></li>
                             <li><a href="{{ path('sitebde_parrainage_deuxiemes_annees') }}">2° années</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{ path('sitebde_parrainage_profil') }}">Prénom Nom</a></li>
+                            <li class="active"><a href="{{ path('sitebde_parrainage_profil') }}">Prénom Nom</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
                         </ul>
@@ -44,24 +44,5 @@
 {% endblock %}
 
 {% block contenu %}
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <div class="list-group">
-                {% for etudiantCourant in etudiants %}
-                    <a href="{{ path('sitebde_parrainage_details_profil', {'idEtudiant':etudiantCourant.id}) }}" class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-1">
-                                <img src="{{ asset('images/photosEtudiants/' ~ etudiantCourant.photo) }}" class="img-rounded img-responsive">
-                            </div>
-                            <div class="col-sm-11">
-                                <h4 class="list-group-item-heading">{{ etudiantCourant.prenom }} {{ etudiantCourant.nom }}</h4>
-                                <p>{{ etudiantCourant.description|length > 200 ? etudiantCourant.description|slice(0, 200) ~ '...' : etudiantCourant.description }}</p>
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+    <p>Cette page affichera prochainement le formulaire de modification de l'étudiant connecté.</p>
 {% endblock %}

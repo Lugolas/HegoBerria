@@ -1,0 +1,123 @@
+[04-Feb-2017 17:55:47 UTC] PHP Fatal error:  Call to a member function removeEtudiantMatiereForte() on a non-object in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 90
+[04-Feb-2017 17:55:47 UTC] PHP Stack trace:
+[04-Feb-2017 17:55:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 17:55:47 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 17:55:47 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 17:55:47 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 17:55:47 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 17:55:47 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 17:55:47 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 17:59:49 UTC] PHP Fatal error:  Call to undefined method sitebde\ParrainageBundle\Entity\EtudiantMatiereForte::removeMatiere() in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Entity/Etudiant.php on line 393
+[04-Feb-2017 17:59:49 UTC] PHP Stack trace:
+[04-Feb-2017 17:59:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 17:59:49 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 17:59:49 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 17:59:49 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 17:59:49 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 17:59:49 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 17:59:49 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 17:59:49 UTC] PHP   8. sitebde\ParrainageBundle\Entity\Etudiant->removeEtudiantMatiereForte() /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php:90
+[04-Feb-2017 17:59:50 UTC] PHP Fatal error:  Call to undefined method sitebde\ParrainageBundle\Entity\EtudiantMatiereForte::removeMatiere() in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Entity/Etudiant.php on line 393
+[04-Feb-2017 17:59:50 UTC] PHP Stack trace:
+[04-Feb-2017 17:59:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 17:59:50 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 17:59:50 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 17:59:50 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 17:59:50 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 17:59:50 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 17:59:50 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 17:59:50 UTC] PHP   8. sitebde\ParrainageBundle\Entity\Etudiant->removeEtudiantMatiereForte() /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php:90
+[04-Feb-2017 18:17:36 UTC] PHP Fatal error:  Class 'sitebde\ParrainageBundle\Controller\EtudiantSport' not found in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 96
+[04-Feb-2017 18:17:36 UTC] PHP Stack trace:
+[04-Feb-2017 18:17:36 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 18:17:36 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 18:17:36 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 18:17:36 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 18:17:36 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 18:17:36 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:17:36 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:19:49 UTC] PHP Fatal error:  Class 'sitebde\ParrainageBundle\Controller\EtudiantSport' not found in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 96
+[04-Feb-2017 18:19:49 UTC] PHP Stack trace:
+[04-Feb-2017 18:19:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 18:19:49 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 18:19:49 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 18:19:49 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 18:19:49 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 18:19:49 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:19:49 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:19:57 UTC] PHP Fatal error:  Class 'sitebde\ParrainageBundle\Controller\EtudiantSport' not found in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 96
+[04-Feb-2017 18:19:57 UTC] PHP Stack trace:
+[04-Feb-2017 18:19:57 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 18:19:57 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 18:19:57 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 18:19:57 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 18:19:57 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 18:19:57 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:19:57 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:20:35 UTC] PHP Fatal error:  Class 'sitebde\ParrainageBundle\Controller\EtudiantSport' not found in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 96
+[04-Feb-2017 18:20:35 UTC] PHP Stack trace:
+[04-Feb-2017 18:20:35 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 18:20:35 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 18:20:35 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 18:20:35 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 18:20:35 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 18:20:35 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:20:35 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:20:44 UTC] PHP Fatal error:  Class 'sitebde\ParrainageBundle\Controller\EtudiantSport' not found in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 96
+[04-Feb-2017 18:20:44 UTC] PHP Stack trace:
+[04-Feb-2017 18:20:44 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 18:20:44 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 18:20:44 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 18:20:44 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 18:20:44 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 18:20:44 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:20:44 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:23:08 UTC] PHP Fatal error:  Call to a member function addEtudiantSport() on a non-object in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Entity/EtudiantSport.php on line 112
+[04-Feb-2017 18:23:08 UTC] PHP Stack trace:
+[04-Feb-2017 18:23:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 18:23:08 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 18:23:08 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 18:23:08 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 18:23:08 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 18:23:08 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:23:08 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:23:08 UTC] PHP   8. sitebde\ParrainageBundle\Entity\EtudiantSport->setSport() /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php:103
+[04-Feb-2017 18:23:20 UTC] PHP Fatal error:  Call to a member function addEtudiantSport() on a non-object in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Entity/EtudiantSport.php on line 112
+[04-Feb-2017 18:23:20 UTC] PHP Stack trace:
+[04-Feb-2017 18:23:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[04-Feb-2017 18:23:20 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[04-Feb-2017 18:23:20 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[04-Feb-2017 18:23:20 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[04-Feb-2017 18:23:20 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[04-Feb-2017 18:23:20 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:23:20 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->demandeParrainageAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[04-Feb-2017 18:23:20 UTC] PHP   8. sitebde\ParrainageBundle\Entity\EtudiantSport->setSport() /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php:103
+[06-Feb-2017 13:52:27 UTC] PHP Fatal error:  Call to a member function getId() on a non-object in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 70
+[06-Feb-2017 13:52:27 UTC] PHP Stack trace:
+[06-Feb-2017 13:52:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[06-Feb-2017 13:52:27 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[06-Feb-2017 13:52:27 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[06-Feb-2017 13:52:27 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[06-Feb-2017 13:52:27 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[06-Feb-2017 13:52:27 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[06-Feb-2017 13:52:27 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->profilAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[07-Feb-2017 11:11:50 UTC] PHP Fatal error:  Cannot redeclare sitebde\ParrainageBundle\Entity\Etudiant::removeEtudiantLoisir() in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Entity/Etudiant.php on line 741
+[07-Feb-2017 11:11:50 UTC] PHP Stack trace:
+[07-Feb-2017 11:11:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[07-Feb-2017 11:11:50 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[07-Feb-2017 11:11:50 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[07-Feb-2017 11:11:50 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[07-Feb-2017 11:11:50 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[07-Feb-2017 11:11:50 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[07-Feb-2017 11:11:50 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->detailsProfilAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[07-Feb-2017 11:11:50 UTC] PHP   8. Doctrine\ORM\EntityManager->getRepository() /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php:50
+[07-Feb-2017 11:11:50 UTC] PHP   9. Doctrine\ORM\Repository\DefaultRepositoryFactory->getRepository() /home/ubuntu/workspace/sitebde/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+[07-Feb-2017 11:11:50 UTC] PHP  10. Doctrine\ORM\EntityManager->getClassMetadata() /home/ubuntu/workspace/sitebde/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+[07-Feb-2017 11:11:50 UTC] PHP  11. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor() /home/ubuntu/workspace/sitebde/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+[07-Feb-2017 11:11:50 UTC] PHP  12. Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+[07-Feb-2017 11:11:50 UTC] PHP  13. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata() /home/ubuntu/workspace/sitebde/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+[07-Feb-2017 11:11:50 UTC] PHP  14. Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getParentClasses() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+[07-Feb-2017 11:11:50 UTC] PHP  15. Doctrine\Common\Persistence\Mapping\RuntimeReflectionService->getParentClasses() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+[07-Feb-2017 11:11:50 UTC] PHP  16. class_exists() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:40
+[07-Feb-2017 11:11:50 UTC] PHP  17. spl_autoload_call() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:40
+[07-Feb-2017 11:11:50 UTC] PHP  18. Symfony\Component\Debug\DebugClassLoader->loadClass() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:40

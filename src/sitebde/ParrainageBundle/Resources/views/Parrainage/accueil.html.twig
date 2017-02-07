@@ -1,4 +1,4 @@
-{% extends 'vueMere.html.twig' %}
+{% extends 'sitebdeParrainageBundle::vueMereParrainage.html.twig' %}
 
 {% block navbar %}
     <div class="row">
@@ -16,13 +16,13 @@
                 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="{{ path('sitebde_parrainage_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li>
+                            <li><a href="{{ path('sitebde_siteVitrine_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
                             <li><a href="{{ path('sitebde_parrainage_premieres_annees') }}">1° années</a></li>
                             <li><a href="{{ path('sitebde_parrainage_deuxiemes_annees') }}">2° années</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{{ path('sitebde_parrainage_profil') }}">Prénom Nom</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
                         </ul>
                     </div>
@@ -45,55 +45,31 @@
 
 {% block contenu %}
     <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-        <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title text-center">Propositions</h3>
+        <div class="col-sm-5">
+            <div class="panel panel-default">
+                <div class="panel-heading parrainage">
+                    <h3 class="panel-title text-center">Propositions <strong>parrains/filleuls</strong></h3>
                 </div>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-1">
-                                <img src="{{ asset('images/photosEtudiants/Folklore2.jpg') }}" class="img-rounded img-responsive">
+                    {% for etudiantPropose in etudiantsProposes %}
+                        <a href="{{ path('sitebde_parrainage_details_profil', {'idEtudiant':etudiantPropose.id}) }}" class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <img src="{{ asset('images/photosEtudiants/' ~ etudiantPropose.photo) }}" class="img-rounded img-responsive">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4 class="list-group-item-heading">{{ etudiantPropose.prenom }} {{ etudiantPropose.nom }}</h4>
+                                    <p>Vous avez n critères en commun (critère 1, critère 2...)</p>
+                                </div>
                             </div>
-                            <div class="col-sm-11">
-                                <h4 class="list-group-item-heading">Prénom Nom</h4>
-                                <p>Vous avez n critères en commun (critère 1, critère 2...)</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-1">
-                                <img src="{{ asset('images/photosEtudiants/Folklore2.jpg') }}" class="img-rounded img-responsive">
-                            </div>
-                            <div class="col-sm-11">
-                                <h4 class="list-group-item-heading">Prénom Nom</h4>
-                                <p>Vous avez n critères en commun (critère 1, critère 2...)</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-1">
-                                <img src="{{ asset('images/photosEtudiants/Folklore2.jpg') }}" class="img-rounded img-responsive">
-                            </div>
-                            <div class="col-sm-11">
-                                <h4 class="list-group-item-heading">Prénom Nom</h4>
-                                <p>Vous avez n critères en commun (critère 1, critère 2...)</p>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-7">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading parrainage">
                     <h3 class="panel-title text-center">Informations</h3>
                 </div>
                 <div class="panel-body">

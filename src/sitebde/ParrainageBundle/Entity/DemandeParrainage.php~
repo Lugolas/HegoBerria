@@ -1,0 +1,80 @@
+<?php
+
+namespace sitebde\ParrainageBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DemandeParrainage
+ *
+ * @ORM\Table(name="demande_parrainage")
+ * @ORM\Entity(repositoryClass="sitebde\ParrainageBundle\Repository\DemandeParrainageRepository")
+ */
+class DemandeParrainage
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="estAcceptee", type="boolean")
+     */
+    private $estAcceptee;
+    
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="demandesFaites")
+     */
+    private $etudiantDemandeur;
+    
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="demandesRecues")
+     */
+    private $etudiantDemande;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set estAcceptee
+     *
+     * @param boolean $estAcceptee
+     *
+     * @return DemandeParrainage
+     */
+    public function setEstAcceptee($estAcceptee)
+    {
+        $this->estAcceptee = $estAcceptee;
+
+        return $this;
+    }
+
+    /**
+     * Get estAcceptee
+     *
+     * @return bool
+     */
+    public function getEstAcceptee()
+    {
+        return $this->estAcceptee;
+    }
+}
+

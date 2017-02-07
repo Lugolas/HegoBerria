@@ -26,7 +26,7 @@ class Sport extends Activite
      *
      * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\EtudiantSport", mappedBy="sport", cascade={"persist", "remove"})
      */
-    protected $etudiants;
+    protected $etudiantSports;
 
     /**
      * Get id
@@ -37,38 +37,7 @@ class Sport extends Activite
     {
         return $this->id;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add etudiant
-     *
-     * @param \sitebde\ParrainageBundle\Entity\EtudiantSport $etudiant
-     *
-     * @return Sport
-     */
-    public function addEtudiant(\sitebde\ParrainageBundle\Entity\EtudiantSport $etudiant)
-    {
-        //$this->etudiants[] = $etudiant;
-
-        return $this;
-    }
-
-    /**
-     * Remove etudiant
-     *
-     * @param \sitebde\ParrainageBundle\Entity\EtudiantSport $etudiant
-     */
-    public function removeEtudiant(\sitebde\ParrainageBundle\Entity\EtudiantSport $etudiant)
-    {
-        $this->etudiants->removeElement($etudiant);
-    }
-
+    
     /**
      * Get etudiants
      *
@@ -77,10 +46,60 @@ class Sport extends Activite
     public function getEtudiants() /*Normalement devrait retourner un tableau d'ETUDIANT (et pas de EtudiantSport)*/
     {
         $listeEtudiants = new \Doctrine\Common\Collections\ArrayCollection();
-        foreach($this->etudiants as $etudiantSport)
+        foreach($this->etudiantSports as $etudiantSport)
         {
             $listeEtudiants[] = $etudiantSport->getEtudiant();
         }
         return $listeEtudiants;
+    }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->etudiantSports = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add etudiantSport
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantSport $etudiantSport
+     *
+     * @return Sport
+     */
+    public function addEtudiantSport(\sitebde\ParrainageBundle\Entity\EtudiantSport $etudiantSport)
+    {
+        /*******************FONCTION VIDE******************/
+        /* Rendue obsolette par les opérations en cascade */
+        /**************************************************/
+        
+        //$this->etudiantSports[] = $etudiantSport;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiantSport
+     *
+     * @param \sitebde\ParrainageBundle\Entity\EtudiantSport $etudiantSport
+     */
+    public function removeEtudiantSport(\sitebde\ParrainageBundle\Entity\EtudiantSport $etudiantSport)
+    {
+        /*******************FONCTION VIDE******************/
+        /* Rendue obsolette par les opérations en cascade */
+        /**************************************************/
+        
+        //$this->etudiantSports->removeElement($etudiantSport);
+    }
+
+    /**
+     * Get etudiantSports
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEtudiantSports()
+    {
+        return $this->etudiantSports;
     }
 }
