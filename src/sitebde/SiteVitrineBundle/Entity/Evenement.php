@@ -4,6 +4,7 @@ namespace sitebde\SiteVitrineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use sitebde\SiteVitrineBundle\Entity\Article;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Evenement
@@ -26,6 +27,7 @@ class Evenement extends Article
      * @var \DateTime
      *
      * @ORM\Column(name="dateEvenement", type="datetime")
+     * @Assert\NotBlank(message="La date est obligatoire")
      */
     protected $dateEvenement;
 

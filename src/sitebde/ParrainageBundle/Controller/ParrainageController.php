@@ -20,7 +20,9 @@ class ParrainageController extends Controller
         $tabEtudiants[] = $repositoryEtudiants->findOneByNom('Sallebert--Menaut');
         $tabEtudiants[] = $repositoryEtudiants->findOneByNom('Martinet');
         
-        return $this->render('sitebdeParrainageBundle:Parrainage:accueil.html.twig', array('etudiantsProposes' => $tabEtudiants));
+        $etudiants = $repositoryEtudiants->findAll();
+        
+        return $this->render('sitebdeParrainageBundle:Parrainage:accueil.html.twig', array('etudiantsProposes' => $tabEtudiants, 'etudiants' => $etudiants));
     }
     
     public function listePremieresAnneesAction()
@@ -98,5 +100,29 @@ class ParrainageController extends Controller
         $gestionnaireEntite->flush();
         
         return $this->redirect($this->generateUrl('sitebde_parrainage_details_profil', array('idEtudiant' => $idEtudiant)));
+    }
+    
+    public function redirectionVersEtudiantAction()
+    {
+        $nomComplet = $_POST['nomComplet'];
+        $tabNomComplet = explode(" ", $nomComplet);
+
+        $prenom = $tabNomComplet[0];
+        $nom = $tabNomComplet[1];
+        
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $repositoryEtudiants = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Etudiant');
+
+        $etudiant = $repositoryEtudiants->findOneBy(array(
+            "nom" => $nom,
+            "prenom" => $prenom));
+        
+        if ($etudiant != NULL) {
+            $idEtudiant = $etudiant->getId();
+            return $this->redirect($this->generateUrl('sitebde_parrainage_details_profil', array('idEtudiant' => $idEtudiant)));
+        }
+        else {
+            return $this->redirect($this->generateUrl('sitebde_parrainage_accueil'));
+        }
     }
 }

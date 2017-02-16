@@ -3,6 +3,7 @@
 namespace sitebde\SiteVitrineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -24,6 +25,7 @@ class Article extends Publication
      * @var string
      *
      * @ORM\Column(name="icone", type="string", length=100)
+     * @Assert\NotBlank(message="L'icône est obligatoire")
      */
     protected $icone;
 

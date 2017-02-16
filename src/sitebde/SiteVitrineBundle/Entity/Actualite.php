@@ -4,6 +4,7 @@ namespace sitebde\SiteVitrineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use sitebde\SiteVitrineBundle\Entity\Article;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Actualite

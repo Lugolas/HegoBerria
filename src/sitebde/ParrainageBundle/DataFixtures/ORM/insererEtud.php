@@ -264,6 +264,22 @@ class Etudiants  implements FixtureInterface
         
         // On rend l'étudiant persistant pour pouvoir y faire référence ensuite
         $manager->persist($quentin);
+        
+        
+        $jonny = new Etudiant();
+        $jonny->setLogin("jmjohnny");
+        $jonny->setEstBDE(false);
+        $jonny->setEstAdmin(false);
+        $jonny->setNom("McJohnny");
+        $jonny->setPrenom("Johnny");
+        $jonny->setSexe('F');
+        $jonny->setNumAnnee("1");
+        $jonny->setDescription("Description de Super Johnny McJohnny");
+        $jonny->setPhoto("joni.jpg");
+        
+        $manager->persist($jonny);
+
+        
  
 
 
@@ -338,7 +354,7 @@ class Etudiants  implements FixtureInterface
         $lien = new Lien($claudia, 'LinkedIn', 'https://fr.linkedin.com/');
         $manager->persist($lien);
         
-        $lien = new Lien($claudia, 'Iut de Bayonne et du pays basque', 'http://www.iutbayonne.univ-pau.fr/');
+        $lien = new Lien($claudia, 'Mon site préféré', 'http://www.iutbayonne.univ-pau.fr/');
         $manager->persist($lien);
         
         

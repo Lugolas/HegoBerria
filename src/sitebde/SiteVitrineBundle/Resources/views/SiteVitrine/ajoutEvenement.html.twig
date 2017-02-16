@@ -1,0 +1,26 @@
+{% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
+
+{% block contenu %}
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <a href="{{ path('sitebde_siteVitrine_accueil') }}">Retour accueil</a>
+    </div>
+</div>
+<div class="row top-buffer">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Ajouter un Evénement</h4>
+            </div>
+            <div class="panel-body">
+                <form method="post" {{ form_enctype(formulaireEvenement) }}>
+                    {{ form_widget(formulaireEvenement) }}
+                    <center><input type="submit" class="btn btn-primary" /></center>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

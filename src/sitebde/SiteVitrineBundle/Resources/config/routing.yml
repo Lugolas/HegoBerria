@@ -25,3 +25,23 @@ sitebde_siteVitrine_information:
 sitebde_siteVitrine_connexion:
     path: /connexion
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:connexion }
+    
+sitebde_siteVitrine_ajouterActualite:
+    path: /ajouterActualite
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:ajouterActualite }
+    
+sitebde_siteVitrine_ajouterEvenement:
+    path: /ajouterEvenement
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:ajouterEvenement }
+    
+sitebde_siteVitrine_modifierActualite:
+    path: /modifierActualite/{id}
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:modifierActualite }
+    
+sitebde_siteVitrine_modifierEvenement:
+    path: /modifierEvenement/{id}
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:modifierEvenement }
+    
+sitebde_siteVitrine_modifierInformation:
+    path: /modifierInformation/{id}
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:modifierInformation }

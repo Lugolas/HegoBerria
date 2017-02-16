@@ -36,4 +36,42 @@ html, body {
   color: #eee;
 }
 
+/* Barre de recherche auto-complétion */
 
+.typeahead, .tt-query, .tt-hint {
+  padding: 8px 12px; /* Dimensions de la barre de recherche */
+}
+
+.tt-menu {
+	background-color: #FFFFFF; /* Bordures et ombres des suggestions */
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 8px; /* Espace entre barre de recherche et suggestions */
+	padding: 8px 0;
+	width: 250px; /* Largeur des suggestions (idéalement : taille min + adaptation par rapport au + grand nom proposé) */
+}
+
+.tt-suggestion {
+	font-size: 17px;
+	padding: 3px 20px;
+}
+
+.tt-suggestion:hover {
+	cursor: pointer;
+	background-color: #0097CF;
+	color: #FFFFFF;
+}
+
+.tt-suggestion p {
+	margin: 0;
+}
+
+/* ? */
+
+.navbar .container-fluid, .navbar-collapse {
+  padding-left:0;
+}
+.navbar-collapse.in {
+  padding-left:30px;
+}

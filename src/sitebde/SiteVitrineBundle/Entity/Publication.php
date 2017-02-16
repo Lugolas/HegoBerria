@@ -3,6 +3,7 @@
 namespace sitebde\SiteVitrineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Publication
@@ -24,6 +25,7 @@ class Publication
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=100)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     protected $titre;
 
@@ -31,6 +33,7 @@ class Publication
      * @var string
      *
      * @ORM\Column(name="contenu", type="text")
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     protected $contenu;
 

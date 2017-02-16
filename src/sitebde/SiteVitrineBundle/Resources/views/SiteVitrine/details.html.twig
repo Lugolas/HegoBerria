@@ -86,6 +86,24 @@
 {% endblock %}
 
 {% block contenu %}
+
+    <div class="row">
+        {% if typeArticle == "actualite" %}
+            <form action="{{ path('sitebde_siteVitrine_modifierActualite', {'id':article.id} ) }}">                <center>
+
+        {% elseif typeArticle == "evenement" %}
+            <form action="{{ path('sitebde_siteVitrine_modifierEvenement', {'id':article.id} ) }}">
+        {% else %}
+            <form action="{{ path('sitebde_siteVitrine_modifierInformation', {'id':article.id} ) }}">
+        {% endif %}
+                <center>
+                    <button class="btn btn-primary" type="submit">
+                        <h5>Editer</h5>
+                    </button>
+                </center>
+            </form>
+    </div>
+
     {% if typeArticle == "actualite" %}
         <div class="row">
             <div class="col-sm-2">

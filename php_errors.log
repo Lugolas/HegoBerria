@@ -121,3 +121,57 @@
 [07-Feb-2017 11:11:50 UTC] PHP  16. class_exists() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:40
 [07-Feb-2017 11:11:50 UTC] PHP  17. spl_autoload_call() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:40
 [07-Feb-2017 11:11:50 UTC] PHP  18. Symfony\Component\Debug\DebugClassLoader->loadClass() /home/ubuntu/workspace/sitebde/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:40
+[08-Feb-2017 19:04:07 UTC] PHP Fatal error:  Class 'sitebde\SiteVitrineBundle\Controller\Actualite' not found in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 157
+[08-Feb-2017 19:04:07 UTC] PHP Stack trace:
+[08-Feb-2017 19:04:07 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[08-Feb-2017 19:04:07 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[08-Feb-2017 19:04:07 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[08-Feb-2017 19:04:07 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[08-Feb-2017 19:04:07 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[08-Feb-2017 19:04:07 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[08-Feb-2017 19:04:07 UTC] PHP   7. sitebde\SiteVitrineBundle\Controller\SiteVitrineController->ajouterActualiteAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 17:04:36 UTC] PHP Fatal error:  Class 'sitebde\SiteVitrineBundle\Controller\ActualiteType' not found in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 168
+[13-Feb-2017 17:04:36 UTC] PHP Stack trace:
+[13-Feb-2017 17:04:36 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[13-Feb-2017 17:04:36 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[13-Feb-2017 17:04:36 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[13-Feb-2017 17:04:36 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[13-Feb-2017 17:04:36 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[13-Feb-2017 17:04:36 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 17:04:36 UTC] PHP   7. sitebde\SiteVitrineBundle\Controller\SiteVitrineController->ajouterActualiteAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 20:47:29 UTC] PHP Fatal error:  Call to undefined function sitebde\ParrainageBundle\Controller\getId() in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 120
+[13-Feb-2017 20:47:29 UTC] PHP Stack trace:
+[13-Feb-2017 20:47:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[13-Feb-2017 20:47:29 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[13-Feb-2017 20:47:29 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[13-Feb-2017 20:47:29 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[13-Feb-2017 20:47:29 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[13-Feb-2017 20:47:29 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 20:47:29 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->redirectionVersEtudiantAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 20:48:27 UTC] PHP Fatal error:  Call to a member function getId() on a non-object in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 120
+[13-Feb-2017 20:48:27 UTC] PHP Stack trace:
+[13-Feb-2017 20:48:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[13-Feb-2017 20:48:27 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[13-Feb-2017 20:48:27 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[13-Feb-2017 20:48:27 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[13-Feb-2017 20:48:27 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[13-Feb-2017 20:48:27 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 20:48:27 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->redirectionVersEtudiantAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 20:51:25 UTC] PHP Fatal error:  Cannot access private property sitebde\ParrainageBundle\Entity\Etudiant::$id in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 120
+[13-Feb-2017 20:51:25 UTC] PHP Stack trace:
+[13-Feb-2017 20:51:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[13-Feb-2017 20:51:25 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[13-Feb-2017 20:51:25 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[13-Feb-2017 20:51:25 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[13-Feb-2017 20:51:25 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[13-Feb-2017 20:51:25 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 20:51:25 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->redirectionVersEtudiantAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 20:54:13 UTC] PHP Fatal error:  Call to a member function getId() on a non-object in /home/ubuntu/workspace/sitebde/src/sitebde/ParrainageBundle/Controller/ParrainageController.php on line 120
+[13-Feb-2017 20:54:13 UTC] PHP Stack trace:
+[13-Feb-2017 20:54:13 UTC] PHP   1. {main}() /home/ubuntu/workspace/sitebde/web/app_dev.php:0
+[13-Feb-2017 20:54:13 UTC] PHP   2. Symfony\Component\HttpKernel\Kernel->handle() /home/ubuntu/workspace/sitebde/web/app_dev.php:32
+[13-Feb-2017 20:54:13 UTC] PHP   3. Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php:185
+[13-Feb-2017 20:54:13 UTC] PHP   4. Symfony\Component\HttpKernel\HttpKernel->handle() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php:69
+[13-Feb-2017 20:54:13 UTC] PHP   5. Symfony\Component\HttpKernel\HttpKernel->handleRaw() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:62
+[13-Feb-2017 20:54:13 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139}() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139
+[13-Feb-2017 20:54:13 UTC] PHP   7. sitebde\ParrainageBundle\Controller\ParrainageController->redirectionVersEtudiantAction() /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/HttpKernel.php:139

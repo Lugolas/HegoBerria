@@ -176,10 +176,21 @@
                     <h3 class="panel-title text-center">Liens</h3>
                 </div>
                 <div class="panel-body">
-                    <ul>
-                        <li><a>Lien 1</a></li>
-                        <li><a>Lien 2</a></li>
-                    </ul>
+                    {% if etudiantCourant.liens is not empty %}
+                        <dl class="dl-horizontal">
+                            {% set libellePrecedent = "Patate" %}
+                            {% for lien in etudiantCourant.liens %}
+                                {% set libelleCourant = lien.libelle %}
+                                {% if libelleCourant != libellePrecedent %}
+                                    <dt>{{ lien.libelle }}</dt>
+                                {% endif %}
+                                <dd>{{ lien.url }}</dd>
+                                {% set libellePrecedent = libelleCourant %}
+                            {% endfor %}
+                        </dl>
+                    {% else %}
+                        <p class="text-center">Rien à afficher</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

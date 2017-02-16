@@ -9,6 +9,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    icones_actualites_dossier: '%kernel.root_dir%/../web/images/iconesActualites/'
+    icones_evenements_dossier: '%kernel.root_dir%/../web/images/iconesEvenements/'
 
 framework:
     #esi:             ~
@@ -37,6 +39,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources: ['bootstrap_3_layout.html.twig']
 
 # Doctrine Configuration
 doctrine:

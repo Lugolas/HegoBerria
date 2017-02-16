@@ -17,7 +17,7 @@ class EtudiantRepository extends \Doctrine\ORM\EntityRepository
         $gestionnaireEntite = $this->_em;
         
         // Ecriture de la requête personnalisée
-        $requetePerso = $gestionnaireEntite->createQuery('SELECT e, l, el, s, es, emft, mft, emfb, mfb
+        $requetePerso = $gestionnaireEntite->createQuery('SELECT e, l, el, s, es, emft, mft, emfb, mfb, li
                                                           FROM sitebdeParrainageBundle:Etudiant e
                                                           LEFT JOIN e.etudiantLoisirs el
                                                           LEFT JOIN el.loisir l
@@ -27,6 +27,7 @@ class EtudiantRepository extends \Doctrine\ORM\EntityRepository
                                                           LEFT JOIN emft.matiere mft
                                                           LEFT JOIN e.etudiantMatiereFaibles emfb
                                                           LEFT JOIN emfb.matiere mfb
+                                                          LEFT JOIN e.liens li
                                                           WHERE e.id = :id
                                                           ORDER BY l.categorie, s.categorie, mft.categorie, mfb.categorie');
         
