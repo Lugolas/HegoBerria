@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use sitebde\SiteVitrineBundle\Form\ActualiteType;
 use sitebde\SiteVitrineBundle\Form\EvenementType;
-use sitebde\SiteVitrineBundle\Entity\InformationType;
+use sitebde\SiteVitrineBundle\Form\InformationType;
 
 class SiteVitrineController extends Controller
 {
@@ -51,7 +51,7 @@ class SiteVitrineController extends Controller
         // Récupérer toutes les infos
         $tabInfos = $repositoryInformation->getInformationsTriees();
         
-        $typeArticle = "evenements";
+        $typeArticle = "evenement";
         
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeArticles.html.twig', array('articles' => $tabEvenements,
                                                                                                    'typeArticle' => $typeArticle,
@@ -73,7 +73,7 @@ class SiteVitrineController extends Controller
         // Récupérer toutes les infos
         $tabInfos = $repositoryInformation->getInformationsTriees();
         
-        $typeArticle = "actualites";
+        $typeArticle = "actualite";
         
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeArticles.html.twig', array('articles' => $tabActualites,
                                                                                                    'typeArticle' => $typeArticle,
@@ -140,9 +140,26 @@ class SiteVitrineController extends Controller
         
         $typeArticle = "information";
         
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:details.html.twig', array('article' => $information,
-                                                                                             'typeArticle' => $typeArticle,
-                                                                                             'informations' => $tabInfos));
+        return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeInformations').'#'.$information->getId());
+        
+    }
+    
+    public function listeInformationsAction()
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer le repository de l'entité Information
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
+        // Récupérer toutes les infos
+        $tabInfos = $repositoryInformation->getInformationsTriees();
+        
+        $typeArticle = "information";
+        
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeArticles.html.twig', array('typeArticle' => $typeArticle,
+                                                                                                   'informations' => $tabInfos,
+                                                                                                   'articles' => $tabInfos));
     }
     
     public function connexionAction()
@@ -166,15 +183,28 @@ class SiteVitrineController extends Controller
         $actualite->setDateActualisation(new \DateTime('now'));
         $actualite->setDatePublication(new \DateTime('now'));
         
-        // On construit le formulaire
-        $formulaireActualite = $this->createForm(ActualiteType::class, $actualite);
-            
-            
-        // Enregistrer, après soumission, les données dans l'objet $actualite
-        $formulaireActualite->handleRequest($requeteUtilisateur);
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
         
-        if ($formulaireActualite->isValid())
+        // On construit le formulaire
+        $formulaire = $this->createForm(ActualiteType::class, $actualite);
+        $titreFormulaire = 'Ajouter une actualité';
+        
+        // Récupérer le repository de l'entité Information
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
+        // Récupérer toutes les infos
+        $tabInfos = $repositoryInformation->getInformationsTriees();
+        
+        $typeArticle = "actualite";
+        
+        // Enregistrer, après soumission, les données dans l'objet $actualite
+        $formulaire->handleRequest($requeteUtilisateur);
+        
+        if ($formulaire->isValid())
         {
+            $actualite = $formulaire->getData();
+            
             // @var Symfony\Component\HttpFoundation\File\UploadedFile $icone -> icône uploadé
             $icone = $actualite->getIcone();
 
@@ -200,7 +230,10 @@ class SiteVitrineController extends Controller
         }
         
         // Afficher le formulaire
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:ajoutActualite.html.twig', array('formulaireActualite' => $formulaireActualite->createView()));
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'typeArticle' => $typeArticle,
+                                                                                                'informations' => $tabInfos,
+                                                                                                'titreFormulaire' => $titreFormulaire));
     }
     
     public function ajouterEvenementAction(Request $requeteUtilisateur)
@@ -211,14 +244,25 @@ class SiteVitrineController extends Controller
         $evenement->setDatePublication(new \DateTime('now'));
         $evenement->setDateEvenement(new \DateTime('now'));
         
-        // On construit le formulaire
-        $formulaireEvenement = $this->createForm(EvenementType::class, $evenement);
-            
-            
-        // Enregistrer, après soumission, les données dans l'objet $evenement
-        $formulaireEvenement->handleRequest($requeteUtilisateur);
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
         
-        if ($formulaireEvenement->isValid())
+        // Récupérer le repository de l'entité Information
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
+        // Récupérer toutes les infos
+        $tabInfos = $repositoryInformation->getInformationsTriees();
+        
+        // On construit le formulaire
+        $formulaire = $this->createForm(EvenementType::class, $evenement);
+        $titreFormulaire = 'Ajouter un évenement'; 
+            
+        $typeArticle = 'evenement';
+        
+        // Enregistrer, après soumission, les données dans l'objet $evenement
+        $formulaire->handleRequest($requeteUtilisateur);
+        
+        if ($formulaire->isValid())
         {
             // @var Symfony\Component\HttpFoundation\File\UploadedFile $icone -> icône uploadé
             $icone = $evenement->getIcone();
@@ -244,43 +288,73 @@ class SiteVitrineController extends Controller
         }
         
         // A ce stade, le formulaire n'a pas été soumis, il faut donc l'afficher
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:ajoutEvenement.html.twig', array('formulaireEvenement' => $formulaireEvenement->createView()));
+       return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'typeArticle' => $typeArticle,
+                                                                                                'informations' => $tabInfos,
+                                                                                                'titreFormulaire' => $titreFormulaire));
     }
     
     public function ajouterInformationAction(Request $requeteUtilisateur)
     {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        
+        // Récupérer le repository de l'entité Information
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        
+        // Récupérer toutes les infos
+        $tabInfos = $repositoryInformation->getInformationsTriees();
+        $typeArticle = 'information';
+        
+        
         $information = new Information();
         $information->setDateActualisation(new \DateTime('now'));
         $information->setDatePublication(new \DateTime('now'));
         
-        $formulaireInformation = $this->createForm(InformationType::class, $information);
+        $formulaire = $this->createForm(InformationType::class, $information);
+        $titreFormulaire = 'Ajouter une information';
         
-        if ($formulaireInformation->isValid())
+        // Enregistrer, après soumission, les données dans l'objet $information
+        $formulaire->handleRequest($requeteUtilisateur);
+        
+        
+        if ($formulaire->isValid())
         {
             $gestionnaireEntite = $this->getDoctrine()->getManager();
             $gestionnaireEntite->persist($information);
             $gestionnaireEntite->flush();
             
-            return $this->redirect($this->generateUrl('sitebde_siteVitrine_information', array('id' => $information->id)));
+            return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeInformations', array('id' => $information->getId())).'#'.$information->getId());
         }
         
         
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:ajoutInformation.html.twig', array ('formulaireInformation' => $formulaireInformation->createView()));
+       return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'typeArticle' => $typeArticle,
+                                                                                                'informations' => $tabInfos,
+                                                                                                'titreFormulaire' => $titreFormulaire));
     }
     
     public function modifierActualiteAction($id, Request $requeteUtilisateur)
     {
         $gestionnaireEntite = $this->getDoctrine()->getManager();
         $repositoryActualites = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Actualite');
+        // Récupérer le repository de l'entité Information
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
         
         $actualite = $repositoryActualites->find($id);
         
-        $formulaireActualite = $this->createForm(ActualiteType::class, $actualite);
+        // Récupérer toutes les infos
+        $tabInfos = $repositoryInformation->getInformationsTriees();
+        
+        $typeArticle = "actualite";
+        
+        $formulaire = $this->createForm(ActualiteType::class, $actualite);
+        $titreFormulaire = 'Modifier une actualité';
         
         // Enregistrer, après soumission, les données dans l'objet $actualite
-        $formulaireActualite->handleRequest($requeteUtilisateur);
+        $formulaire->handleRequest($requeteUtilisateur);
         
-        if ($formulaireActualite->isValid())
+        if ($formulaire->isValid())
         {
             // @var Symfony\Component\HttpFoundation\File\UploadedFile $icone -> icône uploadé
             $icone = $actualite->getIcone();
@@ -307,7 +381,10 @@ class SiteVitrineController extends Controller
             return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeActualites'));
         }
         // Afficher le formulaire
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:ajoutActualite.html.twig', array('formulaireActualite' => $formulaireActualite->createView()));
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'typeArticle' => $typeArticle,
+                                                                                                'informations' => $tabInfos,
+                                                                                                'titreFormulaire' => $titreFormulaire));
     }
     
     
@@ -315,15 +392,23 @@ class SiteVitrineController extends Controller
     {
         $gestionnaireEntite = $this->getDoctrine()->getManager();
         $repositoryEvenements = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Evenement');
+        // Récupérer le repository de l'entité Information
+        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
         
         $evenement = $repositoryEvenements->find($id);
         
-        $formulaireEvenement = $this->createForm(EvenementType::class, $evenement);
+        // Récupérer toutes les infos
+        $tabInfos = $repositoryInformation->getInformationsTriees();
         
-        // Enregistrer, après soumission, les données dans l'objet $evenement
-        $formulaireEvenement->handleRequest($requeteUtilisateur);
+        $typeArticle = "evenement";
         
-        if ($formulaireEvenement->isValid())
+        $formulaire = $this->createForm(EvenementType::class, $evenement);
+        $titreFormulaire = 'Modifier un évènement';
+        
+        // Enregistrer, après soumission, les données dans l'objet $actualite
+        $formulaire->handleRequest($requeteUtilisateur);
+        
+        if ($formulaire->isValid())
         {
             // @var Symfony\Component\HttpFoundation\File\UploadedFile $icone -> icône uploadé
             $icone = $evenement->getIcone();
@@ -349,7 +434,10 @@ class SiteVitrineController extends Controller
             
             return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeEvenements'));
         }
-        // Afficher le formulaire
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:ajoutEvenement.html.twig', array('formulaireEvenement' => $formulaireEvenement->createView()));
+        // A ce stade, le formulaire n'a pas été soumis, il faut donc l'afficher
+       return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'typeArticle' => $typeArticle,
+                                                                                                'informations' => $tabInfos,
+                                                                                                'titreFormulaire' => $titreFormulaire));
     }
 }

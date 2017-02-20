@@ -30,3 +30,7 @@ sitebde_parrainage_details_profil_redirection:
     path:     /parrainage/redirection
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:redirectionVersEtudiant }
     methods:  [POST]
+    
+sitebde_parrainage_recherche_sans_resultat:
+    path:     /parrainage/recherche
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:rechercheSansResultat }

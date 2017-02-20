@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class EvenementType extends AbstractType
@@ -20,8 +21,8 @@ class EvenementType extends AbstractType
     {
         $builder
             ->add('titre', textType::class)
-            ->add('contenu', textType::class, array('label' => 'Description'))
-            ->add('dateEvenement', dateType::class, array('label' => 'Date', 'format' => 'dd/MM/yy'))
+            ->add('contenu', textareaType::class, array('label' => 'Description'))
+            ->add('dateEvenement', dateType::class, array('label' => 'Date', 'format' => 'dd/MM/yyyy'))
             ->add('icone', FileType::class, array('data_class' => null))
         ;
     }

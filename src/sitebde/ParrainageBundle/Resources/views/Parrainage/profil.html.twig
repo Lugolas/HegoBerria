@@ -1,47 +1,10 @@
 {% extends 'sitebdeParrainageBundle::vueMereParrainage.html.twig' %}
 
-{% block navbar %}
-    <div class="row">
-        <div class="col-sm-10">
-            <nav class="navbar navbar-inverse" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{{ path('sitebde_siteVitrine_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
-                            <li><a href="{{ path('sitebde_parrainage_premieres_annees') }}">1° années</a></li>
-                            <li><a href="{{ path('sitebde_parrainage_deuxiemes_annees') }}">2° années</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="{{ path('sitebde_parrainage_profil') }}">Prénom Nom</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="col-sm-2">
-            <nav class="navbar navbar-inverse" role="navigation">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{{ path('sitebde_siteVitrine_accueil') }}">Site BDE</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
+
+{% block boutonProfilPerso %}
+    <li class="active"><a href="{{ path('sitebde_parrainage_profil') }}">Prénom Nom</a></li>
 {% endblock %}
+
 
 {% block contenu %}
     {% for etudiantCourant in etudiant %}

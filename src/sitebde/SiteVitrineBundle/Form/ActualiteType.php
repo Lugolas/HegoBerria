@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 
@@ -21,7 +22,7 @@ class ActualiteType extends AbstractType
     {
         $builder
             ->add('titre', textType::class)
-            ->add('contenu', textType::class, array('label' => 'Description'))
+            ->add('contenu', textAreaType::class, array('label' => 'Description'))
             ->add('icone', FileType::class, array('data_class' => null))
         ;
     }

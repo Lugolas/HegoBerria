@@ -17,31 +17,39 @@ sitebde_siteVitrine_listeEvenements:
 sitebde_siteVitrine_detailsEvenement:
     path: /evenements/{idEvent}
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:detailsEvenement }
-    
-sitebde_siteVitrine_information:
-    path: /informations/{idInfo}
-    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:information }
 
 sitebde_siteVitrine_connexion:
     path: /connexion
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:connexion }
     
 sitebde_siteVitrine_ajouterActualite:
-    path: /ajouterActualite
+    path: /admin/ajouterActualite
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:ajouterActualite }
     
 sitebde_siteVitrine_ajouterEvenement:
-    path: /ajouterEvenement
+    path: /admin/ajouterEvenement
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:ajouterEvenement }
+
+sitebde_siteVitrine_ajouterInformation:
+    path: /admin/ajouterInformation
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:ajouterInformation }
     
 sitebde_siteVitrine_modifierActualite:
-    path: /modifierActualite/{id}
+    path: /admin/modifierActualite/{id}
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:modifierActualite }
     
 sitebde_siteVitrine_modifierEvenement:
-    path: /modifierEvenement/{id}
+    path: /admin/modifierEvenement/{id}
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:modifierEvenement }
     
 sitebde_siteVitrine_modifierInformation:
-    path: /modifierInformation/{id}
+    path: /admin/modifierInformation/{id}
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:modifierInformation }
+    
+sitebde_siteVitrine_listeInformations:
+    path: /informations
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:listeInformations }
+    
+sitebde_siteVitrine_information:
+    path: /informations/{idInfo}
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:information }
