@@ -5,6 +5,10 @@ use sitebde\SiteVitrineBundle\Entity\Actualite;
 use sitebde\SiteVitrineBundle\Entity\Evenement;
 use sitebde\SiteVitrineBundle\Entity\Information;
 
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -440,4 +444,6 @@ class SiteVitrineController extends Controller
                                                                                                 'informations' => $tabInfos,
                                                                                                 'titreFormulaire' => $titreFormulaire));
     }
+    
+    
 }

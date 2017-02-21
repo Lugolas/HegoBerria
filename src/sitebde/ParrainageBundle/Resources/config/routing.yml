@@ -34,3 +34,4 @@ sitebde_parrainage_details_profil_redirection:
 sitebde_parrainage_recherche_sans_resultat:
     path:     /parrainage/recherche
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:rechercheSansResultat }
+

@@ -3,10 +3,24 @@
 namespace sitebde\ParrainageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+
 use sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible;
 use sitebde\ParrainageBundle\Entity\EtudiantMatiereForte;
 use sitebde\ParrainageBundle\Entity\EtudiantSport;
 use sitebde\ParrainageBundle\Entity\EtudiantLoisir;
+
+use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class ParrainageController extends Controller
 {
@@ -77,16 +91,6 @@ class ParrainageController extends Controller
         return $this->render('sitebdeParrainageBundle:Parrainage:profil.html.twig', array('etudiant' => $etudiant, 'etudiants' => $etudiants));
     }
     
-    public function profilEditionAction()
-    {
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        $repositoryEtudiants = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Etudiant');
-
-        $etudiants = $repositoryEtudiants->findAll();
-
-        return $this->render('sitebdeParrainageBundle:Parrainage:profilEdition.html.twig', array('etudiants' => $etudiants));
-    }
-    
     public function demandeParrainageAction($idEtudiant)
     {
         $gestionnaireEntite = $this->getDoctrine()->getManager();
@@ -121,31 +125,26 @@ class ParrainageController extends Controller
         $nomComplet = $_POST['nomComplet'];
         $tabNomComplet = explode(" ", $nomComplet);
 
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        $repositoryEtudiants = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Etudiant');
+        
             
-        if (! count($tabNomComplet) == 2)
+        if (count($tabNomComplet) == 2)
         {
             $prenom = $tabNomComplet[0];
             $nom = $tabNomComplet[1];
     
+            $gestionnaireEntite = $this->getDoctrine()->getManager();
+            $repositoryEtudiants = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Etudiant');
+            
             $etudiant = $repositoryEtudiants->findOneBy(array(
                 "nom" => $nom,
                 "prenom" => $prenom));
             
             if ($etudiant != NULL) {
                 $idEtudiant = $etudiant->getId();
-                $redirection = "accueil";
+                return $this->redirect($this->generateUrl('sitebde_parrainage_details_profil', array('idEtudiant' => $idEtudiant)));
             }
         }
-        if ($redirection == "accueil")
-        {
-            return $this->redirect($this->generateUrl('sitebde_parrainage_details_profil', array('idEtudiant' => $idEtudiant)));
-        }
-        else
-        {
-            return $this->redirect($this->generateUrl('sitebde_parrainage_recherche_sans_resultat'));
-        }
+        return $this->redirect($this->generateUrl('sitebde_parrainage_recherche_sans_resultat'));
     }
     
     public function rechercheSansResultatAction()
@@ -156,5 +155,60 @@ class ParrainageController extends Controller
         $etudiants = $repositoryEtudiants->findAll();
         
         return $this->render('sitebdeParrainageBundle:Parrainage:rechercheSansResultat.html.twig', array('etudiants' => $etudiants));
+    }
+    
+    public function profilEditionAction(Request $requeteUtilisateur)
+    {
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $repositoryEtudiants = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Etudiant');
+        $repositoryMatieres = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Matiere');
+        $repositorySports = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Sport');
+        $repositoryLoisirs = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Loisir');
+
+        $etudiantConnecte = $repositoryEtudiants->findOneByNom('Lanusse');
+        $listeMatieres = $repositoryMatieres->findAll();
+        $listeLoisirs = $repositoryLoisirs->findAll();
+        $listeSports = $repositorySports->findAll();
+        
+        $titreFormulaire = 'Editer mon profil';
+        
+        $donneesFormulaire = array();
+        
+        $formulaire = $this->createFormBuilder($donneesFormulaire)
+            ->add('description', TextareaType::class)
+            ->add('matieresFortes', 'Entity', array('label' => 'Mes matières fortes',
+                                                    'class' => 'sitebdeParrainageBundle:Matiere',
+                                                    'property' => 'libelle',
+                                                    'multiple' => true,
+                                                    'expanded' => true))
+            ->add('matieresFaibles', 'Entity', array('label' => 'Mes matières faibles',
+                                                    'class' => 'sitebdeParrainageBundle:Matiere',
+                                                    'property' => 'libelle',
+                                                    'multiple' => true,
+                                                    'expanded' => true))
+            ->add('loisirs', 'Entity', array('label' => 'Mes loisirs',
+                                                    'class' => 'sitebdeParrainageBundle:Loisir',
+                                                    'property' => 'libelle',
+                                                    'multiple' => true,
+                                                    'expanded' => true))
+            ->add('sports', 'Entity', array('label' => 'Mes sports',
+                                                    'class' => 'sitebdeParrainageBundle:Sport',
+                                                    'property' => 'libelle',
+                                                    'multiple' => true,
+                                                    'expanded' => true))
+            ->getForm()
+        ;
+            
+        $formulaire->handleRequest($requeteUtilisateur);
+        
+        if ($formulaire->isValid())
+        {
+            $donneesFormulaire = $formulaire->getData();
+            
+            return $this->redirect(generateUrl('sitebde_parrainage_profil'));
+        }
+        
+        
+        return $this->render('sitebdeParrainageBundle:Parrainage:formulaires.html.twig', array('formulaire' => $formulaire->createView()));
     }
 }
