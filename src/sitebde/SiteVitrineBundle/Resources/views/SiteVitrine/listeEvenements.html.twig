@@ -1,0 +1,50 @@
+{% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
+
+
+{% block boutonEvenement %}
+    <li class="active"><a href="{{ path('sitebde_siteVitrine_listeEvenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
+{% endblock %}
+
+
+{% block contenu %}
+    <div class="row">
+        <div class="col-sm-12">
+            <form action="{{ path('sitebde_siteVitrine_ajouterEvenement') }}">
+                <center>
+                    <button class="btn btn-primary" type="submit">
+                        <h5>Ajouter un événement</h5>
+                    </button>
+                </center>
+            </form>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="list-group">
+                {% for eventCourant in evenements %}
+                    <a href="{{ path('sitebde_siteVitrine_detailsEvenement', {'idEvent':eventCourant.id}) }}" class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="{{ asset('images/iconesEvenements/' ~ eventCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                            </div>
+                            <div class="col-sm-9">
+                                <h4 class="list-group-item-heading">{{ eventCourant.dateEvenement|date("d/m/Y") }} : {{ eventCourant.titre }}</h4>
+                                {% if eventCourant.datePublication != eventCourant.dateActualisation %}
+                                    <p><small>Date d'actualisation : {{ eventCourant.dateActualisation|date("d/m/Y") }}
+                                     - Date de publication : {{ eventCourant.datePublication|date("d/m/Y") }}</small></p>
+                                {% else %}
+                                    <p><small>Date de publication : {{ eventCourant.datePublication|date("d/m/Y") }}</small></p>
+                                {% endif %}
+                                <p>{{ eventCourant.contenu|length > 200 ? eventCourant.contenu|slice(0, 200) ~ '...' : eventCourant.contenu }}</p>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    <p>Il n'y a rien.</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+{% endblock %}

@@ -73,5 +73,5 @@ swiftmailer:
     spool:     { type: memory }
 
 # VichUploaderBundle
-vich_uploader:
-    db_driver: orm
+#vich_uploader:
+    #db_driver: orm

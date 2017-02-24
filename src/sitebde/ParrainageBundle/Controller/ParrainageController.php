@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -67,7 +68,8 @@ class ParrainageController extends Controller
     
     public function detailsProfilAction($idEtudiant)
     {
-        $gestionnaireEntite = $this->getDoctrine()->getManager();$repositoryEtudiants = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Etudiant');
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $repositoryEtudiants = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Etudiant');
         
         // Récupérer l'étudiant dont l'id a été passé en paramètre (requête perso pour trier les activités et matières)
         $etudiant = $repositoryEtudiants->getEtudiantLoisirsEtSports($idEtudiant);
@@ -164,7 +166,10 @@ class ParrainageController extends Controller
         $repositoryMatieres = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Matiere');
         $repositorySports = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Sport');
         $repositoryLoisirs = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Loisir');
-
+        
+        $etudiants = $repositoryEtudiants->findAll();
+        $titreFormulaire = 'Modifier mon profil';
+        
         $etudiantConnecte = $repositoryEtudiants->findOneByNom('Lanusse');
         $listeMatieres = $repositoryMatieres->findAll();
         $listeLoisirs = $repositoryLoisirs->findAll();
@@ -176,24 +181,24 @@ class ParrainageController extends Controller
         
         $formulaire = $this->createFormBuilder($donneesFormulaire)
             ->add('description', TextareaType::class)
-            ->add('matieresFortes', 'Entity', array('label' => 'Mes matières fortes',
+            ->add('matieresFortes', entityType::class, array('label' => 'Mes matières fortes',
                                                     'class' => 'sitebdeParrainageBundle:Matiere',
-                                                    'property' => 'libelle',
+                                                    'choice_label' => 'libelle',
                                                     'multiple' => true,
                                                     'expanded' => true))
-            ->add('matieresFaibles', 'Entity', array('label' => 'Mes matières faibles',
+            ->add('matieresFaibles', entityType::class, array('label' => 'Mes matières faibles',
                                                     'class' => 'sitebdeParrainageBundle:Matiere',
-                                                    'property' => 'libelle',
+                                                    'choice_label' => 'libelle',
                                                     'multiple' => true,
                                                     'expanded' => true))
-            ->add('loisirs', 'Entity', array('label' => 'Mes loisirs',
+            ->add('loisirs', entityType::class, array('label' => 'Mes loisirs',
                                                     'class' => 'sitebdeParrainageBundle:Loisir',
-                                                    'property' => 'libelle',
+                                                    'choice_label' => 'libelle',
                                                     'multiple' => true,
                                                     'expanded' => true))
-            ->add('sports', 'Entity', array('label' => 'Mes sports',
+            ->add('sports', entityType::class, array('label' => 'Mes sports',
                                                     'class' => 'sitebdeParrainageBundle:Sport',
-                                                    'property' => 'libelle',
+                                                    'choice_label' => 'libelle',
                                                     'multiple' => true,
                                                     'expanded' => true))
             ->getForm()
@@ -209,6 +214,10 @@ class ParrainageController extends Controller
         }
         
         
-        return $this->render('sitebdeParrainageBundle:Parrainage:formulaires.html.twig', array('formulaire' => $formulaire->createView()));
+        return $this->render('sitebdeParrainageBundle:Parrainage:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                              'etudiants' => $etudiants,
+                                                                                              'titreFormulaire' => $titreFormulaire));
     }
+    
+    
 }

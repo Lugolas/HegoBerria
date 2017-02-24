@@ -452,3 +452,572 @@
 [21-Feb-2017 20:08:43 UTC] PHP Fatal error:  Declaration of sitebde\SiteVitrineBundle\Form\EvenementType::buildForm() must be compatible with Symfony\Component\Form\FormTypeInterface::buildForm(Symfony\Component\Form\FormBuilderInterface $builder, array $options) in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Form/EvenementType.php on line 15
 [21-Feb-2017 20:10:21 UTC] PHP Fatal error:  Class 'Symfony\Bundle\FrameworkBundle\Controller' not found in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 17
 [21-Feb-2017 20:10:45 UTC] PHP Fatal error:  Class 'Symfony\Bundle\FrameworkBundle\Controller' not found in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 17
+[21-Feb-2017 21:14:00 UTC] PHP Fatal error:  Declaration of sitebde\SiteVitrineBundle\Form\InformationType::setDefaultOptions() must be compatible with Symfony\Component\Form\FormTypeInterface::setDefaultOptions(Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver) in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Form/InformationType.php on line 14
+[21-Feb-2017 21:28:36 UTC] PHP Fatal error:  Declaration of sitebde\SiteVitrineBundle\Form\InformationType::setDefaultOptions() must be compatible with Symfony\Component\Form\FormTypeInterface::setDefaultOptions(Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver) in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Form/InformationType.php on line 15
+[21-Feb-2017 21:30:37 UTC] PHP Fatal error:  Class 'Symfony\Component\Form\OptionsResolverInterface' not found in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 250
+[21-Feb-2017 21:30:58 UTC] PHP Fatal error:  Class 'Symfony\Component\Form\OptionsResolverInterface' not found in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 250
+[21-Feb-2017 21:31:17 UTC] PHP Fatal error:  Cannot instantiate interface Symfony\Component\OptionsResolver\OptionsResolverInterface in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 251
+[21-Feb-2017 21:31:21 UTC] PHP Fatal error:  Cannot instantiate interface Symfony\Component\OptionsResolver\OptionsResolverInterface in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 251
+[21-Feb-2017 21:32:08 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[21-Feb-2017 21:32:57 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[21-Feb-2017 21:33:27 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[21-Feb-2017 21:54:50 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement in the script in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 5
+[21-Feb-2017 21:55:11 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(vendor/autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:5
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(5): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(vendor/...', '/home/ubuntu/wo...', 5, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(5): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/workspace/sitebde/app/cache/dev/classes.php(2213): class_exists('sitebde\Sit in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 5
+[21-Feb-2017 21:55:11 UTC] PHP Fatal error:  main(): Failed opening required 'vendor/autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 5
+[21-Feb-2017 21:55:57 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controllervendor/autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/w in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 21:55:57 UTC] PHP Fatal error:  main(): Failed opening required '/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controllervendor/autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 21:56:10 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(../../../vendor/autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(../../....', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/workspace/sitebde/app/cache/dev/classes.php(2213): class_exists in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 21:56:10 UTC] PHP Fatal error:  main(): Failed opening required '../../../vendor/autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 21:57:42 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/w in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 21:57:42 UTC] PHP Fatal error:  main(): Failed opening required '/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 21:59:16 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/w in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 21:59:16 UTC] PHP Fatal error:  main(): Failed opening required '/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 5
+[21-Feb-2017 22:00:05 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/w in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 22:00:05 UTC] PHP Fatal error:  main(): Failed opening required '/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 22:02:38 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/w in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 22:02:38 UTC] PHP Fatal error:  main(): Failed opening required '/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 22:04:58 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/w in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 22:04:58 UTC] PHP Fatal error:  main(): Failed opening required '/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 22:05:09 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller\..\..\autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/w in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 22:05:09 UTC] PHP Fatal error:  main(): Failed opening required '/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller\..\..\autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 5
+[21-Feb-2017 22:05:17 UTC] PHP Warning:  Uncaught exception 'Symfony\Component\Debug\Exception\ContextErrorException' with message 'Warning: require(/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php): failed to open stream: No such file or directory' in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php:20
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): Symfony\Component\Debug\ErrorHandler->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 20, Array)
+#1 /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php(20): require()
+#2 /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Debug/DebugClassLoader.php(169): require_once('/home/ubuntu/wo...')
+#3 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('sitebde\SiteVit...')
+#4 [internal function]: spl_autoload_call('sitebde\SiteVit...')
+#5 /home/ubuntu/w in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[21-Feb-2017 22:05:17 UTC] PHP Fatal error:  main(): Failed opening required '/home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/../../autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/sitebde/src/sitebde/SiteVitrineBundle/Controller/SiteVitrineController.php on line 20
+[23-Feb-2017 13:17:23 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[23-Feb-2017 13:19:56 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[23-Feb-2017 13:20:36 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[23-Feb-2017 13:22:07 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[23-Feb-2017 13:22:38 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[23-Feb-2017 13:22:47 UTC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[23-Feb-2017 13:26:00 UTC] PHP Fatal error:  Call to undefined method Symfony\Component\OptionsResolver\OptionsResolver::fonctionner() in /home/ubuntu/workspace/sitebde/vendor/symfony/symfony/src/Symfony/Component/Form/ResolvedFormType.php on line 254
+[23-Feb-2017 22:09:35 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[23-Feb-2017 22:09:41 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 08:12:06 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 11:16:29 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 11:16:39 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 11:16:45 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 11:17:48 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 11:17:51 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 11:17:54 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:36:05 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:36:26 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:36:47 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:42:40 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:43:06 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:43:07 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:44:31 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:44:42 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:44:43 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:49:05 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 14:49:23 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 15:01:42 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 15:02:40 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 15:13:09 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 15:13:10 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 15:43:10 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:01:21 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:01:41 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:01:44 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:02:00 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:04:51 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:11:39 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:13:29 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:13:32 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:13:34 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:13:36 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:22:02 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:22:57 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:24:04 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:24:10 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:24:16 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:24:27 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:24:34 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:24:45 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:24:55 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:25:07 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:25:23 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:25:33 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:26:05 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:26:09 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:26:19 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:26:24 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:26:42 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:26:45 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:27:05 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:27:09 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:27:24 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:27:36 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:27:38 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:29:05 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:30:01 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:30:02 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:30:22 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:33:27 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:38:22 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:38:25 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/js/typeahead/0...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883
+[24-Feb-2017 16:38:27 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/ubuntu/workspace/sitebde/app/cache/prod/appProdUrlMatcher.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1433): appProdUrlMatcher->match('/images/iconesE...')
+#1 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(1296): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2574): Symfony\Component\Routing\Router->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php(2343): call_user_func(Array, Object(Symfony\Component\HttpKernel\Event\GetResponseEve in /home/ubuntu/workspace/sitebde/app/cache/prod/classes.php on line 3883

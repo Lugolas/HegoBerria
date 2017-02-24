@@ -1,12 +1,46 @@
 {% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
 
+{% block boutonActualite %}
+    {% if typeArticle=='actualite' %}
+        <li class="active"><a href="{{ path('sitebde_siteVitrine_listeActualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+    
 
+
+{% block boutonEvenement %}
+    {% if typeArticle=='evenement' %}
+        <li class="active"><a href="{{ path('sitebde_siteVitrine_listeEvenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+
+{% block boutonInformation %}
+    {% if typeArticle=='information' %}
+        <li class="active">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informations <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                {% for infoCourante in informations %}
+                    <li><a href="{{ path('sitebde_siteVitrine_information', {'idInfo':infoCourante.id}) }}">{{ infoCourante.titre }}</a></li>
+                {% else %}
+                    <li><a href="#">Il n'y a aucune information.</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
 
 {% block contenu %}
 <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-10">
-        <a href="{{ path('sitebde_parrainage_accueil') }}">Retour accueil</a>
+        <a href="{{ path('sitebde_siteVitrine_accueil') }}">Retour accueil</a>
     </div>
 </div>
 <div class="row top-buffer">

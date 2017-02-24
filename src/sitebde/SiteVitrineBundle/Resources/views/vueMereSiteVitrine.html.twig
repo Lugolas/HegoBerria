@@ -30,7 +30,6 @@
                     
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            
                             {% block boutonAccueil%}
                                 <li><a href="{{ path('sitebde_siteVitrine_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
                             {% endblock %}
@@ -55,10 +54,18 @@
                                     </ul>
                                 </li>
                             {% endblock %}
-                            
+                        </ul>
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Chercher">
+                            </div>
+                            <button type="submit" class="btn btn-default">Go !</button>
+                        </form>
+                        <ul class="nav navbar-nav navbar-right">
                             {% block boutonConnexion %}
                                 <li><a href="{{ path('sitebde_siteVitrine_connexion') }}">Se connecter</a></li>
                             {% endblock %}
+                        </ul>
                     </div>
                 </div>
             </nav>

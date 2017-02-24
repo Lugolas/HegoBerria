@@ -1,6 +1,7 @@
 <?php
 
 namespace sitebde\SiteVitrineBundle\Controller;
+
 use sitebde\SiteVitrineBundle\Entity\Actualite;
 use sitebde\SiteVitrineBundle\Entity\Evenement;
 use sitebde\SiteVitrineBundle\Entity\Information;
@@ -57,9 +58,8 @@ class SiteVitrineController extends Controller
         
         $typeArticle = "evenement";
         
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeArticles.html.twig', array('articles' => $tabEvenements,
-                                                                                                   'typeArticle' => $typeArticle,
-                                                                                                   'informations' => $tabInfos));
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeEvenements.html.twig', array('evenements' => $tabEvenements,
+                                                                                                     'informations' => $tabInfos));
     }
     
     public function listeActualitesAction()
@@ -79,9 +79,8 @@ class SiteVitrineController extends Controller
         
         $typeArticle = "actualite";
         
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeArticles.html.twig', array('articles' => $tabActualites,
-                                                                                                   'typeArticle' => $typeArticle,
-                                                                                                   'informations' => $tabInfos));
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeActualites.html.twig', array('actualites' => $tabActualites,
+                                                                                                     'informations' => $tabInfos));
     }
     
     public function detailsEvenementAction($idEvent)
@@ -130,21 +129,7 @@ class SiteVitrineController extends Controller
     
     public function informationAction($idInfo)
     {
-        // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        
-        // Récupérer le repository de l'entité Information
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        // Récupérer l'information
-        $information = $repositoryInformation->find($idInfo);
-        
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
-        
-        $typeArticle = "information";
-        
-        return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeInformations').'#'.$information->getId());
+        return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeInformations').'#'.$idInfo);
         
     }
     
@@ -161,9 +146,8 @@ class SiteVitrineController extends Controller
         
         $typeArticle = "information";
         
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeArticles.html.twig', array('typeArticle' => $typeArticle,
-                                                                                                   'informations' => $tabInfos,
-                                                                                                   'articles' => $tabInfos));
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeInformations.html.twig', array('typeArticle' => $typeArticle,
+                                                                                                       'informations' => $tabInfos));
     }
     
     public function connexionAction()
@@ -353,6 +337,7 @@ class SiteVitrineController extends Controller
         $typeArticle = "actualite";
         
         $formulaire = $this->createForm(ActualiteType::class, $actualite);
+        
         $titreFormulaire = 'Modifier une actualité';
         
         // Enregistrer, après soumission, les données dans l'objet $actualite

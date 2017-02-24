@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new sitebde\SiteVitrineBundle\sitebdeSiteVitrineBundle(),
             new sitebde\ParrainageBundle\sitebdeParrainageBundle(),
-            new Vich\UploaderBundle\VichUploaderBundle(),
+            //new Vich\UploaderBundle\VichUploaderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
