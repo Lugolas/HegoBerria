@@ -159,6 +159,84 @@ class ParrainageController extends Controller
         return $this->render('sitebdeParrainageBundle:Parrainage:rechercheSansResultat.html.twig', array('etudiants' => $etudiants));
     }
     
+    public function rechercheAction()
+    {
+        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $repositoryEtudiants = $gestionnaireEntite->getRepository('sitebdeParrainageBundle:Etudiant');
+
+        $etudiants = $repositoryEtudiants->findAll();
+        
+        foreach ($etudiants as $etudiant) {
+            rechercheCorrespondance($nbCorrespondances, "matieresFortes", $etudiant, $matieresFortes);
+            rechercheCorrespondance($nbCorrespondances, "matieresFaibles", $etudiant, $matieresFaibles);
+            rechercheCorrespondance($nbCorrespondances, "loisirs", $etudiant, $loisirs);
+            rechercheCorrespondance($nbCorrespondances, "sports", $etudiant, $sports);
+            
+            $tabResultats["$etudiant->getId()"][0] = $etudiant;
+            $tabResultats[][1] = $etudiant;
+        }
+        
+        return $this->render('sitebdeParrainageBundle:Parrainage:resultatsRecherche.html.twig', array('etudiants' => $etudiants));
+    }
+    
+    private function rechercheCorrespondance(&$nbCorrespondances, $attributRecherche, $etudiant, $cible) //Ca serait bien de typer le paramètre en tant que Etudiant, mais je sais pas coment on fait
+    {
+        switch($attributRecherche)
+        {
+            case "matieresFortes":
+                for ($i = 0; $i < sizeof($etudiant->getEtudiantMatiereFortes()); $i++)
+                {
+                    for ($j = 0; $j < sizeof($cible); $j++)
+                    {
+                        if ($etudiant->getEtudiantMatiereFortes()[$i]->matiere == $cible[$j])
+                        {
+                            $nbCorrespondances++;
+                        }
+                    }
+                }
+                break;
+                
+            case "matieresFaibles":
+                for ($i = 0; $i < sizeof($etudiant->getEtudiantMatiereFaibles()); $i++)
+                {
+                    for ($j = 0; $j < sizeof($cible); $j++)
+                    {
+                        if ($etudiant->getEtudiantMatiereFaibles[$i]->matiere == $cible[$j])
+                        {
+                            $nbCorrespondances++;
+                        }
+                    }
+                }
+                break;
+                
+            case "loisirs":
+                for ($i = 0; $i < sizeof($etudiant->getEtudiantLoisirs); $i++)
+                {
+                    for ($j = 0; $j < sizeof($cible); $j++)
+                    {
+                        if ($etudiant->etudiantLoisirs[$i]->loisir == $cible[$j])
+                        {
+                            $nbCorrespondances++;
+                        }
+                    }
+                }
+                break;
+            
+            case "sports":
+                for ($i = 0; $i < sizeof($etudiant->etudiantSports); $i++)
+                {
+                    for ($j = 0; $j < sizeof($cible); $j++)
+                    {
+                        if ($etudiant->etudiantSports[$i]->sport == $cible[$j])
+                        {
+                            $nbCorrespondances++;
+                        }
+                    }
+                }
+                break;
+        }
+    }
+    
     public function profilEditionAction(Request $requeteUtilisateur)
     {
         $gestionnaireEntite = $this->getDoctrine()->getManager();
