@@ -10,14 +10,14 @@ namespace sitebde\ParrainageBundle\Repository;
  */
 class EtudiantRepository extends \Doctrine\ORM\EntityRepository
 {
-    // Retourne l'étudiant, ses loisirs et ses 
+    // Retourne l'étudiant, ses loisirs, ses sports, ses matières faibles, ses matières fortes et ses liens, tout ça trié selon les catégories
     public function getEtudiantLoisirsEtSports($idEtudiant)
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->_em;
+        $gestionnaireEntites = $this->_em;
         
         // Ecriture de la requête personnalisée
-        $requetePerso = $gestionnaireEntite->createQuery('SELECT e, l, el, s, es, emft, mft, emfb, mfb, li
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT e, l, el, s, es, emft, mft, emfb, mfb, li
                                                           FROM sitebdeParrainageBundle:Etudiant e
                                                           LEFT JOIN e.etudiantLoisirs el
                                                           LEFT JOIN el.loisir l
@@ -30,6 +30,28 @@ class EtudiantRepository extends \Doctrine\ORM\EntityRepository
                                                           LEFT JOIN e.liens li
                                                           WHERE e.id = :id
                                                           ORDER BY l.categorie, s.categorie, mft.categorie, mfb.categorie');
+        
+        $requetePerso->setParameter('id', $idEtudiant);
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
+    
+    // Retourne les demandes reçues et faites par un étudiant donné
+    public function getDemandesParrainage($idEtudiant)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT e, dr, edr, df, edf
+                                                          FROM sitebdeParrainageBundle:Etudiant e
+                                                          LEFT JOIN e.demandesRecues dr
+                                                          LEFT JOIN dr.etudiantDemandeur edr
+                                                          LEFT JOIN e.demandesFaites df
+                                                          LEFT JOIN df.etudiantDemande edf
+                                                          WHERE e.id = :id
+                                                          ORDER BY df.estAcceptee DESC, dr.estAcceptee DESC');
         
         $requetePerso->setParameter('id', $idEtudiant);
         

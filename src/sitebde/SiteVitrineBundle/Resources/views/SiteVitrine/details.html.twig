@@ -3,7 +3,7 @@
 
 {% block boutonActualite %}
     {% if typeArticle=='actualite' %}
-        <li class="active"><a href="{{ path('sitebde_siteVitrine_listeActualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
+        <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_actualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
     {% else %}
         {{ parent() }}
     {% endif %}
@@ -13,7 +13,7 @@
 
 {% block boutonEvenement %}
     {% if typeArticle=='evenement' %}
-        <li class="active"><a href="{{ path('sitebde_siteVitrine_listeEvenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
+        <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_evenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
     {% else %}
         {{ parent() }}
     {% endif %}
@@ -24,52 +24,78 @@
 {% block contenu %}
     {% if typeArticle == "actualite" %}
         <div class="row">
-            <form action="{{ path('sitebde_siteVitrine_modifierActualite', {'id':article.id} ) }}">
-                <center>
-                    <button class="btn btn-primary" type="submit">
-                        <h5>Editer</h5>
-                    </button>
-                </center>
-            </form>
-        </div>
-        <div class="row">
             <div class="col-sm-2">
-                <img src="{{ asset('images/iconesActualites/' ~ article.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                <img src="{{ asset('images/iconesArticles/' ~ article.icone) }}" alt="Logo" class="img-rounded img-responsive">
             </div>
             <div class="col-sm-10">
-                <h3>{{ article.titre }}</h3>
-                {% if article.datePublication != article.dateActualisation %}
-                    <p><small>Date d'actualisation : {{ article.dateActualisation|date("d/m/Y") }}
-                     - Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
-                {% else %}
-                    <p><small>Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
-                {% endif %}
-                <p>{{ article.contenu }}</p>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h3>{{ article.titre }}</h3>
+                        {% if article.datePublication != article.dateActualisation %}
+                            <p><small>Date d'actualisation : {{ article.dateActualisation|date("d/m/Y") }}
+                             - Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
+                        {% else %}
+                            <p><small>Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-2">
+                        <form action="{{ path('sitebde_siteVitrine_modifier_actualite', {'idActu':article.id}) }}">
+                            <button class="btn btn-primary" type="submit">
+                                <span class="glyphicon glyphicon-pencil"></span> Modifier
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-sm-2">
+                        <form action="{{ path('sitebde_siteVitrine_supprimer_actualite', {'idActu':article.id}) }}">
+                            <button class="btn btn-danger" type="submit">
+                                <span class="glyphicon glyphicon-remove"></span> Supprimer
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>{{ article.contenu }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     {% elseif typeArticle == "evenement" %}
         <div class="row">
-            <form action="{{ path('sitebde_siteVitrine_modifierEvenement', {'id':article.id} ) }}">
-                <center>
-                    <button class="btn btn-primary" type="submit">
-                        <h5>Editer</h5>
-                    </button>
-                </center>
-            </form>
-        </div>
-        <div class="row">
             <div class="col-sm-2">
-                <img src="{{ asset('images/iconesEvenements/' ~ article.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                <img src="{{ asset('images/iconesArticles/' ~ article.icone) }}" alt="Logo" class="img-rounded img-responsive">
             </div>
             <div class="col-sm-10">
-                <h3>{{ article.dateEvenement|date("d/m/Y") }} : {{ article.titre }}</h3>
-                {% if article.datePublication != article.dateActualisation %}
-                    <p><small>Date d'actualisation : {{ article.dateActualisation|date("d/m/Y") }}
-                     - Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
-                {% else %}
-                    <p><small>Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
-                {% endif %}
-                <p>{{ article.contenu }}</p>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h3>{{ article.dateEvenement|date("d/m/Y") }} : {{ article.titre }}</h3>
+                        {% if article.datePublication != article.dateActualisation %}
+                            <p><small>Date d'actualisation : {{ article.dateActualisation|date("d/m/Y") }}
+                             - Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
+                        {% else %}
+                            <p><small>Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-2">
+                        <form action="{{ path('sitebde_siteVitrine_modifier_evenement', {'idEvent':article.id}) }}">
+                            <button class="btn btn-primary" type="submit">
+                                <span class="glyphicon glyphicon-pencil"></span> Modifier
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-sm-2">
+                        <form action="{{ path('sitebde_siteVitrine_supprimer_evenement', {'idEvent':article.id}) }}">
+                            <button class="btn btn-danger" type="submit">
+                                <span class="glyphicon glyphicon-remove"></span> Supprimer
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>{{ article.contenu }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     {% endif %}

@@ -4,13 +4,14 @@ imports:
     - { resource: services.yml }
     - { resource: "@sitebdeSiteVitrineBundle/Resources/config/services.yml" }
     - { resource: "@sitebdeParrainageBundle/Resources/config/services.yml" }
+    - { resource: "@sitebdeSecuriteBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    icones_actualites_dossier: '%kernel.root_dir%/../web/images/iconesActualites/'
-    icones_evenements_dossier: '%kernel.root_dir%/../web/images/iconesEvenements/'
+    icones_articles_dossier: '%kernel.root_dir%/../web/images/iconesArticles/'
+    photos_etudiants_dossier: '%kernel.root_dir%/../web/images/photosEtudiants/'
 
 framework:
     #esi:             ~
@@ -41,6 +42,8 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources: ['bootstrap_3_layout.html.twig']
+    form_themes:
+    - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -73,5 +76,21 @@ swiftmailer:
     spool:     { type: memory }
 
 # VichUploaderBundle
-#vich_uploader:
-    #db_driver: orm
+vich_uploader:
+    db_driver: orm
+    mappings:
+        icone_article:
+            uri_prefix:         /images/iconesArticles
+            upload_destination: '%kernel.root_dir%/../web/images/iconesArticles'
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            
+        photo_etudiant:
+            uri_prefix:         /images/photosEtudiants
+            upload_destination: '%kernel.root_dir%/../web/images/photosEtudiants'
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

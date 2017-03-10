@@ -2,5 +2,29 @@
 
 
 {% block contenu %}
-    <p>Cette page est en construction. PARTEZ.</p>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="list-group">
+                {% for resultatCourant in tabResultats %}
+                    <a href="{{ path('sitebde_parrainage_details_profil', {'idEtudiant':resultatCourant[0].id}) }}" class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <img src="{{ asset('images/photosEtudiants/' ~ resultatCourant[0].photo) }}" class="img-rounded img-responsive">
+                            </div>
+                            <div class="col-sm-11">
+                                <h4 class="list-group-item-heading">{{ resultatCourant[0].prenom }} {{ resultatCourant[0].nom }}</h4>
+                                <div class="col-sm-6">
+                                    <p>{{ resultatCourant[0].description|length > 200 ? resultatCourant[0].description|slice(0, 200) ~ '...' : resultatCourant[0].description }}</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    <p style="color: #848484;">Vous avez {{ resultatCourant[1] }} critère(s) en commun.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

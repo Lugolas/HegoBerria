@@ -2,16 +2,16 @@
 
 
 {% block boutonEvenement %}
-    <li class="active"><a href="{{ path('sitebde_siteVitrine_listeEvenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
+    <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_evenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
 {% endblock %}
 
 
 {% block contenu %}
     <div class="row">
         <div class="col-sm-12">
-            <form action="{{ path('sitebde_siteVitrine_ajouterEvenement') }}">
+            <form action="{{ path('sitebde_siteVitrine_ajouter_evenement') }}">
                 <center>
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-info" type="submit">
                         <h5>Ajouter un événement</h5>
                     </button>
                 </center>
@@ -23,20 +23,42 @@
         <div class="col-sm-10">
             <div class="list-group">
                 {% for eventCourant in evenements %}
-                    <a href="{{ path('sitebde_siteVitrine_detailsEvenement', {'idEvent':eventCourant.id}) }}" class="list-group-item">
+                    <a href="{{ path('sitebde_siteVitrine_details_evenement', {'idEvent':eventCourant.id}) }}" class="list-group-item">
                         <div class="row">
                             <div class="col-sm-3">
-                                <img src="{{ asset('images/iconesEvenements/' ~ eventCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                                <img src="{{ asset('images/iconesArticles/' ~ eventCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
                             </div>
                             <div class="col-sm-9">
-                                <h4 class="list-group-item-heading">{{ eventCourant.dateEvenement|date("d/m/Y") }} : {{ eventCourant.titre }}</h4>
-                                {% if eventCourant.datePublication != eventCourant.dateActualisation %}
-                                    <p><small>Date d'actualisation : {{ eventCourant.dateActualisation|date("d/m/Y") }}
-                                     - Date de publication : {{ eventCourant.datePublication|date("d/m/Y") }}</small></p>
-                                {% else %}
-                                    <p><small>Date de publication : {{ eventCourant.datePublication|date("d/m/Y") }}</small></p>
-                                {% endif %}
-                                <p>{{ eventCourant.contenu|length > 200 ? eventCourant.contenu|slice(0, 200) ~ '...' : eventCourant.contenu }}</p>
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <h4 class="list-group-item-heading">{{ eventCourant.dateEvenement|date("d/m/Y") }} : {{ eventCourant.titre }}</h4>
+                                        {% if eventCourant.datePublication != eventCourant.dateActualisation %}
+                                            <p><small>Date d'actualisation : {{ eventCourant.dateActualisation|date("d/m/Y") }}
+                                             - Date de publication : {{ eventCourant.datePublication|date("d/m/Y") }}</small></p>
+                                        {% else %}
+                                            <p><small>Date de publication : {{ eventCourant.datePublication|date("d/m/Y") }}</small></p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form action="{{ path('sitebde_siteVitrine_modifier_evenement', {'idEvent':eventCourant.id}) }}">
+                                            <button class="btn btn-primary" type="submit">
+                                                <span class="glyphicon glyphicon-pencil"></span> Modifier
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form action="{{ path('sitebde_siteVitrine_supprimer_evenement', {'idEvent':eventCourant.id}) }}">
+                                            <button class="btn btn-danger" type="submit">
+                                                <span class="glyphicon glyphicon-remove"></span> Supprimer
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p>{{ eventCourant.contenu|length > 200 ? eventCourant.contenu|slice(0, 200) ~ '...' : eventCourant.contenu }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </a>

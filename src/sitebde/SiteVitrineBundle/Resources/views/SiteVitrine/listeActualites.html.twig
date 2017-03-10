@@ -2,16 +2,16 @@
 
 
 {% block boutonActualite %}
-    <li class="active"><a href="{{ path('sitebde_siteVitrine_listeActualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
+    <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_actualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
 {% endblock %}
 
 
 {% block contenu %}
     <div class="row">
         <div class="col-sm-12">
-            <form action="{{ path('sitebde_siteVitrine_ajouterActualite') }}">
+            <form action="{{ path('sitebde_siteVitrine_ajouter_actualite') }}">
                 <center>
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-info" type="submit">
                         <h5>Ajouter une actualité</h5>
                     </button>
                 </center>
@@ -23,20 +23,42 @@
         <div class="col-sm-10">
             <div class="list-group">
                 {% for actuCourante in actualites %}
-                    <a href="{{ path('sitebde_siteVitrine_detailsActualite', {'idActu':actuCourante.id}) }}" class="list-group-item">
+                    <a href="{{ path('sitebde_siteVitrine_details_actualite', {'idActu':actuCourante.id}) }}" class="list-group-item">
                         <div class="row">
                             <div class="col-sm-3">
-                                <img src="{{ asset('images/iconesActualites/' ~ actuCourante.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                                <img src="{{ asset('images/iconesArticles/' ~ actuCourante.icone) }}" alt="Logo" class="img-rounded img-responsive">
                             </div>
                             <div class="col-sm-9">
-                                <h4 class="list-group-item-heading">{{ actuCourante.titre }}</h4>
-                                {% if actuCourante.datePublication != actuCourante.dateActualisation %}
-                                    <p><small>Date d'actualisation : {{ actuCourante.dateActualisation|date("d/m/Y") }}
-                                     - Date de publication : {{ actuCourante.datePublication|date("d/m/Y") }}</small></p>
-                                {% else %}
-                                    <p><small>Date de publication : {{ actuCourante.datePublication|date("d/m/Y") }}</small></p>
-                                {% endif %}
-                                <p>{{ actuCourante.contenu|length > 200 ? actuCourante.contenu|slice(0, 200) ~ '...' : actuCourante.contenu }}</p>
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <h4 class="list-group-item-heading">{{ actuCourante.titre }}</h4>
+                                        {% if actuCourante.datePublication != actuCourante.dateActualisation %}
+                                            <p><small>Date d'actualisation : {{ actuCourante.dateActualisation|date("d/m/Y") }}
+                                             - Date de publication : {{ actuCourante.datePublication|date("d/m/Y") }}</small></p>
+                                        {% else %}
+                                            <p><small>Date de publication : {{ actuCourante.datePublication|date("d/m/Y") }}</small></p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form action="{{ path('sitebde_siteVitrine_modifier_actualite', {'idActu':actuCourante.id}) }}">
+                                            <button class="btn btn-primary" type="submit">
+                                                <span class="glyphicon glyphicon-pencil"></span> Modifier
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form action="{{ path('sitebde_siteVitrine_supprimer_actualite', {'idActu':actuCourante.id}) }}">
+                                            <button class="btn btn-danger" type="submit">
+                                                <span class="glyphicon glyphicon-remove"></span> Supprimer
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p>{{ actuCourante.contenu|length > 200 ? actuCourante.contenu|slice(0, 200) ~ '...' : actuCourante.contenu }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </a>

@@ -259,7 +259,7 @@ class Etudiants  implements FixtureInterface
         $quentin->setSexe('M');
         $quentin->setNumAnnee("2");
         $quentin->setDescription("Description de Quentin.");
-        $quentin->setPhoto("student4.jpg");
+        $quentin->setPhoto("58bc542ceff0b.jpg");
 
         
         // On rend l'étudiant persistant pour pouvoir y faire référence ensuite
@@ -278,6 +278,20 @@ class Etudiants  implements FixtureInterface
         $jonny->setPhoto("joni.jpg");
         
         $manager->persist($jonny);
+        
+        
+        $cassiopee = new Etudiant();
+        $cassiopee->setLogin("clala");
+        $cassiopee->setEstBDE(false);
+        $cassiopee->setEstAdmin(false);
+        $cassiopee->setNom("Lala");
+        $cassiopee->setPrenom("Cassiopee");
+        $cassiopee->setSexe('F');
+        $cassiopee->setNumAnnee("1");
+        $cassiopee->setDescription("Description de Cassiopee");
+        $cassiopee->setPhoto("cassiopee.jpg");
+        
+        $manager->persist($cassiopee);
 
         
  
@@ -287,15 +301,18 @@ class Etudiants  implements FixtureInterface
         /* CREATION DemandeParrainage */
         /* ************************** */
 
-        $lien = new DemandeParrainage($vincent, $hugo);
+        $lien = new DemandeParrainage($hugo, $vincent);
+        $manager->persist($lien);
+        
+        $lien = new DemandeParrainage($claudia, $hugo);
         $manager->persist($lien);
         
         
-        $lien = new DemandeParrainage($quentin, $hugo, true);
+        $lien = new DemandeParrainage($hugo, $quentin);
         $manager->persist($lien);
-
-
-
+        
+        
+        
  
         /* ******************************** */
         /* CREATION EtudiantLoisirs Claudia */

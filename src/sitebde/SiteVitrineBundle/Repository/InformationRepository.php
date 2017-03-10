@@ -14,10 +14,10 @@ class InformationRepository extends \Doctrine\ORM\EntityRepository
     public function getInformationsTriees()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->_em;
+        $gestionnaireEntites = $this->_em;
         
         // Ecriture de la requête personnalisée
-        $requetePerso = $gestionnaireEntite->createQuery('SELECT i
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT i
                                                           FROM sitebdeSiteVitrineBundle:Information i
                                                           ORDER BY i.titre');
         

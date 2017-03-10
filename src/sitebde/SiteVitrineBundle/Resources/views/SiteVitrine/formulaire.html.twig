@@ -1,8 +1,8 @@
 {% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
 
 {% block boutonActualite %}
-    {% if typeArticle=='actualite' %}
-        <li class="active"><a href="{{ path('sitebde_siteVitrine_listeActualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
+    {% if typeArticle == 'actualite' %}
+        <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_actualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
     {% else %}
         {{ parent() }}
     {% endif %}
@@ -11,8 +11,8 @@
 
 
 {% block boutonEvenement %}
-    {% if typeArticle=='evenement' %}
-        <li class="active"><a href="{{ path('sitebde_siteVitrine_listeEvenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
+    {% if typeArticle == 'evenement' %}
+        <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_evenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
     {% else %}
         {{ parent() }}
     {% endif %}
@@ -20,7 +20,7 @@
 
 
 {% block boutonInformation %}
-    {% if typeArticle=='information' %}
+    {% if typeArticle == 'information' %}
         <li class="active">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informations <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -51,13 +51,73 @@
                 <h4> {{ titreFormulaire }} </h4>
             </div>
             <div class="panel-body">
-                <!--Méthode de formulaire dépréciée, cependant nous n'avons pas réussi à faire mieux-->
                 <form method="post" {{ form_enctype(formulaire) }}>
-                    {{ form_widget(formulaire) }}
-                    <center><input type="submit" class="btn btn-success" /></center>
+                    {{ form_row(formulaire.titre) }}
+                    {{ form_row(formulaire.contenu) }}
+                    {% if typeArticle == 'evenement' or typeArticle == 'actualite' %}
+                        {% if typeArticle == 'evenement' %}
+                            {{ form_row(formulaire.dateEvenement) }}
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-sm-2" id="image">
+                                {% if typeGestion == "ajout" %}
+                                    <img id="miniatureAjout" class="thumbnail img-responsive"/>
+                                {% elseif typeGestion == "modification" %}
+                                    <img id="miniatureModif" class="thumbnail img-responsive" src="{{ asset('images/iconesArticles/') ~ formulaire.vars.value.icone.filename }}"/>
+                                {% endif %}
+                            </div>
+                            <div class="col-sm-10">
+                                {{ form_row(formulaire.imageFile) }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {{ form_rest(formulaire) }}
+                    {% if typeGestion == "ajout" %}
+                        <center><input type="submit" class="btn btn-success" value="Créer l'actualité" /></center>
+                    {% elseif typeGestion == "modification" %}
+                        <center><input type="submit" class="btn btn-success" value="Modifier l'actualité" /></center>
+                    {% endif %}
                 </form>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        // Cacher la miniature tant qu'on lui met pas d'image si on crée un objet
+        if (document.getElementById("miniatureAjout") != null)
+            document.getElementById("miniatureAjout").setAttribute("style", "display: none;");
+        
+        // Déterminer dans quel formulaire on est
+        var nomImageFile;
+        if (document.getElementById("actualite_imageFile") != null)
+            nomImageFile = "actualite_imageFile";
+        else
+        {
+            if (document.getElementById("evenement_imageFile") != null)
+                nomImageFile = "evenement_imageFile";
+            else
+                nomImageFile = "information_imageFile";
+        }
+        
+        // A chaque fois qu'on détecte un changement sur le champ d'image
+        document.getElementById(nomImageFile).onchange = function () {
+            var reader = new FileReader();
+        
+            // Mettre à jour la miniature correspondante (et l'afficher si c'est une création d'objet)
+            reader.onload = function (e) {
+                if (document.getElementById("miniatureAjout") != null)
+                {
+                    document.getElementById("miniatureAjout").src = e.target.result;
+                    document.getElementById("miniatureAjout").setAttribute("style", "display: block;");
+                }
+                else
+                    document.getElementById("miniatureModif").src = e.target.result;
+            };
+        
+            reader.readAsDataURL(this.files[0]);
+        };
+    </script>
 {% endblock %}

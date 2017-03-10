@@ -18,10 +18,10 @@
                     </div>
                     <div class="list-group">
                         {% for actuCourante in actualites %}
-                            <a href="{{ path('sitebde_siteVitrine_detailsActualite', {'idActu':actuCourante.id}) }}" class="list-group-item">
+                            <a href="{{ path('sitebde_siteVitrine_details_actualite', {'idActu':actuCourante.id}) }}" class="list-group-item">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <img src="{{ asset('images/iconesActualites/' ~ actuCourante.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                                        <img src="{{ asset('images/iconesArticles/' ~ actuCourante.icone) }}" alt="Logo" class="img-rounded img-responsive">
                                     </div>
                                     <div class="col-sm-9">
                                         {{ actuCourante.titre }}
@@ -41,10 +41,10 @@
                     </div>
                     <div class="list-group">
                         {% for evenementCourant in evenements %}
-                            <a href="{{ path('sitebde_siteVitrine_detailsEvenement', {'idEvent':evenementCourant.id}) }}" class="list-group-item">
+                            <a href="{{ path('sitebde_siteVitrine_details_evenement', {'idEvent':evenementCourant.id}) }}" class="list-group-item">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <img src="{{ asset('images/iconesEvenements/' ~ evenementCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                                        <img src="{{ asset('images/iconesArticles/' ~ evenementCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
                                     </div>
                                     <div class="col-sm-9">
                                         {{ evenementCourant.dateEvenement|date("d/m/Y") }} : {{ evenementCourant.titre }}

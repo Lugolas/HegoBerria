@@ -35,11 +35,11 @@
                             {% endblock %}
                             
                             {% block boutonActualite %}
-                                <li><a href="{{ path('sitebde_siteVitrine_listeActualites') }}">Actualités</a></li>
+                                <li><a href="{{ path('sitebde_siteVitrine_liste_actualites') }}">Actualités</a></li>
                             {% endblock %}
                             
                             {% block boutonEvenement %}
-                                <li><a href="{{ path('sitebde_siteVitrine_listeEvenements') }}">Evènements</a></li>
+                                <li><a href="{{ path('sitebde_siteVitrine_liste_evenements') }}">Evènements</a></li>
                             {% endblock %}
                             
                             {% block boutonInformation %}
@@ -63,7 +63,11 @@
                         </form>
                         <ul class="nav navbar-nav navbar-right">
                             {% block boutonConnexion %}
-                                <li><a href="{{ path('sitebde_siteVitrine_connexion') }}">Se connecter</a></li>
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+                                {% else %}
+                                    <li><a href="{{ path('login') }}">Se connecter</a></li>
+                                {% endif %}
                             {% endblock %}
                         </ul>
                     </div>

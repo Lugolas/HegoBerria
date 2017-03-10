@@ -14,10 +14,10 @@ class ActualiteRepository extends \Doctrine\ORM\EntityRepository
     public function getActualitesTriees()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->_em;
+        $gestionnaireEntites = $this->_em;
         
         // Ecriture de la requête personnalisée
-        $requetePerso = $gestionnaireEntite->createQuery('SELECT a
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT a
                                                           FROM sitebdeSiteVitrineBundle:Actualite a
                                                           ORDER BY a.datePublication DESC');
         
@@ -29,10 +29,10 @@ class ActualiteRepository extends \Doctrine\ORM\EntityRepository
     public function getTroisDernieresActualites()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->_em;
+        $gestionnaireEntites = $this->_em;
         
         // Ecriture de la requête personnalisée
-        $requetePerso = $gestionnaireEntite->createQuery('SELECT a
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT a
                                                           FROM sitebdeSiteVitrineBundle:Actualite a
                                                           ORDER BY a.datePublication DESC')->setFirstResult(0)
                                                                                            ->setMaxResults(3);

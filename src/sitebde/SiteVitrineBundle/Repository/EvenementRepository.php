@@ -14,10 +14,10 @@ class EvenementRepository extends \Doctrine\ORM\EntityRepository
     public function getEvenementsTries()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->_em;
+        $gestionnaireEntites = $this->_em;
         
         // Ecriture de la requête personnalisée
-        $requetePerso = $gestionnaireEntite->createQuery('SELECT e
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT e
                                                           FROM sitebdeSiteVitrineBundle:Evenement e
                                                           ORDER BY e.datePublication DESC');
         
@@ -29,10 +29,10 @@ class EvenementRepository extends \Doctrine\ORM\EntityRepository
     public function getTroisEvenementsAVenir()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->_em;
+        $gestionnaireEntites = $this->_em;
         
         // Ecriture de la requête personnalisée
-        $requetePerso = $gestionnaireEntite->createQuery('SELECT e
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT e
                                                           FROM sitebdeSiteVitrineBundle:Evenement e
                                                           WHERE e.dateEvenement > CURRENT_DATE()
                                                           ORDER BY e.dateEvenement - CURRENT_DATE()');

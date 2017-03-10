@@ -1,0 +1,9 @@
+logout:
+    path: /logout
+    
+login:
+    pattern:     /login
+    defaults: { _controller: sitebdeSecuriteBundle:Securite:login }
+    
+login_check:
+    pattern:     /login_check

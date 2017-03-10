@@ -21,10 +21,6 @@ sitebde_parrainage_profil:
 sitebde_parrainage_profil_edition:
     path:     /parrainage/profil_edition
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:profilEdition }
-
-sitebde_parrainage_demande_parrainage:
-    path:     /parrainage/page_a_supprimer-{idEtudiant}
-    defaults: { _controller: sitebdeParrainageBundle:Parrainage:demandeParrainage }
     
 sitebde_parrainage_details_profil_redirection:
     path:     /parrainage/redirection
@@ -34,4 +30,24 @@ sitebde_parrainage_details_profil_redirection:
 sitebde_parrainage_recherche_sans_resultat:
     path:     /parrainage/recherche
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:rechercheSansResultat }
+
+sitebde_parrainage_demandes:
+    path:     /parrainage/demandes
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:demandes }
+
+sitebde_parrainage_demande_parrainage:
+    path:     /parrainage/page_a_supprimer-{idEtudiant}
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:demandeParrainage }
+    
+sitebde_parrainage_accepter_demande:
+    path:     /parrainage/accepter_demande-{idDemande}
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:accepterDemande }
+
+sitebde_parrainage_refuser_demande:
+    path:     /parrainage/refuser_demande-{idDemande}
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:refuserDemande }
+    
+sitebde_parrainage_recherche_par_critere:
+    path: /parrainage/recherche_par_critere
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:recherche }
 

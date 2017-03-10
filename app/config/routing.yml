@@ -1,3 +1,7 @@
+sitebde_securite:
+    resource: "@sitebdeSecuriteBundle/Resources/config/routing.yml"
+    prefix:   /
+
 sitebde_parrainage:
     resource: "@sitebdeParrainageBundle/Resources/config/routing.yml"
     prefix:   /

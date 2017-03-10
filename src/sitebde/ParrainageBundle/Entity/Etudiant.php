@@ -11,11 +11,15 @@ use sitebde\ParrainageBundle\Entity\Loisir;
 use sitebde\ParrainageBundle\Entity\Sport;
 use sitebde\ParrainageBundle\Entity\Lien;
 
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 /**
  * Etudiant
  *
  * @ORM\Table(name="etudiant")
  * @ORM\Entity(repositoryClass="sitebde\ParrainageBundle\Repository\EtudiantRepository")
+ * @Vich\Uploadable
  */
 class Etudiant
 {
@@ -90,6 +94,22 @@ class Etudiant
      * @ORM\Column(name="photo", type="string", length=100, nullable=true)
      */
     private $photo;
+    
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="photo_etudiant", fileNameProperty="photo")
+     * 
+     * @var File
+     */
+    private $imageFile;
+    
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      *
@@ -369,6 +389,33 @@ class Etudiant
     {
         return $this->photo;
     }
+    
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Product
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+        
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+    
     /**
      * Constructor
      */
@@ -382,22 +429,20 @@ class Etudiant
         $this->demandesFaites = new \Doctrine\Common\Collections\ArrayCollection();
         $this->demandesRecues = new \Doctrine\Common\Collections\ArrayCollection();
         $this->liens = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->updatedAt = new \DateTimeImmutable(); 
     }
 
     /**
      * Add etudiantMatiereForte
      *
-     * @param \sitebde\ParrainageBundle\Entity\MatiereForte $etudiantMatiereForte
+     * @param \sitebde\ParrainageBundle\Entity\Matiere $matiere
      *
      * @return Etudiant
      */
-    public function addEtudiantMatiereForte(\sitebde\ParrainageBundle\Entity\EtudiantMatiereForte $etudiantMatiereForte)
+    public function addEtudiantMatiereForte(\sitebde\ParrainageBundle\Entity\Matiere $matiere)
     {
-        /*******************FONCTION VIDE******************/
-        /* Rendue obsolette par les opérations en cascade */
-        /**************************************************/
-        
-        //$this->etudiantMatiereForte[] = $etudiantMatiereForte;
+        $etudiantMatiereForte = new EtudiantMatiereForte($this, $matiere);
+        $this->etudiantMatiereForte[] = $etudiantMatiereForte;
 
         return $this;
     }
@@ -405,15 +450,17 @@ class Etudiant
     /**
      * Remove etudiantMatiereForte
      *
-     * @param \sitebde\ParrainageBundle\Entity\MatiereForte $etudiantMatiereForte
+     * @param \sitebde\ParrainageBundle\Entity\Matiere $matiere
      */
-    public function removeEtudiantMatiereForte(\sitebde\ParrainageBundle\Entity\EtudiantMatiereForte $etudiantMatiereForte)
+    public function removeEtudiantMatiereForte(\sitebde\ParrainageBundle\Entity\Matiere $matiere)
     {
-        /*******************FONCTION VIDE******************/
-        /* Rendue obsolette par les opérations en cascade */
-        /**************************************************/
-        
-        //$this->etudiantMatiereFortes->removeElement($etudiantMatiereForte);
+        foreach ($this->etudiantMatiereFortes as $etudiantMatiereForte)
+        {
+            if ($etudiantMatiereForte->getMatiere() == $matiere)
+            {
+                $this->etudiantMatiereFortes->removeElement($etudiantMatiereForte);
+            }
+        }
     }
 
     /**
@@ -439,17 +486,14 @@ class Etudiant
     /**
      * Add etudiantMatiereFaible
      *
-     * @param \sitebde\ParrainageBundle\Entity\MatiereFaible $etudiantMatiereFaible
+     * @param \sitebde\ParrainageBundle\Entity\Matiere $matiere
      *
      * @return Etudiant
      */
-    public function addEtudiantMatiereFaible(\sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible $etudiantMatiereFaible)
+    public function addEtudiantMatiereFaible(\sitebde\ParrainageBundle\Entity\Matiere $matiere)
     {
-        /*******************FONCTION VIDE******************/
-        /* Rendue obsolette par les opérations en cascade */
-        /**************************************************/
-        
-        //$this->etudiantMatiereFaibles->removeElement($etudiantMatiereFaible);
+        $etudiantMatiereFaible = new EtudiantMatiereFaible($this, $matiere);
+        $this->etudiantMatiereFaibles[] = $etudiantMatiereFaible;
 
         return $this;
     }
@@ -457,15 +501,17 @@ class Etudiant
     /**
      * Remove etudiantMatiereFaible
      *
-     * @param \sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible $etudiantMatiereFaible
+     * @param \sitebde\ParrainageBundle\Entity\matiere $matiere
      */
-    public function removeEtudiantMatiereFaible(\sitebde\ParrainageBundle\Entity\EtudiantMatiereFaible $etudiantMatiereFaible)
+    public function removeEtudiantMatiereFaible(\sitebde\ParrainageBundle\Entity\matiere $matiere)
     {
-        /*******************FONCTION VIDE******************/
-        /* Rendue obsolette par les opérations en cascade */
-        /**************************************************/
-        
-        //$this->etudiantMatiereFaibles->removeElement($etudiantMatiereFaible);
+        foreach ($this->etudiantMatiereFaibles as $etudiantMatiereFaible)
+        {
+            if ($etudiantMatiereFaible->getMatiere() == $matiere)
+            {
+                $this->etudiantMatiereFaibles->removeElement($etudiantMatiereFaible);
+            }
+        }
     }
 
     /**
@@ -535,6 +581,37 @@ class Etudiant
     }
     
     /**
+     * Add etudiantLoisir
+     *
+     * @param \sitebde\ParrainageBundle\Entity\Loisir $loisir
+     *
+     * @return Etudiant
+     */
+    public function addLoisirsAssocy(\sitebde\ParrainageBundle\Entity\Loisir $loisir)
+    {
+        $etudiantLoisir = new EtudiantLoisir($this, $loisir);
+        $this->etudiantLoisirs[] = $etudiantLoisir;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiantLoisir
+     *
+     * @param \sitebde\ParrainageBundle\Entity\Loisir $loisir
+     */
+    public function removeLoisirsAssocy(\sitebde\ParrainageBundle\Entity\Loisir $loisir)
+    {
+        foreach ($this->etudiantLoisirs as $etudiantLoisir)
+        {
+            if ($etudiantLoisir->getLoisir() == $loisir)
+            {
+                $this->etudiantLoisirs->removeElement($etudiantLoisir);
+            }
+        }
+    }
+    
+    /**
      * Get etudiantLoisirs
      * 
      * @return \Doctrine\Common\Collections\Collection
@@ -589,6 +666,40 @@ class Etudiant
             $listeSports[] = $etudiantSport->getSport();
         }
         return $listeSports;
+    }
+    
+    /**
+     * Add etudiantSport
+     *
+     * @param \sitebde\ParrainageBundle\Entity\Sport $sport
+     *
+     * @return Etudiant
+     */
+    public function addSportsAssocy(\sitebde\ParrainageBundle\Entity\Sport $sport)
+    {
+        $etudiantSport = new EtudiantSport($this, $sport);
+        $this->etudiantSports[] = $etudiantSport;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiantSport
+     *
+     * @param \sitebde\ParrainageBundle\Entity\Sport $sport
+     */
+    public function removeSportsAssocy(\sitebde\ParrainageBundle\Entity\Sport $sport)
+    {
+        $etudiantSport = null;
+        foreach ($this->etudiantSports as $etudiantSportCourant)
+        {
+            if ($etudiantSportCourant->getSport() == $sport)
+            {
+                $this->setDescription('J\'essaye d\'enlever ce spoooort !');
+                $etudiantSport = $etudiantSportCourant;
+            }
+        }
+        $this->etudiantSports->removeElement($etudiantSport);
     }
     
     /**

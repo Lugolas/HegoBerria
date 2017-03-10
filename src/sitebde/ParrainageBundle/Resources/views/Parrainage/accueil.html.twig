@@ -1,6 +1,11 @@
 {% extends 'sitebdeParrainageBundle::vueMereParrainage.html.twig' %}
 
 
+{% block boutonAccueil %}
+    <li class="active"><a href="{{ path('sitebde_parrainage_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+{% endblock %}
+
+
 {% block contenu %}
     <div class="row">
         <div class="col-sm-5">
@@ -10,14 +15,14 @@
                 </div>
                 <div class="list-group">
                     {% for etudiantPropose in etudiantsProposes %}
-                        <a href="{{ path('sitebde_parrainage_details_profil', {'idEtudiant':etudiantPropose.id}) }}" class="list-group-item">
+                        <a href="{{ path('sitebde_parrainage_details_profil', {'idEtudiant':etudiantPropose[0].id}) }}" class="list-group-item">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <img src="{{ asset('images/photosEtudiants/' ~ etudiantPropose.photo) }}" class="img-rounded img-responsive">
+                                    <img src="{{ asset('images/photosEtudiants/' ~ etudiantPropose[0].photo) }}" class="img-rounded img-responsive">
                                 </div>
                                 <div class="col-sm-10">
-                                    <h4 class="list-group-item-heading">{{ etudiantPropose.prenom }} {{ etudiantPropose.nom }}</h4>
-                                    <p>Vous avez n critères en commun (critère 1, critère 2...)</p>
+                                    <h4 class="list-group-item-heading">{{ etudiantPropose[0].prenom }} {{ etudiantPropose[0].nom }}</h4>
+                                    <p>Vous avez {{ etudiantPropose[1] }} critère(s) en commun.</p>
                                 </div>
                             </div>
                         </a>

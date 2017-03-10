@@ -2,150 +2,163 @@
 
 namespace sitebde\SiteVitrineBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use sitebde\SiteVitrineBundle\Entity\Actualite;
 use sitebde\SiteVitrineBundle\Entity\Evenement;
 use sitebde\SiteVitrineBundle\Entity\Information;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use sitebde\SiteVitrineBundle\Form\ActualiteType;
 use sitebde\SiteVitrineBundle\Form\EvenementType;
 use sitebde\SiteVitrineBundle\Form\InformationType;
 
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\File;
+
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 class SiteVitrineController extends Controller
 {
+    
+    /* ******************************************************************************************************************
+       *****************************************     Partie Visiteurs     ***********************************************
+       ****************************************************************************************************************** */
+    
     public function accueilAction()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
         
-        // Récupérer les repositories des entités Actualité, Evènement et Information
-        $repositoryActualites = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Actualite');
-        $repositoryEvenement = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Evenement');
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        // Récupérer les 3 derniers évènements et actualites
+        // Récupérer les 3 dernières actualités
+        $repositoryActualites = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Actualite');
         $tabActualites = $repositoryActualites->getTroisDernieresActualites();
+        
+        // Récupérer les 3 derniers évènements
+        $repositoryEvenement = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Evenement');
+        
         $tabEvenements = $repositoryEvenement->getTroisEvenementsAVenir();
         
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
+        // Récupérer toutes les infos pour le menu
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
         
+        // Afficher la page
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:accueil.html.twig', array('actualites' => $tabActualites,
                                                                                              'evenements' => $tabEvenements,
+                                                                                             'informations' => $tabInfos));
+    }
+    
+    public function listeActualitesAction()
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Récupérer toutes les actualités pour la page
+        $repositoryActualites = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Actualite');
+        $tabActualites = $repositoryActualites->getActualitesTriees();
+        
+        // Récupérer toutes les infos pour le menu
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
+        
+        // Type d'article nécessaire pour la vue
+        $typeArticle = 'actualite';
+        
+        // Afficher la page
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeActualites.html.twig', array('actualites' => $tabActualites,
+                                                                                                     'informations' => $tabInfos));
+    }
+    
+    public function detailsActualiteAction($idActu)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Récupérer l'actualité
+        $repositoryActualites = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Actualite');
+        $actualite = $repositoryActualites->find($idActu);
+        
+        // Récupérer toutes les infos pour le menu
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
+        
+        // Type d'article nécessaire pour la vue
+        $typeArticle = 'actualite';
+        
+        // Afficher la page
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:details.html.twig', array('article' => $actualite,
+                                                                                             'typeArticle' => $typeArticle,
                                                                                              'informations' => $tabInfos));
     }
     
     public function listeEvenementsAction()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
         
-        // Récupérer les repositories des entités Evènement et Information
-        $repositoryEvenement = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Evenement');
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        // Récupérer tous les évènements
+        // Récupérer tous les évènements pour la page
+        $repositoryEvenement = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Evenement');
         $tabEvenements = $repositoryEvenement->getEvenementsTries();
         
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
+        // Récupérer toutes les infos pour le menu
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
         
-        $typeArticle = "evenement";
+        // Type d'article nécessaire pour la vue
+        $typeArticle = 'evenement';
         
+        // Afficher la page
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeEvenements.html.twig', array('evenements' => $tabEvenements,
-                                                                                                     'informations' => $tabInfos));
-    }
-    
-    public function listeActualitesAction()
-    {
-        // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        
-        // Récupérer les repositories des entités Actualité et Information
-        $repositoryActualites = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Actualite');
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        // Récupérer toutes les actualités
-        $tabActualites = $repositoryActualites->getActualitesTriees();
-        
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
-        
-        $typeArticle = "actualite";
-        
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeActualites.html.twig', array('actualites' => $tabActualites,
                                                                                                      'informations' => $tabInfos));
     }
     
     public function detailsEvenementAction($idEvent)
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        
-        // Récupérer les repositories des entités Evènement et Information
-        $repositoryEvenement = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Evenement');
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
         
         // Récupérer l'évènement
+        $repositoryEvenement = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Evenement');
         $evenement = $repositoryEvenement->find($idEvent);
         
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
+        // Récupérer toutes les infos pour le menu
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
         
-        $typeArticle = "evenement";
+        // Type d'article nécessaire pour la vue
+        $typeArticle = 'evenement';
         
+        // Afficher la page
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:details.html.twig', array('article' => $evenement,
-                                                                                             'typeArticle' => $typeArticle,
-                                                                                             'informations' => $tabInfos));
-    }
-    
-    public function detailsActualiteAction($idActu)
-    {
-        // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        
-        // Récupérer les repositories des entités Actualité et Information
-        $repositoryActualites = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Actualite');
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        // Récupérer l'actualité
-        $actualite = $repositoryActualites->find($idActu);
-        
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
-        
-        $typeArticle = "actualite";
-        
-        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:details.html.twig', array('article' => $actualite,
                                                                                              'typeArticle' => $typeArticle,
                                                                                              'informations' => $tabInfos));
     }
     
     public function informationAction($idInfo)
     {
-        return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeInformations').'#'.$idInfo);
-        
+        // Rediriger vers la route qui affiche la liste des informations, avec l'ancre de l'information qu'on veut afficher en particulier (ça se fait automatiquement)
+        return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_informations').'#'.$idInfo);
     }
     
     public function listeInformationsAction()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
         
-        // Récupérer le repository de l'entité Information
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        // Récupérer toutes les infos pour le menu et pour le contenu de la page
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
         
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
+        // Type d'article nécessaire pour la vue
+        $typeArticle ='information';
         
-        $typeArticle = "information";
-        
+        // Afficher la page
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:listeInformations.html.twig', array('typeArticle' => $typeArticle,
                                                                                                        'informations' => $tabInfos));
     }
@@ -153,282 +166,350 @@ class SiteVitrineController extends Controller
     public function connexionAction()
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
         
-        // Récupérer le repository de l'entité Information
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        // Récupérer toutes les infos pour le menu
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
         
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
-        
+        // Afficher la page
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:connexion.html.twig', array('informations' => $tabInfos));
     }
     
+    /* ******************************************************************************************************************
+       ***********************************************     Partie BDE     ***********************************************
+       ****************************************************************************************************************** */
+    
     public function ajouterActualiteAction(Request $requeteUtilisateur)
     {
-        // On créé un objet Actualite vide
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Créer un objet Actualite vide
         $actualite = new Actualite();
+        
+        // Mettre ses dates d'actualisation et de publication à la date actuelle
         $actualite->setDateActualisation(new \DateTime('now'));
         $actualite->setDatePublication(new \DateTime('now'));
         
-        // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        
-        // On construit le formulaire
+        // Construire le formulaire et le gérer
         $formulaire = $this->createForm(ActualiteType::class, $actualite);
-        $titreFormulaire = 'Ajouter une actualité';
-        
-        // Récupérer le repository de l'entité Information
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
-        
-        $typeArticle = "actualite";
-        
-        // Enregistrer, après soumission, les données dans l'objet $actualite
         $formulaire->handleRequest($requeteUtilisateur);
         
+        // Si le formulaire a été soumis et qu'il est valide
         if ($formulaire->isValid())
         {
-            $actualite = $formulaire->getData();
-            
-            // @var Symfony\Component\HttpFoundation\File\UploadedFile $icone -> icône uploadé
-            $icone = $actualite->getIcone();
-
-            // On génère un nom unique
-            $nomIcone = md5(uniqid()).'.'.$icone->guessExtension();
-
-            // On déplace le fichier
-            $icone->move(
-                $this->getParameter('icones_actualites_dossier'),
-                $nomIcone
-            );
-
-            // On met à jour le champ pour contenir le nom du fichier et pas le fichier
-            $actualite->setIcone($nomIcone);
-            
-            // Enregistrer l'actualité
-            $gestionnaireEntite = $this->getDoctrine()->getManager();
-            $gestionnaireEntite->persist($actualite);
-            $gestionnaireEntite->flush();
+            // Enregistrer la nouvelle actualité
+            $gestionnaireEntites->persist($actualite);
+            $gestionnaireEntites->flush();
             
             // Rediriger vers la liste des actualités
-            return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeActualites'));
+            return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_actualites'));
         }
+        
+        // Récupérer toutes les infos
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
+        
+        // Quelques variables nécessaires pour la vue
+        $titreFormulaire = 'Ajouter une actualité';
+        $typeArticle = 'actualite';
+        $typeGestion = 'ajout';
         
         // Afficher le formulaire
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'titreFormulaire' => $titreFormulaire,
                                                                                                 'typeArticle' => $typeArticle,
-                                                                                                'informations' => $tabInfos,
-                                                                                                'titreFormulaire' => $titreFormulaire));
+                                                                                                'typeGestion' => $typeGestion,
+                                                                                                'informations' => $tabInfos));
     }
     
     public function ajouterEvenementAction(Request $requeteUtilisateur)
     {
-        // On créé un objet Evenement vide
+        
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Créer un objet Evenement vide
         $evenement = new Evenement();
+        
+        // Mettre ses dates d'actualisation, de publication et d'événement à la date actuelle
         $evenement->setDateActualisation(new \DateTime('now'));
         $evenement->setDatePublication(new \DateTime('now'));
         $evenement->setDateEvenement(new \DateTime('now'));
         
-        // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        
-        // Récupérer le repository de l'entité Information
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
-        
-        // On construit le formulaire
+        // Construire le formulaire et le gérer
         $formulaire = $this->createForm(EvenementType::class, $evenement);
-        $titreFormulaire = 'Ajouter un évenement'; 
-            
-        $typeArticle = 'evenement';
-        
-        // Enregistrer, après soumission, les données dans l'objet $evenement
         $formulaire->handleRequest($requeteUtilisateur);
         
+        // Si le formulaire a été soumis et qu'il est valide
         if ($formulaire->isValid())
         {
-            // @var Symfony\Component\HttpFoundation\File\UploadedFile $icone -> icône uploadé
-            $icone = $evenement->getIcone();
-
-            // On génère un nom unique
-            $nomIcone = md5(uniqid()).'.'.$icone->guessExtension();
-
-            // On déplace le fichier
-            $icone->move(
-                $this->getParameter('icones_evenements_dossier'),
-                $nomIcone
-            );
-
-            // On met à jour le champ pour contenir le nom du fichier et pas le fichier
-            $evenement->setIcone($nomIcone);
+            // Enregistrer le nouvel événement
+            $gestionnaireEntites->persist($evenement);
+            $gestionnaireEntites->flush();
             
-            $gestionnaireEntite = $this->getDoctrine()->getManager();
-            $gestionnaireEntite->persist($evenement);
-            $gestionnaireEntite->flush();
-            
-            // On redirige vers la page qui liste les actualités
-            return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeEvenements'));
+            // Rediriger vers la liste des événements
+            return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_evenements'));
         }
         
-        // A ce stade, le formulaire n'a pas été soumis, il faut donc l'afficher
-       return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+        // Récupérer toutes les infos
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
+        
+        // Quelques variables nécessaires pour la vue
+        $titreFormulaire = 'Ajouter un évenement';
+        $typeArticle = 'evenement';
+        $typeGestion = 'ajout';
+        
+        // Afficher le formulaire
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'titreFormulaire' => $titreFormulaire,
                                                                                                 'typeArticle' => $typeArticle,
-                                                                                                'informations' => $tabInfos,
-                                                                                                'titreFormulaire' => $titreFormulaire));
+                                                                                                'typeGestion' => $typeGestion,
+                                                                                                'informations' => $tabInfos));
     }
     
     public function ajouterInformationAction(Request $requeteUtilisateur)
     {
         // Récupérer le gestionnaire d'entités
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
         
-        // Récupérer le repository de l'entité Information
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
-        $typeArticle = 'information';
-        
-        
+        // Créer un objet Information vide
         $information = new Information();
+        
+        // Mettre ses dates d'actualisation et de publication à la date actuelle
         $information->setDateActualisation(new \DateTime('now'));
         $information->setDatePublication(new \DateTime('now'));
         
+        // Construire le formulaire et le gérer
         $formulaire = $this->createForm(InformationType::class, $information);
-        $titreFormulaire = 'Ajouter une information';
-        
-        // Enregistrer, après soumission, les données dans l'objet $information
         $formulaire->handleRequest($requeteUtilisateur);
         
-        
+        // Si le formulaire a été soumis et qu'il est valide
         if ($formulaire->isValid())
         {
-            $gestionnaireEntite = $this->getDoctrine()->getManager();
-            $gestionnaireEntite->persist($information);
-            $gestionnaireEntite->flush();
+            // Enregistrer la nouvelle information
+            $gestionnaireEntites->persist($information);
+            $gestionnaireEntites->flush();
             
-            return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeInformations', array('id' => $information->getId())).'#'.$information->getId());
+            // Rediriger vers la liste des informations
+            return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_informations').'#'.$information->getId());
         }
-        
-        
-       return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
-                                                                                                'typeArticle' => $typeArticle,
-                                                                                                'informations' => $tabInfos,
-                                                                                                'titreFormulaire' => $titreFormulaire));
-    }
-    
-    public function modifierActualiteAction($id, Request $requeteUtilisateur)
-    {
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        $repositoryActualites = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Actualite');
-        // Récupérer le repository de l'entité Information
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
-        
-        $actualite = $repositoryActualites->find($id);
         
         // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
         
-        $typeArticle = "actualite";
+        // Quelques variables nécessaires pour la vue
+        $titreFormulaire = 'Ajouter une information';
+        $typeArticle = 'information';
+        $typeGestion = 'ajout';
         
-        $formulaire = $this->createForm(ActualiteType::class, $actualite);
-        
-        $titreFormulaire = 'Modifier une actualité';
-        
-        // Enregistrer, après soumission, les données dans l'objet $actualite
-        $formulaire->handleRequest($requeteUtilisateur);
-        
-        if ($formulaire->isValid())
-        {
-            // @var Symfony\Component\HttpFoundation\File\UploadedFile $icone -> icône uploadé
-            $icone = $actualite->getIcone();
-
-            // On génère un nom unique
-            $nomIcone = md5(uniqid()).'.'.$icone->guessExtension();
-
-            // On déplace le fichier
-            $icone->move(
-                $this->getParameter('icones_actualites_dossier'),
-                $nomIcone
-            );
-
-            // On met à jour le champ pour contenir le nom du fichier et pas le fichier
-            $actualite->setIcone($nomIcone);
-            
-            
-            
-            
-            $gestionnaireEntite = $this->getDoctrine()->getManager();
-            $gestionnaireEntite->persist($actualite);
-            $gestionnaireEntite->flush();
-            
-            return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeActualites'));
-        }
         // Afficher le formulaire
         return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'titreFormulaire' => $titreFormulaire,
                                                                                                 'typeArticle' => $typeArticle,
-                                                                                                'informations' => $tabInfos,
-                                                                                                'titreFormulaire' => $titreFormulaire));
+                                                                                                'typeGestion' => $typeGestion,
+                                                                                                'informations' => $tabInfos));
     }
     
-    
-    public function modifierEvenementAction($id, Request $requeteUtilisateur)
+    public function modifierActualiteAction($idActu, Request $requeteUtilisateur)
     {
-        $gestionnaireEntite = $this->getDoctrine()->getManager();
-        $repositoryEvenements = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Evenement');
-        // Récupérer le repository de l'entité Information
-        $repositoryInformation = $gestionnaireEntite->getRepository('sitebdeSiteVitrineBundle:Information');
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
         
-        $evenement = $repositoryEvenements->find($id);
+        // Récupérer l'actualité à modifier
+        $repositoryActualites = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Actualite');
+        $actualite = $repositoryActualites->find($idActu);
         
-        // Récupérer toutes les infos
-        $tabInfos = $repositoryInformation->getInformationsTriees();
+        // Mettre à jour son icône pour qu'elle contienne le fichier et non le nom du fichier
+        $iconeInitial = $actualite->getIcone();
+        $actualite->setIcone(new File($this->getParameter('icones_articles_dossier').$iconeInitial));
         
-        $typeArticle = "evenement";
-        
-        $formulaire = $this->createForm(EvenementType::class, $evenement);
-        $titreFormulaire = 'Modifier un évènement';
-        
-        // Enregistrer, après soumission, les données dans l'objet $actualite
+        // Construire le formulaire et le gérer
+        $formulaire = $this->createForm(ActualiteType::class, $actualite);
         $formulaire->handleRequest($requeteUtilisateur);
         
+        // Si le formulaire a été soumis et qu'il est valide
         if ($formulaire->isValid())
         {
-            // @var Symfony\Component\HttpFoundation\File\UploadedFile $icone -> icône uploadé
-            $icone = $evenement->getIcone();
-
-            // On génère un nom unique
-            $nomIcone = md5(uniqid()).'.'.$icone->guessExtension();
-
-            // On déplace le fichier
-            $icone->move(
-                $this->getParameter('icones_evenements_dossier'),
-                $nomIcone
-            );
-
-            // On met à jour le champ pour contenir le nom du fichier et pas le fichier
-            $evenement->setIcone($nomIcone);
             
+            // Enregistrer les modifications
+            $gestionnaireEntites->persist($actualite);
+            $gestionnaireEntites->flush();
             
+            // Si l'icône a été modifié, supprimer l'ancien
+            $iconeFinal = $actualite->getIcone();
+            if ($iconeFinal != $iconeInitial)
+            {
+                $fileSystem = new Filesystem();
+                $fileSystem->remove($this->getParameter('icones_articles_dossier').$iconeInitial);
+            }
             
-            
-            $gestionnaireEntite = $this->getDoctrine()->getManager();
-            $gestionnaireEntite->persist($evenement);
-            $gestionnaireEntite->flush();
-            
-            return $this->redirect($this->generateUrl('sitebde_siteVitrine_listeEvenements'));
+            // Rediriger vers la liste des actualités
+            return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_actualites'));
         }
-        // A ce stade, le formulaire n'a pas été soumis, il faut donc l'afficher
-       return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+        
+        // Récupérer toutes les infos
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
+        
+        // Quelques variables nécessaires pour la vue
+        $titreFormulaire = 'Modifier une actualité';
+        $typeArticle = 'actualite';
+        $typeGestion = 'modification';
+        
+        // Afficher le formulaire
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'titreFormulaire' => $titreFormulaire,
                                                                                                 'typeArticle' => $typeArticle,
-                                                                                                'informations' => $tabInfos,
-                                                                                                'titreFormulaire' => $titreFormulaire));
+                                                                                                'typeGestion' => $typeGestion,
+                                                                                                'informations' => $tabInfos));
     }
     
     
+    public function modifierEvenementAction($idEvent, Request $requeteUtilisateur)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Récupérer l'événement à modifier
+        $repositoryEvenements = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Evenement');
+        $evenement = $repositoryEvenements->find($idEvent);
+        
+        // Mettre à jour son icône pour qu'elle contienne le fichier et non le nom du fichier
+        $iconeInitial = $evenement->getIcone();
+        $evenement->setIcone(new File($this->getParameter('icones_articles_dossier').$iconeInitial));
+        
+        // Construire le formulaire et le gérer
+        $formulaire = $this->createForm(EvenementType::class, $evenement);
+        $formulaire->handleRequest($requeteUtilisateur);
+        
+        // Si le formulaire a été soumis et qu'il est valide
+        if ($formulaire->isValid())
+        {
+            // Enregistrer les modifications
+            $gestionnaireEntites->persist($evenement);
+            $gestionnaireEntites->flush();
+            
+            // Si l'icône a été modifié, supprimer l'ancien
+            $iconeFinal = $evenement->getIcone();
+            if ($iconeFinal != $iconeInitial)
+            {
+                $fileSystem = new Filesystem();
+                $fileSystem->remove($this->getParameter('icones_articles_dossier').$iconeInitial);
+            }
+            
+            // Rediriger vers la liste des événements
+            return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_evenements'));
+        }
+        
+        // Récupérer toutes les infos
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $tabInfos = $repositoryInformations->getInformationsTriees();
+        
+        // Quelques variables nécessaires pour la vue
+        $titreFormulaire = 'Modifier un événement';
+        $typeArticle = 'evenement';
+        $typeGestion = 'modification';
+        
+        // Afficher le formulaire
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'titreFormulaire' => $titreFormulaire,
+                                                                                                'typeArticle' => $typeArticle,
+                                                                                                'typeGestion' => $typeGestion,
+                                                                                                'informations' => $tabInfos));
+    }
+    
+    public function modifierInformationAction($idInfo, Request $requeteUtilisateur)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Récupérer l'information à modifier
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $information = $repositoryInformations->find($idInfo);
+        
+        // Construire le formulaire et le gérer
+        $formulaire = $this->createForm(InformationType::class, $information);
+        $formulaire->handleRequest($requeteUtilisateur);
+        
+        // Si le formulaire a été soumis et qu'il est valide
+        if ($formulaire->isValid())
+        {
+            // Enregistrer les modifications
+            $gestionnaireEntites->persist($information);
+            $gestionnaireEntites->flush();
+            
+            // Rediriger vers la liste des informations
+            return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_informations').'#'.$information->getId());
+        }
+        
+        // Récupérer toutes les infos
+        $tabInfos = $repositoryInformations->getInformationsTriees();
+        
+        // Quelques variables nécessaires pour la vue
+        $titreFormulaire = 'Modifier une information';
+        $typeArticle = 'information';
+        $typeGestion = 'modification';
+        
+        // Afficher le formulaire
+        return $this->render('sitebdeSiteVitrineBundle:SiteVitrine:formulaire.html.twig', array('formulaire' => $formulaire->createView(),
+                                                                                                'titreFormulaire' => $titreFormulaire,
+                                                                                                'typeArticle' => $typeArticle,
+                                                                                                'typeGestion' => $typeGestion,
+                                                                                                'informations' => $tabInfos));
+    }
+    
+    public function supprimerActualiteAction($idActu)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Récupérer l'actualité à supprimer
+        $repositoryActualites = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Actualite');
+        $actualite = $repositoryActualites->find($idActu);
+        
+        // La supprimer
+        $gestionnaireEntites->remove($actualite);
+        $gestionnaireEntites->flush();
+        
+        // Rediriger vers la liste des actualités
+        return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_actualites'));
+    }
+    
+    public function supprimerEvenementAction($idEvent)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Récupérer l'évènement à supprimer
+        $repositoryEvenements = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Evenement');
+        $evenement = $repositoryEvenements->find($idEvent);
+        
+        // Le supprimer
+        $gestionnaireEntites->remove($evenement);
+        $gestionnaireEntites->flush();
+        
+        // Rediriger vers la liste des événements
+        return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_evenements'));
+    }
+    
+    public function supprimerInformationAction($idInfo)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->getDoctrine()->getManager();
+        
+        // Récupérer l'information à supprimer
+        $repositoryInformations = $gestionnaireEntites->getRepository('sitebdeSiteVitrineBundle:Information');
+        $information = $repositoryInformations->find($idInfo);
+        
+        // Le supprimer
+        $gestionnaireEntites->remove($information);
+        $gestionnaireEntites->flush();
+        
+        // Rediriger vers la liste des informations
+        return $this->redirect($this->generateUrl('sitebde_siteVitrine_liste_informations'));
+    }
 }

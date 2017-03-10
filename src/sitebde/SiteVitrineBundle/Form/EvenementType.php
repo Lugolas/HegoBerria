@@ -10,6 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\HttpFoundation\File\File;
+
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class EvenementType extends AbstractType
 {
@@ -22,9 +26,22 @@ class EvenementType extends AbstractType
         $builder
             ->add('titre', textType::class)
             ->add('contenu', textareaType::class, array('label' => 'Description'))
-            ->add('dateEvenement', dateType::class, array('label' => 'Date', 'format' => 'dd/MM/yyyy'))
-            ->add('icone', FileType::class, array('data_class' => null))
-        ;
+            ->add('dateEvenement', dateType::class, array('label' => 'Date', 'format' => 'dd/MM/yyyy'));
+            
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $evenement = $event->getData();
+            $formulaire = $event->getForm();
+    
+            // Actualité vide = création
+            if (!$evenement || null === $evenement->getId()) {
+                $formulaire->add('imageFile', FileType::class, array('label' => 'Icône'));
+            }
+            // Sinon, modification
+            else {
+                $icone = $evenement->getIcone();
+                $formulaire->add('imageFile', FileType::class, array('label' => 'Icône', 'required' => false, 'empty_data' => new File($icone)));
+            }
+        });
     }
     
     /**

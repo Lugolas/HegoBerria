@@ -1,0 +1,113 @@
+{% extends 'sitebdeParrainageBundle::vueMereParrainage.html.twig' %}
+
+
+{% block boutonDemandes %}
+    <li class="active"><a href="{{ path('sitebde_parrainage_demandes') }}">Demandes</a></li>
+{% endblock %}
+
+
+{% block contenu %}
+    {% for etudiantCourant in etudiantDemandes %}
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                {% if etudiantCourant.numAnnee == 1 %}
+                    <h3 style="text-align: center;">Parrain</h3>
+                {% else %}
+                    <h3 style="text-align: center;">Filleul(s)</h3>
+                {% endif %}
+                
+                {% set nombreDemandesAcceptees = 0 %}
+                
+                <div class="list-group">
+                    {% for demandeCourante in etudiantCourant.demandesFaites if demandeCourante.estAcceptee == 1 %}
+                        {% set nombreDemandesAcceptees = nombreDemandesAcceptees + 1 %}
+                        <a href="{{ path('sitebde_parrainage_details_profil', {'idEtudiant':demandeCourante.etudiantDemande.id}) }}" class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <img src="{{ asset('images/photosEtudiants/' ~ demandeCourante.etudiantDemande.photo) }}" class="img-rounded img-responsive">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4>{{ demandeCourante.etudiantDemande.prenom }} {{ demandeCourante.etudiantDemande.nom }}</h4>
+                                    <p>{{ demandeCourante.etudiantDemande.description|length > 200 ? demandeCourante.etudiantDemande.description|slice(0, 200) ~ '...' : demandeCourante.etudiantDemande.description }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                    
+                    {% for demandeCourante in etudiantCourant.demandesRecues if demandeCourante.estAcceptee == 1 %}
+                        {% set nombreDemandesAcceptees = nombreDemandesAcceptees + 1 %}
+                        <a href="{{ path('sitebde_parrainage_details_profil', {'idEtudiant':demandeCourante.etudiantDemandeur.id}) }}" class="list-group-item">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <img src="{{ asset('images/photosEtudiants/' ~ demandeCourante.etudiantDemandeur.photo) }}" class="img-rounded img-responsive">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4>{{ demandeCourante.etudiantDemandeur.prenom }} {{ demandeCourante.etudiantDemandeur.nom }}</h4>
+                                    <p>{{ demandeCourante.etudiantDemandeur.description|length > 200 ? demandeCourante.etudiantDemandeur.description|slice(0, 200) ~ '...' : demandeCourante.etudiantDemandeur.description }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+                
+                {% if nombreDemandesAcceptees == 0 %}
+                    <center><p>Personne pour le moment !</p></center>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% if (etudiantCourant.numAnnee == 1 and nombreDemandesAcceptees < 1) or (etudiantCourant.numAnnee == 2 and nombreDemandesAcceptees < 2) %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 style="text-align: center;">Demandes envoyées</h3>
+                    {% for demandeCourante in etudiantCourant.demandesFaites if demandeCourante.estAcceptee == 0 %}
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2">
+                                <img src="{{ asset('images/photosEtudiants/' ~ demandeCourante.etudiantDemande.photo) }}" class="img-rounded img-responsive">
+                            </div>
+                            <div class="col-sm-8">
+                                <h4>{{ demandeCourante.etudiantDemande.prenom }} {{ demandeCourante.etudiantDemande.nom }}</h4>
+                                <p>{{ demandeCourante.etudiantDemande.description|length > 200 ? demandeCourante.etudiantDemande.description|slice(0, 200) ~ '...' : demandeCourante.etudiantDemande.description }}</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <center><p>Vous n'avez envoyé aucune demande.</p></center>
+                    {% endfor %}
+                </div>
+                <div class="col-sm-6">
+                    <h3 style="text-align: center;">Demandes reçues</h3>
+                    {% for demandeCourante in etudiantCourant.demandesRecues if demandeCourante.estAcceptee == 0 %}
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2">
+                                <img src="{{ asset('images/photosEtudiants/' ~ demandeCourante.etudiantDemandeur.photo) }}" class="img-rounded img-responsive">
+                            </div>
+                            <div class="col-sm-6">
+                                <h4>{{ demandeCourante.etudiantDemandeur.prenom }} {{ demandeCourante.etudiantDemandeur.nom }}</h4>
+                                <p>{{ demandeCourante.etudiantDemandeur.description|length > 200 ? demandeCourante.etudiantDemandeur.description|slice(0, 200) ~ '...' : demandeCourante.etudiantDemandeur.description }}</p>
+                            </div>
+                            <div class="col-sm-1">
+                                <form action="{{ path('sitebde_parrainage_accepter_demande', {'idDemande':demandeCourante.id}) }}">
+                                    <button class="btn btn-success" type="submit">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-sm-1">
+                                <form action="{{ path('sitebde_parrainage_refuser_demande', {'idDemande':demandeCourante.id}) }}">
+                                    <button class="btn btn-danger" type="submit">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    {% else %}
+                        <center><p>Vous n'avez reçu aucune demande.</p></center>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -29,7 +29,9 @@
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ path('sitebde_siteVitrine_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                            {% block boutonAccueil %}
+                                <li><a href="{{ path('sitebde_parrainage_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                            {% endblock %}
                             {% block bouton1eAnnee %}
                                 <li><a href="{{ path('sitebde_parrainage_premieres_annees') }}">1° années</a></li>
                             {% endblock %}
@@ -41,7 +43,12 @@
                             {% block boutonProfilPerso %}
                                 <li><a href="{{ path('sitebde_parrainage_profil') }}">Quentin Lanusse</a></li>
                             {% endblock %}
-                            <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
+                            {% block boutonDemandes %}
+                                <li><a href="{{ path('sitebde_parrainage_demandes') }}">Demandes</a></li>
+                            {% endblock %}
+                            {% block boutonRecherche %}
+                                <li><a href="{{path('sitebde_parrainage_recherche_par_critere')}}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+                            {% endblock %}
                             
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
                             <script  type="text/javascript" src="../js/typeahead/0.11.1/typeahead.bundle.js"></script>
@@ -49,10 +56,10 @@
                             $(document).ready(function(){
                                 // Defining the local dataset
                                 var etudiants = [
-                                    {%for etudiant in etudiants%}
-                                    "{{etudiant.prenom}} {{etudiant.nom}}"
-                                    {%if not loop.last%}, {%endif%}
-                                    {%endfor%}
+                                    {% for etudiant in etudiants %}
+                                    "{{ etudiant.prenom }} {{ etudiant.nom }}"
+                                    {% if not loop.last %}, {% endif %}
+                                    {% endfor %}
                                     ];
                                 
                                 // Constructing the suggestion engine
@@ -81,7 +88,6 @@
                                 </div>
                                 <button id="btn" type="submit" class="btn btn-default">Go !</button>
                             </form>
-                            <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
                         </ul>
                     </div>
                 </div>
