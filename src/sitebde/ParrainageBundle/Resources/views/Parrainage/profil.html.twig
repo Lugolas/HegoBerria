@@ -2,11 +2,12 @@
 
 
 {% block boutonProfilPerso %}
-    <li class="active"><a href="{{ path('sitebde_parrainage_profil') }}">Quentin Lanusse</a></li>
+    <li class="active"><a href="{{ path('sitebde_parrainage_profil') }}">{{ etudiantConnecte.prenom }} {{ etudiantConnecte.nom }}</a></li>
 {% endblock %}
 
 
 {% block contenu %}
+    <script src="{{ asset('js/jquery.js')}}"></script>
     {% for etudiantCourant in etudiant %}
     <div class="row">
         <div class="col-sm-1"></div>
@@ -68,7 +69,7 @@
                             <h4 class="text-center">Matières faibles</h4>
                             {% if etudiantCourant.etudiantMatiereFaibles is not empty %}
                                 <dl class="dl-horizontal">
-                                    {% set categoriePrecedente = "Patate" %}
+                                    {% set categoriePrecedente = "vide" %}
                                     {% for matiereFaible in etudiantCourant.etudiantMatiereFaibles %}
                                         {% set categorieCourante = matiereFaible.categorie %}
                                         {% if categorieCourante != categoriePrecedente %}
@@ -103,7 +104,54 @@
                                 {% if categorieCourante != categoriePrecedente %}
                                     <dt>{{ etudiantLoisir.loisir.categorie }}</dt>
                                 {% endif %}
-                                <dd>{{ etudiantLoisir.loisir.libelle }}{% if etudiantLoisir.commentaire is not empty %} - <i>{{ etudiantLoisir.commentaire }}</i>{% endif %}</dd>
+                                <dd id="{{ etudiantLoisir.id }}">{{ etudiantLoisir.loisir.libelle }}{% if etudiantLoisir.commentaire is not empty %} - <i id="ComActuel{{ etudiantLoisir.id }}">{{ etudiantLoisir.commentaire }}</i>{% endif %}
+                                    <form method="post" id="form{{ etudiantLoisir.id }}" action="{{ path('sitebde_parrainage_ajout_commentaire_loisir', {'id': etudiantLoisir.id}) }}">
+                                    </form>
+                                </dd>
+                                <script type="text/javascript">
+                                    var $dd = document.getElementById("{{ etudiantLoisir.id }}");
+                                    $bouton = document.createElement('button');
+                                    $bouton.setAttribute("id", "ajoutCommentaire" + "{{ etudiantLoisir.id }}");
+                                    var $span = document.createElement("span");
+                                    $span.setAttribute("aria-hidden", "true");
+                                    $span.setAttribute("class", "glyphicon glyphicon-pencil");
+                                    $bouton.appendChild($span);
+                                    $bouton.addEventListener('click', function(){addTextLoisir("{{ etudiantLoisir.id }}");});
+                                    $dd.appendChild($bouton);
+                                    
+                                    
+                                    function addTextLoisir($id)
+                                    {
+                                        var $conteneurComActuel = document.getElementById("ComActuel" + $id);
+                                        var $comActuel = "Commenter ce loisir";
+                                        var $balise = document.getElementById($id);
+                                        var $bouton = document.getElementById("ajoutCommentaire" + $id);
+                                        var $form = document.getElementById("form" + $id);
+                                        $balise.removeChild($bouton);
+                                        $input = document.createElement("input");
+                                        $input.setAttribute("type", "text");
+                                        $input.setAttribute("name", "commentaire");
+                                        if ($conteneurComActuel)
+                                        {
+                                            $comActuel = $conteneurComActuel.innerHTML;
+                                            $input.setAttribute("value", $comActuel);
+                                        }
+                                        else
+                                        {
+                                            $input.setAttribute("placeholder", $comActuel);
+                                        }
+                                        $input.setAttribute("id", "Commentaire" + $id);
+                                        
+                                        $submit = document.createElement('input');
+                                        $submit.setAttribute('type', "submit");
+                                        $submit.setAttribute('value', 'Ok');
+                                        
+                                        $form.appendChild($input);
+                                        $form.appendChild($submit);
+                                        $balise.appendChild($form);
+                                        return false;
+                                    }
+                                </script>
                                 {% set categoriePrecedente = categorieCourante %}
                             {% endfor %}
                         </dl>
@@ -127,7 +175,56 @@
                                 {% if categorieCourante != categoriePrecedente %}
                                     <dt>{{ etudiantSport.sport.categorie }}</dt>
                                 {% endif %}
-                                <dd>{{ etudiantSport.sport.libelle }}{% if etudiantSport.commentaire is not empty %} - <i>{{ etudiantSport.commentaire }}</i>{% endif %}</dd>
+                                <dd id="{{ etudiantSport.id }}">
+                                    {{ etudiantSport.sport.libelle }} {% if etudiantSport.commentaire is not empty %} - <i id="ComActuel{{ etudiantSport.id }}">{{ etudiantSport.commentaire }}</i>
+                                    {% endif %}
+                                    <form method="post" id="form{{ etudiantSport.id }}" action="{{ path('sitebde_parrainage_ajout_commentaire_sport', {'id': etudiantSport.id}) }}">
+                                    </form>
+                                </dd>
+                                <script type="text/javascript">
+                                    var $dd = document.getElementById("{{ etudiantSport.id }}");
+                                    $bouton = document.createElement('button');
+                                    $bouton.setAttribute("id", "ajoutCommentaire" + "{{ etudiantSport.id }}");
+                                    var $span = document.createElement("span");
+                                    $span.setAttribute("aria-hidden", "true");
+                                    $span.setAttribute("class", "glyphicon glyphicon-pencil");
+                                    $bouton.appendChild($span);
+                                    $bouton.addEventListener('click', function(){addText("{{ etudiantSport.id }}");});
+                                    $dd.appendChild($bouton);
+                                    
+                                    
+                                    function addText($id)
+                                    {
+                                        var $conteneurComActuel = document.getElementById("ComActuel" + $id);
+                                        var $comActuel = "Commenter ce sport";
+                                        var $balise = document.getElementById($id);
+                                        var $bouton = document.getElementById("ajoutCommentaire" + $id);
+                                        var $form = document.getElementById("form" + $id);
+                                        $balise.removeChild($bouton);
+                                        $input = document.createElement("input");
+                                        $input.setAttribute("type", "text");
+                                        $input.setAttribute("name", "commentaire");
+                                        if ($conteneurComActuel)
+                                        {
+                                            $comActuel = $conteneurComActuel.innerHTML;
+                                            $input.setAttribute("value", $comActuel);
+                                        }
+                                        else
+                                        {
+                                            $input.setAttribute("placeholder", $comActuel);
+                                        }
+                                        $input.setAttribute("id", "Commentaire" + $id);
+                                        
+                                        $submit = document.createElement('input');
+                                        $submit.setAttribute('type', "submit");
+                                        $submit.setAttribute('value', 'Ok');
+                                        
+                                        $form.appendChild($input);
+                                        $form.appendChild($submit);
+                                        $balise.appendChild($form);
+                                        return false;
+                                    }
+                                </script>
                                 {% set categoriePrecedente = categorieCourante %}
                             {% endfor %}
                         </dl>

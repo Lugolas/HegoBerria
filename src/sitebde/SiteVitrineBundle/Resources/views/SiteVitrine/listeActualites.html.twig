@@ -1,23 +1,28 @@
 {% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
 
 
-{% block boutonActualite %}
+{% block boutonActualites %}
+    <!-- Rendre actif le bouton Actualités de la navbar -->
     <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_actualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
 {% endblock %}
 
 
 {% block contenu %}
-    <div class="row">
-        <div class="col-sm-12">
-            <form action="{{ path('sitebde_siteVitrine_ajouter_actualite') }}">
-                <center>
-                    <button class="btn btn-info" type="submit">
-                        <h5>Ajouter une actualité</h5>
-                    </button>
-                </center>
-            </form>
-        </div>
-    </div>
+    {% if etudiantConnecte != null %}
+        {% if etudiantConnecte.estBDE %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <form action="{{ path('sitebde_siteVitrine_ajouter_actualite') }}">
+                        <center>
+                            <button class="btn btn-info" type="submit">
+                                <h5>Ajouter une actualité</h5>
+                            </button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
     <div class="row top-buffer">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
@@ -39,20 +44,24 @@
                                             <p><small>Date de publication : {{ actuCourante.datePublication|date("d/m/Y") }}</small></p>
                                         {% endif %}
                                     </div>
-                                    <div class="col-sm-2">
-                                        <form action="{{ path('sitebde_siteVitrine_modifier_actualite', {'idActu':actuCourante.id}) }}">
-                                            <button class="btn btn-primary" type="submit">
-                                                <span class="glyphicon glyphicon-pencil"></span> Modifier
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <form action="{{ path('sitebde_siteVitrine_supprimer_actualite', {'idActu':actuCourante.id}) }}">
-                                            <button class="btn btn-danger" type="submit">
-                                                <span class="glyphicon glyphicon-remove"></span> Supprimer
-                                            </button>
-                                        </form>
-                                    </div>
+                                    {% if etudiantConnecte != null %}
+                                        {% if etudiantConnecte.estBDE %}
+                                            <div class="col-sm-2">
+                                                <form action="{{ path('sitebde_siteVitrine_modifier_actualite', {'idActu':actuCourante.id}) }}">
+                                                    <button class="btn btn-primary" type="submit">
+                                                        <span class="glyphicon glyphicon-pencil"></span> Modifier
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <form action="{{ path('sitebde_siteVitrine_supprimer_actualite', {'idActu':actuCourante.id}) }}">
+                                                    <button class="btn btn-danger" type="submit">
+                                                        <span class="glyphicon glyphicon-remove"></span> Supprimer
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -62,8 +71,6 @@
                             </div>
                         </div>
                     </a>
-                {% else %}
-                    <p>Il n'y a rien.</p>
                 {% endfor %}
             </div>
         </div>

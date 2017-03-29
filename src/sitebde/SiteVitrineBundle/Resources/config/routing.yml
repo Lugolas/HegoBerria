@@ -1,6 +1,9 @@
 # ##############################################
 # ############## Partie Visiteurs ##############
 # ##############################################
+mentions_legales_site_vitrine:
+    path: /mentionsLegalesVisiteurs
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:mentionsLegales }
 
 sitebde_siteVitrine_accueil:
     path: /
@@ -29,14 +32,12 @@ sitebde_siteVitrine_information:
 sitebde_siteVitrine_liste_informations:
     path: /informations
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:listeInformations }
-    
-sitebde_siteVitrine_connexion:
-    path: /connexion
-    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:connexion }
+
 
 # ##############################################
 # ################# Partie BDE #################
 # ##############################################
+    
     
 sitebde_siteVitrine_ajouter_actualite:
     path: /admin/ajouterActualite
@@ -74,3 +75,36 @@ sitebde_siteVitrine_supprimer_information:
     path: /admin/supprimerInformation/{idInfo}
     defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:supprimerInformation }
     
+    
+# ##############################################
+# ################ Partie Admin ################
+# ##############################################
+
+
+sitebde_siteVitrine_page_admin:
+    path: /admin/page_admin
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:pageAdmin }
+    
+sitebde_siteVitrine_actualiser_etudiants_bd:
+    path: /admin/actualiser_etudiants_bd
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:actualiserEtudiantsBD }
+    
+sitebde_siteVitrine_gerer_droits_etudiants:
+    path: /admin/gerer_droits_etudiants
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:gererDroitsEtudiants }
+    
+sitebde_siteVitrine_parrainage_automatique:
+    path: /admin/parrainage_automatique
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:associationsAutomatique }
+    
+supprimer_evenements_par_date:
+    path: /admin/supprimer_evenements_par_date
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:supprimerEvenementsParDate }
+    
+supprimer_actualites_par_date:
+    path: /admin/supprimer_actualites_par_date
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:supprimerActualitesParDate }
+    
+supprimer_informations_par_date:
+    path: /admin/supprimer_informations_par_date
+    defaults: { _controller: sitebdeSiteVitrineBundle:SiteVitrine:supprimerInformationsParDate }

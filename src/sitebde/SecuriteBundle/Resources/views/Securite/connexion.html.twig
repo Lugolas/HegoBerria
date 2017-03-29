@@ -1,0 +1,58 @@
+{% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
+
+
+{% block boutonConnexion %}
+    <!-- Rendre actif le bouton Connexion de la navbar -->
+    <li class="active"><a href="{{ path('connexion') }}">Se connecter</a></li>
+{% endblock %}
+
+
+{% block contenu %}
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            
+            <!-- Panel de connexion -->
+            <div class="panel panel-default">
+                
+                <!-- Titre du panel -->
+                <div class="panel-heading">
+                    <h4>Connexion</h4>
+                </div>
+                
+                <!-- Contenu du panel -->
+                <div class="panel-body">
+                    
+                    <!-- S'il y a eu une erreur d'authentification, l'afficher en alerte -->
+                    {% if error %}
+                        <div class="alert alert-danger" role="alert">
+                            <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ error.error }} </p>
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Formulaire de connexion perso-->
+                    <form action="{{ path('verif_connexion_perso') }}" method="post">
+                        
+                        <!-- Label et champ identifiant -->
+                        <label for="username">Identifiant :</label>
+                        <br>
+                        <input type="text" id="username" name="username" value="{{ last_username }}" />
+                        <br><br>
+                        
+                        <!-- Label et champ mot de passe -->
+                        <label for="password">Mot de passe :</label>
+                        <br>
+                        <input type="password" id="password" name="password" />
+                        <br><br>
+                        
+                        <!-- Bouton de soumission du formulaire -->
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
+                        
+                    </form>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,6 +1,37 @@
 sitebde_parrainage_accueil:
     path:     /parrainage
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:accueil }
+    
+mentions_legales_parrainage:
+    path:     /mentionsLegalesUtilisateurs
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:mentionsLegales }
+
+# ######################################################
+# ################### Partie Profil  ###################
+# ######################################################
+
+
+sitebde_parrainage_profil:
+    path:     /parrainage/profil
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:profil }
+
+sitebde_parrainage_profil_edition:
+    path:     /parrainage/profil_edition
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:profilEdition }
+    
+sitebde_parrainage_ajout_commentaire_sport:
+    path:     /parrainage/ajout_commentaire_sport/{id}
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:ajouterCommentaireSport }
+    
+sitebde_parrainage_ajout_commentaire_loisir:
+    path:     /parrainage/ajout_commentaire_loisir/{id}
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:ajouterCommentaireLoisir }
+
+
+# ######################################################
+# ############## Partie Autres étudiants  ##############
+# ######################################################
+
 
 sitebde_parrainage_premieres_annees:
     path:     /parrainage/premieres_annees
@@ -14,22 +45,11 @@ sitebde_parrainage_details_profil:
     path:     /parrainage/details-{idEtudiant}
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:detailsProfil }
 
-sitebde_parrainage_profil:
-    path:     /parrainage/profil
-    defaults: { _controller: sitebdeParrainageBundle:Parrainage:profil }
 
-sitebde_parrainage_profil_edition:
-    path:     /parrainage/profil_edition
-    defaults: { _controller: sitebdeParrainageBundle:Parrainage:profilEdition }
-    
-sitebde_parrainage_details_profil_redirection:
-    path:     /parrainage/redirection
-    defaults: { _controller: sitebdeParrainageBundle:Parrainage:redirectionVersEtudiant }
-    methods:  [POST]
-    
-sitebde_parrainage_recherche_sans_resultat:
-    path:     /parrainage/recherche
-    defaults: { _controller: sitebdeParrainageBundle:Parrainage:rechercheSansResultat }
+# ######################################################
+# ################## Partie Demandes  ##################
+# ######################################################
+
 
 sitebde_parrainage_demandes:
     path:     /parrainage/demandes
@@ -47,7 +67,25 @@ sitebde_parrainage_refuser_demande:
     path:     /parrainage/refuser_demande-{idDemande}
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:refuserDemande }
     
+
+# ######################################################
+# ################# Partie Recherche  ##################
+# ######################################################
+
+    
+sitebde_parrainage_details_profil_redirection:
+    path:     /parrainage/redirection
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:redirectionVersEtudiant }
+    methods:  [POST]
+
+sitebde_parrainage_recherche_sans_resultat:
+    path:     /parrainage/recherche
+    defaults: { _controller: sitebdeParrainageBundle:Parrainage:rechercheSansResultat }
+
 sitebde_parrainage_recherche_par_critere:
-    path: /parrainage/recherche_par_critere
+    path:     /parrainage/recherche_par_critere
     defaults: { _controller: sitebdeParrainageBundle:Parrainage:recherche }
+
+
+
 

@@ -1,0 +1,157 @@
+{% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
+
+
+{% block boutonPageAdmin %}
+    <!-- Rendre actif le bouton Page Admin de la navbar -->
+    <li class="active"><a href="{{ path('sitebde_siteVitrine_page_admin') }}">Page Admin</a></li>
+{% endblock %}
+
+
+{% block contenu %}
+    <div class="row top-buffer">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            
+            <!-- Panel du formulaire d'actualités -->
+            <div class="panel panel-default">
+                
+                <!-- Titre du formulaire d'actualités -->
+                <div class="panel-heading">
+                    <h4>Gestion des actualités</h4>
+                </div>
+                
+                <!-- Contenu du panel -->
+                <div class="panel-body">
+                    <form action="{{ path('supprimer_actualites_par_date') }}" method="post" {{ form_enctype(formulaire) }}>
+                        
+                        <!-- Afficher le champ concernant les actualités -->
+                        {{ form_row(formulaire.dateActu) }}
+                        
+                        <!-- Bouton de soumission du formulaire -->
+                        <center><input type="submit" class="btn btn-success" value="Supprimer les actualités" /></center>
+                        
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Panel du formulaire d'événements -->
+            <div class="panel panel-default">
+                
+                <!-- Titre du formulaire d'événements -->
+                <div class="panel-heading">
+                    <h4>Gestion des événements</h4>
+                </div>
+                
+                <!-- Contenu du panel -->
+                <div class="panel-body">
+                    <form action="{{ path('supprimer_evenements_par_date') }}" method="post" {{ form_enctype(formulaire) }}>
+                        
+                        <!-- Afficher le champ concernant les événements -->
+                        {{ form_row(formulaire.dateEvent) }}
+                        
+                        <!-- Bouton de soumission du formulaire -->
+                        <center><input type="submit" class="btn btn-success" value="Supprimer les événements" /></center>
+                        
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Panel du formulaire d'informations -->
+            <div class="panel panel-default">
+                
+                <!-- Titre du formulaire d'informations -->
+                <div class="panel-heading">
+                    <h4>Gestion des informations</h4>
+                </div>
+                
+                <!-- Contenu du panel -->
+                <div class="panel-body">
+                    <form action="{{ path('supprimer_informations_par_date') }}" method="post" {{ form_enctype(formulaire) }}>
+                        
+                        <!-- Afficher le champ concernant les informations -->
+                        {{ form_row(formulaire.dateInfo) }}
+                        
+                        <!-- Bouton de soumission du formulaire -->
+                        <center><input type="submit" class="btn btn-success" value="Supprimer les informations" /></center>
+                        
+                    </form>
+                </div>
+            </div>
+            
+            
+            <!-- Panel de l'insertion en BD des étudiants -->
+            <div class="panel panel-default">
+                
+                <!-- Titre du formulaire d'événements -->
+                <div class="panel-heading">
+                    <h4>Gestion des étudiants</h4>
+                </div>
+                
+                <!-- Contenu du panel -->
+                <div class="panel-body">
+                    <form action="{{ path('sitebde_siteVitrine_gerer_droits_etudiants') }}" method="post">
+                        <label>Gérer les droits des étudiants :</label>
+                        <br>
+                        <center>
+                            <!-- Bouton de soumission du formulaire -->
+                            <input type="submit" class="btn btn-success" value="Modifier les droits" />
+                        </center>
+                    </form>
+                    <hr>
+                    <form action="{{ path('sitebde_siteVitrine_actualiser_etudiants_bd') }}" method="post">
+                        <label>Mettre à jour la liste des étudiants :</label>
+                        <br>
+                        <center>
+                            <!-- Label et champ identifiant -->
+                            <label for="username">Identifiant :</label>
+                            <br>
+                            <div class="col-xs-5"></div>
+                            <div class="col-xs-2">
+                                <input type="text" id="username" name="username" class="form-control"/>
+                            </div>
+                            <div class="col-xs-5"></div>
+                            <br><br>
+                            
+                            <!-- Label et champ mot de passe -->
+                            <label for="password">Mot de passe :</label>
+                            <br>
+                            <div class="col-xs-5"></div>
+                            <div class="col-xs-2">
+                                <input type="password" id="password" name="password" class="form-control"/>
+                            </div>
+                            <div class="col-xs-5"></div>
+                            <br><br>
+                            
+                            <!-- Bouton de soumission du formulaire -->
+                            <input type="submit" class="btn btn-success" value="Actualiser la base de donnée" />
+                        </center>
+                        
+                    </form>
+                </div>
+            </div>
+            <!-- Panel du parrainage automatique -->
+            <div class="panel panel-default">
+                
+                <!-- Titre du formulaire d'événements -->
+                <div class="panel-heading">
+                    <h4>Parrainage automatique</h4>
+                </div>
+                
+                <!-- Contenu du panel -->
+                <div class="panel-body">
+                    <form action="{{ path('sitebde_siteVitrine_parrainage_automatique') }}" method="post">
+                        <center>
+                            <!-- Bouton de soumission du formulaire -->
+                            <input type="submit" class="btn btn-success" value="Lancer le parrainage automatique" />
+                        </center>
+                    </form>
+                </div>
+            </div>
+            
+            
+            
+            <!-- Afficher tous les autres champs du formulaire (y compris le token caché et nécessaire) -->
+            {{ form_rest(formulaire) }}
+        </div>
+    </div>
+{% endblock %}

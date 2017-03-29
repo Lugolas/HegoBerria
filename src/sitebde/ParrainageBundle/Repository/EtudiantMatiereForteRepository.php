@@ -10,4 +10,19 @@ namespace sitebde\ParrainageBundle\Repository;
  */
 class EtudiantMatiereForteRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getEtudiantMatiereFortesParEtudiant($idEtudiant)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT emft
+                                                          FROM sitebdeParrainageBundle:EtudiantMatiereForte emft
+                                                          WHERE emft.etudiant = :idEtudiant');
+        
+        $requetePerso->setParameter('idEtudiant', $idEtudiant);
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
 }

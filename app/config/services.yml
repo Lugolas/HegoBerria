@@ -5,8 +5,21 @@ services:
     ldap:
         class: Symfony\Component\Ldap\LdapClient
         arguments:
-            - kartxila.iutbayonne.univ-pau.fr   # host
-            - null                              # port
+            - mendibel.univ-pau.fr                  # host
+            - 389                               # port
             - 3                                 # version
-            - false                             # SSL
+            - false                              # SSL
             - true                              # TLS
+
+
+
+
+# services:
+#     ldap:
+#         class: Symfony\Component\Ldap\LdapClient
+#         arguments:
+#             - ldap.forumsys.com                 # host
+#             - 389                               # port
+#             - 3                                 # version
+#             - false                             # SSL
+#             - true                              # TLS

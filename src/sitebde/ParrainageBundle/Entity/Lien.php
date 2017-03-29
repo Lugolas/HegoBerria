@@ -38,28 +38,15 @@ class Lien
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="liens")
+     * @ORM\ManyToOne(targetEntity="sitebde\ParrainageBundle\Entity\Etudiant", inversedBy="liens", cascade={"persist"})
      */
     private $etudiant;
-
-
-
-
-    /**
-     * Constructor
-     */
-    public function __construct(\sitebde\ParrainageBundle\Entity\Etudiant $etudiant, $nomSite, $url)
-    {
-        $this->setEtudiant($etudiant);
-        $this->setLibelle($nomSite);
-        $this->setUrl($url);
-    }
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -131,7 +118,7 @@ class Lien
     /**
      * Get etudiant
      *
-     * @return \sitebde\ParrainageBundle\Entity\Lien
+     * @return \sitebde\ParrainageBundle\Entity\Etudiant
      */
     public function getEtudiant()
     {

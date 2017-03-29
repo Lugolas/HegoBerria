@@ -10,4 +10,19 @@ namespace sitebde\ParrainageBundle\Repository;
  */
 class EtudiantSportRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getEtudiantSportParEtudiant($idEtudiant)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT es
+                                                          FROM sitebdeParrainageBundle:EtudiantSport es
+                                                          WHERE es.etudiant = :idEtudiant');
+        
+        $requetePerso->setParameter('idEtudiant', $idEtudiant);
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
 }

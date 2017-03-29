@@ -2,39 +2,60 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        
+        <!-- Titre des onglets -->
         <title>{% block title %}Hego Berria{% endblock %}</title>
        
         {% block stylesheets %}
+            <!-- Feuille de style de Bootstrap -->
             <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css"/>
+            <!-- Feuille de style spécifique au projet Hego Berria -->
             <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
         {% endblock %}
         
+        <!-- Icône des onglets -->
         <link rel="icon" type="image/x-icon" href="{{ asset('images/temporaire/iutBayonne.ico') }}" />
     </head>
     
     <body>
+        <!-- Le contenu de la page, excepté le footer, doit être dans le #wrap pour que le footer fonctionne -->
         <div id="wrap">
+            
+            <!-- Idem, ces classes sont nécessaires pour le footer -->
             <div id="main" class="container clear-top">
+                
+                <!-- Bloc header : contient le jumbotron avec le grand titre et l'image de fond, spécifique au Bundle (SiteVitrine ou Parrainage) -->
                 {% block header %}
                 {% endblock %}
                 
+                <!-- Bloc navbar : contient la barre de navigation, spécifique au Bundle (SiteVitrine ou Parrainage) -->
                 {% block navbar %}
                 {% endblock %}
                 
+                <!-- Bloc contenu : contient tout le reste de la page, spécifique à chaque page -->
                 {% block contenu %}
                 {% endblock %}
+                
             </div>
+            
         </div>
         
+        <!-- Bloc footer : contient les liens Contact et Mentions légales, identique pour toutes les pages -->
         {% block footer %}
             <footer class="footer">
                 <div class="container">
-                    <p class="text-center text-muted"><a href="{{ path('mentions_legales') }}">Mentions légales</a> - <a href="{{ path('contact') }}">Nous contacter</a></p>
+                    <p class="text-center text-muted">
+                        {% block boutonContact %}
+                        {% endblock %} 
+                        {% block boutonMentionsLegales %}
+                        {% endblock %} 
+                    </p>
                 </div>
             </footer>
         {% endblock %}
         
         {% block javascripts %}
+            <!-- Scripts nécessaires au bon fonctionnement du site -->
             <script type="text/javascript" src="{{ asset('js/jquery.js')}}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.js')}}"></script>
             <script type="text/javascript" src="{{ asset('js/typeahead.js')}}"></script>

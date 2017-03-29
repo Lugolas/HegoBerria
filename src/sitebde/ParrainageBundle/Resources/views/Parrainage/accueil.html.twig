@@ -11,7 +11,11 @@
         <div class="col-sm-5">
             <div class="panel panel-default">
                 <div class="panel-heading parrainage">
-                    <h3 class="panel-title text-center">Propositions <strong>parrains/filleuls</strong></h3>
+                    {% if etudiantConnecte.numAnnee == 1 %}
+                        <h3 class="panel-title text-center">Propositions de parrains</h3>
+                    {% elseif etudiantConnecte.numAnnee == 2 %}
+                        <h3 class="panel-title text-center">Propositions de filleuls</h3>
+                    {% endif %}
                 </div>
                 <div class="list-group">
                     {% for etudiantPropose in etudiantsProposes %}
@@ -36,7 +40,8 @@
                     <h3 class="panel-title text-center">Informations</h3>
                 </div>
                 <div class="panel-body">
-                    Blah blah blah
+                    Bienvenue sur le système de parrainage du BDE ! Vous pourrez ici chercher à vous faire parrainer 
+                    ou bien à être parrainé !
                 </div>
             </div>
         </div>

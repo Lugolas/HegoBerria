@@ -1,0 +1,253 @@
+{% extends 'sitebdeParrainageBundle::vueMereParrainage.html.twig' %}
+
+
+
+{% block contenu %}
+{# On charge la bibliothèque jQuery #}
+<script src="{{ asset('js/jquery.js')}}"></script>
+<div class="row">
+    <div class="col-sm-1"></div>
+    
+</div>
+<div class="row top-buffer">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Editer mon profil</h4>
+            </div>
+            <div class="panel-body">
+                <!--Méthode de formulaire dépréciée, cependant nous n'avons pas réussi à faire mieux-->
+                <form method="post" {{ form_enctype(formulaire) }}>
+                    {{ form_row(formulaire.description) }}
+                    <div class="row">
+                        <div class="col-sm-2" id="image">
+                            <img id="miniatureModif" class="thumbnail img-responsive" src="{{ asset('images/photosEtudiants/') ~ formulaire.vars.value.photo }}"/>
+                        </div>
+                        <div class="col-sm-10">
+                            {{ form_row(formulaire.imageFile) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{ form_row(formulaire.etudiantMatiereFortes) }}
+                            <script type="text/javascript">
+                               var $codeHtmlFormulaireMatieres = document.getElementById('sitebde_parrainagebundle_etudiant_etudiantMatiereFortes');
+                               var $div;
+                               var $infosAffichageJSON = {{ infosAffichageJSON|json_encode|raw }};
+                               var $infosAffichage = JSON.parse($infosAffichageJSON);
+                               var $inputCheckBox;
+                               var $tab = new Array();
+                               
+                               for (var $i = $infosAffichage.idsMatieres.min  ; $i <= $infosAffichage.idsMatieres.max ; $i++)
+                               {
+                                   $div  = document.createElement('div');
+                                   $inputCheckBox = document.getElementById('sitebde_parrainagebundle_etudiant_etudiantMatiereFortes_' + $i);
+                                   $categorie = document.createElement("h4");
+                                   $nomMatiere = $inputCheckBox.parentNode.innerHTML;
+                                   $categorie.innerHTML = $infosAffichage.matieres[$i].categorie;
+                                   $label = document.createElement("label");
+                                   $label.setAttribute("class", "");
+                                   $label.innerHTML = $nomMatiere;
+                                   $div.setAttribute('class', 'checkbox');
+                                   if (jQuery.inArray($categorie.innerHTML, $tab) === -1)
+                                   {
+                                       $tab.push($categorie.innerHTML);
+                                       $div.appendChild($categorie);
+                                   }
+                                   $div.appendChild($label);
+                                   $codeHtmlFormulaireMatieres.removeChild($codeHtmlFormulaireMatieres.firstChild);
+                                   $codeHtmlFormulaireMatieres.appendChild($div);
+                               };
+                            </script>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form_row(formulaire.etudiantMatiereFaibles) }}
+                            <script type="text/javascript">
+                               var $codeHtmlFormulaireMatieres = document.getElementById('sitebde_parrainagebundle_etudiant_etudiantMatiereFaibles');
+                               var $div;
+                               var $infosAffichageJSON = {{ infosAffichageJSON|json_encode|raw }};
+                               var $infosAffichage = JSON.parse($infosAffichageJSON);
+                               var $inputCheckBox;
+                               var $tab = new Array();
+                               
+                               for (var $i = $infosAffichage.idsMatieres.min  ; $i <= $infosAffichage.idsMatieres.max ; $i++)
+                               {
+                                   $div  = document.createElement('div');
+                                   $inputCheckBox = document.getElementById('sitebde_parrainagebundle_etudiant_etudiantMatiereFaibles_' + $i);
+                                   $categorie = document.createElement("h4");
+                                   $nomMatiere = $inputCheckBox.parentNode.innerHTML;
+                                   $categorie.innerHTML = $infosAffichage.matieres[$i].categorie;
+                                   $label = document.createElement("label");
+                                   $label.setAttribute("class", "");
+                                   $label.innerHTML = $nomMatiere;
+                                   $div.setAttribute('class', 'checkbox');
+                                   if (jQuery.inArray($categorie.innerHTML, $tab) === -1)
+                                   {
+                                       $tab.push($categorie.innerHTML);
+                                       $div.appendChild($categorie);
+                                   }
+                                   $div.appendChild($label);
+                                   $codeHtmlFormulaireMatieres.removeChild($codeHtmlFormulaireMatieres.firstChild);
+                                   $codeHtmlFormulaireMatieres.appendChild($div);
+                               };
+                            </script>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{ form_row(formulaire.loisirsAssocies) }}
+                            <script type="text/javascript">
+                               var $codeHtmlFormulaireLoisirs = document.getElementById('sitebde_parrainagebundle_etudiant_loisirsAssocies');
+                               var $div;
+                               var $infosAffichageJSON = {{ infosAffichageJSON|json_encode|raw }};
+                               var $infosAffichage = JSON.parse($infosAffichageJSON);
+                               var $inputCheckBox;
+                               var $tab = new Array();
+                               
+                               for (var $i = $infosAffichage.idsLoisirs.min  ; $i <= $infosAffichage.idsLoisirs.max ; $i++)
+                               {
+                                   $div  = document.createElement('div');
+                                   $inputCheckBox = document.getElementById('sitebde_parrainagebundle_etudiant_loisirsAssocies_' + $i);
+                                   $categorie = document.createElement("h4");
+                                   $nomLoisir = $inputCheckBox.parentNode.innerHTML;
+                                   $categorie.innerHTML = $infosAffichage.loisirs[$i].categorie;
+                                   $label = document.createElement("label");
+                                   $label.setAttribute("class", "");
+                                   $label.innerHTML = $nomLoisir;
+                                   $div.setAttribute('class', 'checkbox');
+                                   if (jQuery.inArray($categorie.innerHTML, $tab) === -1)
+                                   {
+                                       $tab.push($categorie.innerHTML);
+                                       $div.appendChild($categorie);
+                                   }
+                                   $div.appendChild($label);
+                                   $codeHtmlFormulaireLoisirs.removeChild($codeHtmlFormulaireLoisirs.firstChild);
+                                   $codeHtmlFormulaireLoisirs.appendChild($div);
+                               };
+                            </script>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form_row(formulaire.sportsAssocies) }}
+                            <script type="text/javascript">
+                               var $codeHtmlFormulaireSports = document.getElementById('sitebde_parrainagebundle_etudiant_sportsAssocies');
+                               var $div;
+                               var $infosAffichageJSON = {{ infosAffichageJSON|json_encode|raw }};
+                               var $infosAffichage = JSON.parse($infosAffichageJSON);
+                               var $inputCheckBox;
+                               var $tab = new Array();
+                               
+                               for (var $i = $infosAffichage.idsSports.min  ; $i <= $infosAffichage.idsSports.max ; $i++)
+                               {
+                                   $div  = document.createElement('div');
+                                   $inputCheckBox = document.getElementById('sitebde_parrainagebundle_etudiant_sportsAssocies_' + $i);
+                                   $categorie = document.createElement("h4");
+                                   $nomSport = $inputCheckBox.parentNode.innerHTML;
+                                   $categorie.innerHTML = $infosAffichage.sports[$i].categorie;
+                                   $label = document.createElement("label");
+                                   $label.setAttribute("class", "");
+                                   $label.innerHTML = $nomSport;
+                                   $div.setAttribute('class', 'checkbox');
+                                   if (jQuery.inArray($categorie.innerHTML, $tab) === -1)
+                                   {
+                                       $tab.push($categorie.innerHTML);
+                                       $div.appendChild($categorie);
+                                   }
+                                   $div.appendChild($label);
+                                   $codeHtmlFormulaireSports.removeChild($codeHtmlFormulaireSports.firstChild);
+                                   $codeHtmlFormulaireSports.appendChild($div);
+                               };
+                            </script>
+                        </div>
+                    </div>
+                    
+                    {{ form_row(formulaire.liens) }}
+                    
+                    {# Script permettant d'ajouter et supprimer dynamiquement des formulaires auteurs #}
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            
+                            // On récupère la balise <div>qui contient l'attribut « data-prototype » qui nous intéresse.
+                            var $codeHtmlFormulaireLien = $('div#sitebde_parrainagebundle_etudiant_liens');
+                            
+                            // On ajoute un lien pour ajouter un nouveau lien
+                            var $lienAjoutLien = $('<a href="#" id="add_lien">Ajouter un lien</a>');
+                            $codeHtmlFormulaireLien.append($lienAjoutLien);
+                    
+                            // On ajoute un nouveau formulaire d'ajout de lien à chaque clic sur le lien d'ajout.
+                            $lienAjoutLien.click(function(e) 
+                            {
+                                addLien($codeHtmlFormulaireLien);
+                                e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                                return false;
+                            });
+                            // On définit un compteur unique pour nommer les champs Liens qu'on va ajouter dynamiquement
+                            var compteurLiens = $codeHtmlFormulaireLien.find(':input').length;
+                    
+                            // On ajoute le code html d'un premier formulaire d'ajout de lien s'il n'en existe pas déjà un (cas d'ajout d'un nouveau livre).
+                            
+                            // Pour chaque formulaire auteur affiché, on ajoute un lien de suppression
+                            $codeHtmlFormulaireLien.children('div').each(function() {
+                                ajouterLienSuppression($(this));
+                            });
+                            
+                            // La fonction qui ajoute un formulaire Lien
+                            function addLien($codeHtmlFormulaireLien) {
+                                // Dans le contenu de l'attribut « data-prototype », on remplace :
+                                // - le texte "__name__label__" qu'il contient par notre label (ici un label vide pour ne pas surcharger le formulaire)
+                                // - le texte "__name__" qu'il contient par le numéro du champ
+                                var $codeHtmlNouveauLien = $($codeHtmlFormulaireLien.attr('data-prototype').replace(/__name__label__/g, ' ').replace(/__name__/g, compteurLiens));
+                    
+                                // On ajoute au code html un lien pour pouvoir supprimer le lien
+                                ajouterLienSuppression($codeHtmlNouveauLien);
+                    
+                                // On ajoute le code html qu'on vient de modifier à la fin de la balise <div>
+                                $codeHtmlFormulaireLien.append($codeHtmlNouveauLien);
+                    
+                                // On incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+                                compteurLiens++;
+                    
+                            }
+                    
+                            // La fonction qui ajoute un lien de suppression d'un lien
+                            function ajouterLienSuppression($codeHtmlNouveauLien) {
+                    
+                                // Création du lien
+                                $lienSuppression = $('<a href="#">Supprimer ce lien</a>');
+                    
+                                // Ajout du lien
+                                $codeHtmlNouveauLien.append($lienSuppression);
+                    
+                                // Ajout du listener sur le clic du lien
+                                $lienSuppression.click(function(e) {
+                                    $codeHtmlNouveauLien.remove();
+                                    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                                    return false;
+                                });
+                            }
+                        });
+                    </script>
+                    {{ form_rest(formulaire) }}
+                    <center><input type="submit" class="btn btn-success" value="Enregistrer" /></center>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        // A chaque fois qu'on détecte un changement sur le champ d'image
+        document.getElementById("sitebde_parrainagebundle_etudiant_imageFile").onchange = function () {
+            var reader = new FileReader();
+        
+            // Mettre à jour la miniature
+            reader.onload = function (e) {
+                document.getElementById("miniatureModif").src = e.target.result;
+            };
+        
+            reader.readAsDataURL(this.files[0]);
+        };
+    </script>
+{% endblock %}

@@ -1,9 +1,20 @@
-logout:
-    path: /logout
+connexion:
+    path:     /connexion
+    defaults: { _controller: sitebdeSecuriteBundle:Securite:connexion }
     
-login:
-    pattern:     /login
-    defaults: { _controller: sitebdeSecuriteBundle:Securite:login }
+verif_connexion:
+    path:     /verif-connexion
     
-login_check:
-    pattern:     /login_check
+verif_connexion_perso:
+    path:     /verif-connexion-perso
+    defaults: { _controller: sitebdeSecuriteBundle:Securite:verifConnexionPerso }
+    methods:  [POST]
+    
+deconnexion:
+    path: /deconnexion
+    
+    
+    
+deconnexion_perso:
+    path: /deconnexion-perso
+    defaults: { _controller: sitebdeSecuriteBundle:Securite:deconnexionPerso }

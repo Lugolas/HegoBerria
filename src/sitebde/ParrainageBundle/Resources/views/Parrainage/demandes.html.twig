@@ -60,7 +60,7 @@
         {% if (etudiantCourant.numAnnee == 1 and nombreDemandesAcceptees < 1) or (etudiantCourant.numAnnee == 2 and nombreDemandesAcceptees < 2) %}
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 style="text-align: center;">Demandes envoyées</h3>
+                    <h3 style="text-align: center;">Demande(s) envoyée(s)</h3>
                     {% for demandeCourante in etudiantCourant.demandesFaites if demandeCourante.estAcceptee == 0 %}
                         <div class="row">
                             <div class="col-sm-1"></div>
@@ -70,6 +70,7 @@
                             <div class="col-sm-8">
                                 <h4>{{ demandeCourante.etudiantDemande.prenom }} {{ demandeCourante.etudiantDemande.nom }}</h4>
                                 <p>{{ demandeCourante.etudiantDemande.description|length > 200 ? demandeCourante.etudiantDemande.description|slice(0, 200) ~ '...' : demandeCourante.etudiantDemande.description }}</p>
+                                <br><br>
                             </div>
                         </div>
                     {% else %}
@@ -77,7 +78,7 @@
                     {% endfor %}
                 </div>
                 <div class="col-sm-6">
-                    <h3 style="text-align: center;">Demandes reçues</h3>
+                    <h3 style="text-align: center;">Demande(s) reçue(s)</h3>
                     {% for demandeCourante in etudiantCourant.demandesRecues if demandeCourante.estAcceptee == 0 %}
                         <div class="row">
                             <div class="col-sm-1"></div>

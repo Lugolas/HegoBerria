@@ -11,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -26,12 +25,7 @@ class ActualiteType extends AbstractType
     {
         $builder
             ->add('titre', textType::class)
-            ->add('contenu', textAreaType::class, array('label' => 'Description'))
-            ->add('imageFile', VichImageType::class, [
-            'required' => false,
-            'allow_delete' => true, // not mandatory, default is true
-            'download_link' => true, // not mandatory, default is true
-        ]);
+            ->add('contenu', textAreaType::class, array('label' => 'Description'));
         
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $actualite = $event->getData();
@@ -44,7 +38,7 @@ class ActualiteType extends AbstractType
             // Sinon, modification
             else {
                 $icone = $actualite->getIcone();
-                $formulaire->add('imageFile', FileType::class, array('label' => 'Icône', 'required' => false, 'empty_data' => new File($icone)));
+                $formulaire->add('imageFile', FileType::class, array('label' => 'Icône', 'required' => false));
             }
         });
     }

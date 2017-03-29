@@ -1,0 +1,56 @@
+{% extends 'sitebdeParrainageBundle::vueMereParrainage.html.twig' %}
+
+{% block bouton1eAnnee %}
+    {% if anneeEtudiants == 1 %}
+        <li class="active"><a href="{{ path('sitebde_parrainage_premieres_annees') }}">1° années</a></li>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block bouton2eAnnee %}
+    {% if anneeEtudiants == 2 %}
+        <li class="active"><a href="{{ path('sitebde_parrainage_deuxiemes_annees') }}">2° années</a></li>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+                            
+{% block contenu %}
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="list-group">
+                {% for etudiantCourant in tabEtudiants if etudiantCourant[0].id != etudiantConnecte.id %}
+                    <a href="{{ path('sitebde_parrainage_details_profil', {'idEtudiant':etudiantCourant[0].id}) }}" class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <img src="{{ asset('images/photosEtudiants/' ~ etudiantCourant[0].photo) }}" class="img-rounded img-responsive">
+                            </div>
+                            <div class="col-sm-11">
+                                <h4 class="list-group-item-heading">{{ etudiantCourant[0].prenom }} {{ etudiantCourant[0].nom }}</h4>
+                                <div class="col-sm-6">
+                                    <p>{{ etudiantCourant[0].description|length > 200 ? etudiantCourant[0].description|slice(0, 200) ~ '...' : etudiantCourant[0].description }}</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {% if (etudiantCourant[0].numAnnee == 1 and etudiantCourant[0].nbDemandesValidees == 1) %}
+                                        {% if (etudiantConnecte.numAnnee != 1) %}
+                                            <p style="color: #848484;">Cet étudiant a déjà un parrain.</p>
+                                        {% endif %}
+                                    {% elseif (etudiantCourant[0].numAnnee == 2 and etudiantCourant[0].nbDemandesValidees == 2) %}
+                                        {% if (etudiantConnecte.numAnnee != 2) %}
+                                            <p style="color: #848484;">Cet étudiant a déjà deux filleuls.</p>
+                                        {% endif %}
+                                    {% else %}
+                                        <p style="color: #848484;">Vous avez {{ etudiantCourant[1] }} critère(s) en commun.</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

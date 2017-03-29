@@ -11,6 +11,8 @@ use sitebde\ParrainageBundle\Entity\Loisir;
 use sitebde\ParrainageBundle\Entity\Sport;
 use sitebde\ParrainageBundle\Entity\Lien;
 
+use Symfony\Component\Validator\Constraints\Count;
+
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -36,6 +38,7 @@ class Etudiant
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=50, unique=true)
+     * 
      */
     private $login;
 
@@ -80,6 +83,13 @@ class Etudiant
      * @ORM\Column(name="numAnnee", type="integer")
      */
     private $numAnnee;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbDemandesValidees", type="integer")
+     */
+    private $nbDemandesValidees = 0;
 
     /**
      * @var string
@@ -154,7 +164,7 @@ class Etudiant
     
     /**
      *
-     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\Lien", mappedBy="etudiant", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="sitebde\ParrainageBundle\Entity\Lien", mappedBy="etudiant", cascade={"persist"})
      */
     private $liens;
 
@@ -341,6 +351,30 @@ class Etudiant
     {
         return $this->numAnnee;
     }
+    
+    /**
+     * Set nbDemandesValidees
+     *
+     * @param integer $nbDemandesValidees
+     *
+     * @return Etudiant
+     */
+    public function setNbDemandesValidees($nbDemandesValidees)
+    {
+        $this->nbDemandesValidees = $nbDemandesValidees;
+
+        return $this;
+    }
+
+    /**
+     * Get nbDemandesValidees
+     *
+     * @return int
+     */
+    public function getNbDemandesValidees()
+    {
+        return $this->nbDemandesValidees;
+    }
 
     /**
      * Set description
@@ -429,7 +463,9 @@ class Etudiant
         $this->demandesFaites = new \Doctrine\Common\Collections\ArrayCollection();
         $this->demandesRecues = new \Doctrine\Common\Collections\ArrayCollection();
         $this->liens = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->updatedAt = new \DateTimeImmutable(); 
+        $this->updatedAt = new \DateTimeImmutable();
+        $this->nbDemandesValidees = 0;
+        $this->photo = "user.png";
     }
 
     /**
@@ -442,7 +478,7 @@ class Etudiant
     public function addEtudiantMatiereForte(\sitebde\ParrainageBundle\Entity\Matiere $matiere)
     {
         $etudiantMatiereForte = new EtudiantMatiereForte($this, $matiere);
-        $this->etudiantMatiereForte[] = $etudiantMatiereForte;
+        $this->etudiantMatiereFortes[] = $etudiantMatiereForte;
 
         return $this;
     }
@@ -695,7 +731,6 @@ class Etudiant
         {
             if ($etudiantSportCourant->getSport() == $sport)
             {
-                $this->setDescription('J\'essaye d\'enlever ce spoooort !');
                 $etudiantSport = $etudiantSportCourant;
             }
         }

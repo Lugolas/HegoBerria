@@ -1,8 +1,9 @@
 {% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
 
 
-{% block boutonActualite %}
-    {% if typeArticle=='actualite' %}
+{% block boutonActualites %}
+    <!-- Si c'est une page d'actualité, rendre actif le bouton Actualités de la navbar -->
+    {% if typeArticle == 'actualite' %}
         <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_actualites') }}"><span class="sr-only">(current)</span>Actualités</a></li>
     {% else %}
         {{ parent() }}
@@ -10,93 +11,103 @@
 {% endblock %}
     
 
-
-{% block boutonEvenement %}
-    {% if typeArticle=='evenement' %}
-        <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_evenements') }}"><span class="sr-only">(current)</span>Evènements</a></li>
+{% block boutonEvenements %}
+    <!-- Si c'est une page d'événement, rendre actif le bouton Evénements de la navbar -->
+    {% if typeArticle == 'evenement' %}
+        <li class="active"><a href="{{ path('sitebde_siteVitrine_liste_evenements') }}"><span class="sr-only">(current)</span>Evénements</a></li>
     {% else %}
         {{ parent() }}
     {% endif %}
 {% endblock %}
 
 
-
 {% block contenu %}
-    {% if typeArticle == "actualite" %}
         <div class="row">
+            
+            <!-- Icône de l'article -->
             <div class="col-sm-2">
-                <img src="{{ asset('images/iconesArticles/' ~ article.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                <img src="{{ asset('images/iconesArticles/' ~ article.icone) }}" alt="Icône" class="img-rounded img-responsive">
             </div>
+            
+            <!-- Article -->
             <div class="col-sm-10">
                 <div class="row">
-                    <div class="col-sm-7">
-                        <h3>{{ article.titre }}</h3>
+                    
+                    <!-- Titre de l'article et dates de publication/actualisation -->
+                    <div class="col-sm-8">
+                        
+                        <!-- Si c'est un évènement, afficher sa date avant son titre -->
+                        {% if typeArticle == "evenement" %}
+                            <h3>{{ article.dateEvenement|date("d/m/Y") }} : {{ article.titre }}</h3>
+                        {% else %}
+                            <h3>{{ article.titre }}</h3>
+                        {% endif %}
+                        
+                        <!-- Si l'article a été modifié après sa publication, afficher les deux dates, sinon uniquement celle de la publication -->
                         {% if article.datePublication != article.dateActualisation %}
                             <p><small>Date d'actualisation : {{ article.dateActualisation|date("d/m/Y") }}
                              - Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
                         {% else %}
                             <p><small>Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
                         {% endif %}
+                        
                     </div>
-                    <div class="col-sm-2">
-                        <form action="{{ path('sitebde_siteVitrine_modifier_actualite', {'idActu':article.id}) }}">
-                            <button class="btn btn-primary" type="submit">
-                                <span class="glyphicon glyphicon-pencil"></span> Modifier
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-sm-2">
-                        <form action="{{ path('sitebde_siteVitrine_supprimer_actualite', {'idActu':article.id}) }}">
-                            <button class="btn btn-danger" type="submit">
-                                <span class="glyphicon glyphicon-remove"></span> Supprimer
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>{{ article.contenu }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% elseif typeArticle == "evenement" %}
-        <div class="row">
-            <div class="col-sm-2">
-                <img src="{{ asset('images/iconesArticles/' ~ article.icone) }}" alt="Logo" class="img-rounded img-responsive">
-            </div>
-            <div class="col-sm-10">
-                <div class="row">
-                    <div class="col-sm-7">
-                        <h3>{{ article.dateEvenement|date("d/m/Y") }} : {{ article.titre }}</h3>
-                        {% if article.datePublication != article.dateActualisation %}
-                            <p><small>Date d'actualisation : {{ article.dateActualisation|date("d/m/Y") }}
-                             - Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
+                    
+                    <!-- Si l'étudiant connecté fait partie du BDE, afficher les boutons d'administration -->
+                    {% if etudiantConnecte and etudiantConnecte.estBDE %}
+                        
+                        <!-- Différenciation actualité/événement pour les actions à déclencher sur les boutons -->
+                        {% if typeArticle == "actualite" %}
+                        
+                            <!-- Bouton de modification de l'actualité -->
+                            <div class="col-sm-2">
+                                <center><form action="{{ path('sitebde_siteVitrine_modifier_actualite', {'idActu':article.id}) }}">
+                                    <button class="btn btn-primary" type="submit">
+                                        <span class="glyphicon glyphicon-pencil"></span> Modifier
+                                    </button>
+                                </form></center>
+                            </div>
+                            
+                            <!-- Bouton de suppression de l'actualité -->
+                            <div class="col-sm-2">
+                                <form action="{{ path('sitebde_siteVitrine_supprimer_actualite', {'idActu':article.id}) }}">
+                                    <button class="btn btn-danger" type="submit">
+                                        <span class="glyphicon glyphicon-remove"></span> Supprimer
+                                    </button>
+                                </form>
+                            </div>
+                            
                         {% else %}
-                            <p><small>Date de publication : {{ article.datePublication|date("d/m/Y") }}</small></p>
+                        
+                            <!-- Bouton de modification de l'événement -->
+                            <div class="col-sm-2">
+                                <center><form action="{{ path('sitebde_siteVitrine_modifier_evenement', {'idEvent':article.id}) }}">
+                                    <button class="btn btn-primary" type="submit">
+                                        <span class="glyphicon glyphicon-pencil"></span> Modifier
+                                    </button>
+                                </form></center>
+                            </div>
+                            
+                            <!-- Bouton de suppression de l'événement -->
+                            <div class="col-sm-2">
+                                <form action="{{ path('sitebde_siteVitrine_supprimer_evenement', {'idEvent':article.id}) }}">
+                                    <button class="btn btn-danger" type="submit">
+                                        <span class="glyphicon glyphicon-remove"></span> Supprimer
+                                    </button>
+                                </form>
+                            </div>
+                            
                         {% endif %}
-                    </div>
-                    <div class="col-sm-2">
-                        <form action="{{ path('sitebde_siteVitrine_modifier_evenement', {'idEvent':article.id}) }}">
-                            <button class="btn btn-primary" type="submit">
-                                <span class="glyphicon glyphicon-pencil"></span> Modifier
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-sm-2">
-                        <form action="{{ path('sitebde_siteVitrine_supprimer_evenement', {'idEvent':article.id}) }}">
-                            <button class="btn btn-danger" type="submit">
-                                <span class="glyphicon glyphicon-remove"></span> Supprimer
-                            </button>
-                        </form>
-                    </div>
+                    {% endif %}
                 </div>
+                
+                <!-- Contenu de l'article -->
                 <div class="row">
                     <div class="col-sm-12">
                         <p>{{ article.contenu }}</p>
                     </div>
                 </div>
+                
             </div>
         </div>
-    {% endif %}
 {% endblock %}

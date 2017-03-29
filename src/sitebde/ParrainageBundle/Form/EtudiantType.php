@@ -2,6 +2,8 @@
 
 namespace sitebde\ParrainageBundle\Form;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,6 +14,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class EtudiantType extends AbstractType
 {
@@ -20,7 +23,7 @@ class EtudiantType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('description', TextareaType::class)
+        $builder->add('description', TextareaType::class, array('required' => false))
                 ->add('etudiantMatiereFortes', entityType::class, array('label' => 'Mes matières fortes',
                                                                          'class' => 'sitebdeParrainageBundle:Matiere',
                                                                          'choice_label' => 'libelle',
@@ -40,14 +43,19 @@ class EtudiantType extends AbstractType
                                                                  'class' => 'sitebdeParrainageBundle:Sport',
                                                                  'choice_label' => 'libelle',
                                                                  'multiple' => true,
-                                                                 'expanded' => true));
+                                                                 'expanded' => true))
+                ->add('liens', collectionType::class, array('entry_type' => LienType::class,
+                                                            'allow_add' => true,
+                                                            'allow_delete' => true,
+                                                            'by_reference' => true,
+                                                            'label' => 'Mes liens'));
         
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $etudiant = $event->getData();
-            $formulaire = $event->getForm();
-    
             $photo = $etudiant->getPhoto();
-            $formulaire->add('imageFile', FileType::class, array('label' => 'Photo', 'required' => false, 'empty_data' => new File($photo)));
+            
+            $formulaire = $event->getForm();
+            $formulaire->add('imageFile', FileType::class, array('label' => 'Photo', 'required' => false));
         });
     }
     
@@ -68,6 +76,5 @@ class EtudiantType extends AbstractType
     {
         return 'sitebde_parrainagebundle_etudiant';
     }
-
 
 }

@@ -17,13 +17,35 @@
             {% endif %}
             <h4>{{ etudiantCourant.description }}</h4>
         </div>
-        <div class="col-sm-4">
-            <form action="{{ path('sitebde_parrainage_demande_parrainage', {'idEtudiant':etudiantCourant.id}) }}">
-                <button class="btn btn-success" type="submit">
-                        <h5>Demander à <strong>parrainer/être parrainé</strong></h5>
-                </button>
-            </form>
-        </div>
+        {% if demandeDejaExistante != true %}
+            {% if (etudiantCourant.numAnnee == 1 and etudiantCourant.nbDemandesValidees < 1)
+              or (etudiantCourant.numAnnee == 2 and etudiantCourant.nbDemandesValidees < 2) %}
+                <div class="col-sm-4">
+                    {% if etudiantConnecte.numAnnee == 2 and etudiantCourant.numAnnee == 1 %}
+                        <form action="{{ path('sitebde_parrainage_demande_parrainage', {'idEtudiant':etudiantCourant.id}) }}">
+                            <button class="btn btn-success" type="submit">
+                                    <h5>Demander à parrainer</h5>
+                            </button>
+                        </form>
+                    {% elseif etudiantConnecte.numAnnee == 1 and etudiantCourant.numAnnee == 2 %}
+                        <form action="{{ path('sitebde_parrainage_demande_parrainage', {'idEtudiant':etudiantCourant.id}) }}">
+                            <button class="btn btn-success" type="submit">
+                                    <h5>Demander à être parrainé</h5>
+                            </button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="col-sm-3">
+                <div class="alert alert-success" role="alert">
+                    <center>
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        Demande déjà en cours
+                    </center>
+                </div>
+            </div>
+        {% endif %}
     </div>
     <div class="row top-buffer">
         <div class="col-sm-1"></div>

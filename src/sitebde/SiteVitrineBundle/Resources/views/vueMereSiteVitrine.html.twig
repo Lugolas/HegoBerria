@@ -1,26 +1,31 @@
 {% extends '::vueMere.html.twig' %}
 
 {% block header %}
-<a href="{{path('sitebde_siteVitrine_accueil') }}" style="text-decoration: none">
-    <div class="jumbotron" style="position: relative;
-                                  background: url({{ asset('images/temporaire/stars1.png') }}) center center;
-                                  width: 100%;
-                                  height: 100%;
-                                  background-size: cover;
-                                  overflow: hidden;">
-            <h1 class="text-center">Hego Berria - Site Vitrine</h1>
-    </div>
-</a>
+    <!-- Jumbotron : lien menant à l'accueil, texte et image cliquables -->
+    <a href="{{path('sitebde_siteVitrine_accueil') }}" style="text-decoration: none">
+        <div class="jumbotron" style="position: relative;
+                                      background: url({{ asset('images/bdeBanniere.PNG') }}) center center;
+                                      width: 100%;
+                                      height: 100%;
+                                      background-size: cover;
+                                      overflow: hidden;">
+                <h1 class="text-right">&#160</h1>
+        </div>
+    </a>
 {% endblock %}
 
 
 {% block navbar %}
     <div class="row">
+        
+        <!-- Navbar -->
         <div class="col-sm-10">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="container-fluid">
+                    
+                    <!-- Header pour le responsive design -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-site-vitrine" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -28,62 +33,92 @@
                         </button>
                     </div>
                     
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="collapse navbar-collapse" id="navbar-site-vitrine">
+                        
+                        <!-- Partie gauche de la navbar -->
                         <ul class="nav navbar-nav">
+                            
+                            <!-- Bouton Accueil (glyphicon) -->
                             {% block boutonAccueil%}
                                 <li><a href="{{ path('sitebde_siteVitrine_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
                             {% endblock %}
                             
-                            {% block boutonActualite %}
+                            <!-- Bouton Actualités -->
+                            {% block boutonActualites %}
                                 <li><a href="{{ path('sitebde_siteVitrine_liste_actualites') }}">Actualités</a></li>
                             {% endblock %}
                             
-                            {% block boutonEvenement %}
-                                <li><a href="{{ path('sitebde_siteVitrine_liste_evenements') }}">Evènements</a></li>
+                            <!-- Bouton Evénements -->
+                            {% block boutonEvenements %}
+                                <li><a href="{{ path('sitebde_siteVitrine_liste_evenements') }}">Evénements</a></li>
                             {% endblock %}
                             
-                            {% block boutonInformation %}
+                            <!-- Menu dropdown Informations -->
+                            {% block boutonInformations %}
                                 <li class="dropdown">
+                                    
+                                    <!-- Lien pas cliquable du titre du dropdown -->
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informations <span class="caret"></span></a>
+                                    
+                                    <!-- Menu dropdown = chaque information passée en paramètre -->
                                     <ul class="dropdown-menu">
-                                    {% for infoCourante in informations %}
-                                        <li><a href="{{ path('sitebde_siteVitrine_information', {'idInfo':infoCourante.id}) }}">{{ infoCourante.titre }}</a></li>
-                                    {% else %}
-                                        <li><a href="#">Il n'y a aucune information.</a></li>
-                                    {% endfor %}
+                                        {% for infoCourante in informations %}
+                                            <li><a href="{{ path('sitebde_siteVitrine_information', {'idInfo':infoCourante.id}) }}">{{ infoCourante.titre }}</a></li>
+                                        {% endfor %}
                                     </ul>
+                                    
                                 </li>
                             {% endblock %}
-                        </ul>
-                        <form class="navbar-form navbar-right">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Chercher">
-                            </div>
-                            <button type="submit" class="btn btn-default">Go !</button>
-                        </form>
-                        <ul class="nav navbar-nav navbar-right">
-                            {% block boutonConnexion %}
-                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                    <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
-                                {% else %}
-                                    <li><a href="{{ path('login') }}">Se connecter</a></li>
+                            
+                            <!-- Bouton Page Admin uniquement si un l'étudiant connecté est un Admin -->
+                            {% block boutonPageAdmin %}
+                                {% if etudiantConnecte != null %}
+                                    {% if etudiantConnecte.estAdmin == true %}
+                                        <li><a href="{{ path('sitebde_siteVitrine_page_admin') }}">Page Admin</a></li>
+                                    {% endif %}
                                 {% endif %}
                             {% endblock %}
+                            
                         </ul>
+                        
+                        <!-- Partie droite de la navbar -->
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                            <!-- Texte du nom de l'étudiant connecté, s'il y en a un -->
+                            {% block nomEtudiant %}
+                                {% if etudiantConnecte != null %}
+                                    <p class="navbar-text">{{ etudiantConnecte.prenom }} {{ etudiantConnecte.nom }}</p>
+                                {% endif %}
+                            {% endblock %}
+                            
+                            <!-- Bouton Connexion/Déconnexion en fonction de si un étudiant est connecté -->
+                            {% block boutonConnexion %}
+                                {% if etudiantConnecte != null %}
+                                    <li><a href="{{ path('deconnexion_perso') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+                                {% else %}
+                                    <li><a href="{{ path('connexion') }}">Se connecter</a></li>
+                                {% endif %}
+                            {% endblock %}
+                            
+                        </ul>
+                        
                     </div>
                 </div>
             </nav>
         </div>
+        
+        <!-- Bouton pour aller vers le site du parrainage -->
         <div class="col-sm-2">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{{ path('sitebde_parrainage_accueil') }}">Parrainage</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <center>
+                <form action="{{ path('sitebde_parrainage_accueil') }}" method="post">
+                    <button type="submit" class="btn btn-info">
+                        <h5><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Parrainage</h5>
+                    </button>
+                </form>
+            </center>
         </div>
     </div>
 {% endblock %}
+{% block boutonMentionsLegales %}
+<a href="{{ path('mentions_legales_site_vitrine') }}">Nous contacter - Mentions légales</a>
+{% endblock %} 

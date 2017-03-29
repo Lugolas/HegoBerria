@@ -10,4 +10,19 @@ namespace sitebde\ParrainageBundle\Repository;
  */
 class LienRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getLienParEtudiant($idEtudiant)
+    {
+        // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT l
+                                                          FROM sitebdeParrainageBundle:Lien l
+                                                          WHERE l.etudiant = :idEtudiant');
+        
+        $requetePerso->setParameter('idEtudiant', $idEtudiant);
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
 }

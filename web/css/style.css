@@ -23,10 +23,10 @@ html, body {
 
 .top-buffer { margin-top:20px; }
 
-/* Texte du jumbotron quasi blanc */
+/* Texte du jumbotron gris foncé */
 
 .jumbotron {
-  color: #eee;
+  color: #444;
 }
 
 /* Couleur des panel noire sur le parrainage */

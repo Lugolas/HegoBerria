@@ -10,4 +10,17 @@ namespace sitebde\ParrainageBundle\Repository;
  */
 class DemandeParrainageRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getDemandesNonValidees()
+    {
+         // Récupérer le gestionnaire d'entités
+        $gestionnaireEntites = $this->_em;
+        
+        // Ecriture de la requête personnalisée
+        $requetePerso = $gestionnaireEntites->createQuery('SELECT d
+                                                          FROM sitebdeParrainageBundle:DemandeParrainage d
+                                                          WHERE d.estAcceptee = 0');
+        
+        // Retourner les résultats de l'exécution de la requête
+        return $requetePerso->getResult();
+    }
 }

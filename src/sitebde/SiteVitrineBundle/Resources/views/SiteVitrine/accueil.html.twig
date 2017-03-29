@@ -1,62 +1,98 @@
 {% extends 'sitebdeSiteVitrineBundle::vueMereSiteVitrine.html.twig' %}
 
+
 {% block boutonAccueil%}
+    <!-- Rendre actif le bouton Accueil de la navbar -->
     <li class='active'><a href="{{ path('sitebde_siteVitrine_accueil') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
 {% endblock %}
 
+
 {% block contenu %}
     <div class="row">
-        <div class="col-sm-9">
-            <h1>Hego Berria</h1>
-            <p>Bienvenue sur la page d'accueil !</p>
+        
+        <!-- Partie gauche : titre et petit texte d'accueil -->
+        <div class="col-sm-8">
+            <h1>Bienvenue !</h1>
+            <p>Ceci est le site du Bureau des Etudiants du département Informatique de l'IUT de Bayonne et du Pays Basque.</p>
         </div>
-        <div class="col-sm-3">
+        
+        <!-- Partie droite : deux panels avec les dernières actualités et les derniers événements -->
+        <div class="col-sm-4">
+            
+            <!-- Panel des actualités -->
             <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Dernières actualités</h3>
-                    </div>
-                    <div class="list-group">
-                        {% for actuCourante in actualites %}
-                            <a href="{{ path('sitebde_siteVitrine_details_actualite', {'idActu':actuCourante.id}) }}" class="list-group-item">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <img src="{{ asset('images/iconesArticles/' ~ actuCourante.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- Titre du panel -->
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Dernières actualités</h3>
+                        </div>
+                        
+                        <!-- Contenu du panel -->
+                        <div class="list-group">
+                            
+                            <!-- Afficher chaque actualité passée en paramètre avec un lien -->
+                            {% for actuCourante in actualites %}
+                                <a href="{{ path('sitebde_siteVitrine_details_actualite', {'idActu':actuCourante.id}) }}" class="list-group-item">
+                                    <div class="row">
+                                        
+                                        <!-- L'icône de l'actualité -->
+                                        <div class="col-sm-3">
+                                            <img src="{{ asset('images/iconesArticles/' ~ actuCourante.icone) }}" alt="Icône" class="img-rounded img-responsive">
+                                        </div>
+                                        
+                                        <!-- Le titre de l'actualité -->
+                                        <div class="col-sm-9">
+                                            {{ actuCourante.titre }}
+                                        </div>
+                                        
                                     </div>
-                                    <div class="col-sm-9">
-                                        {{ actuCourante.titre }}
-                                    </div>
-                                </div>
-                            </a>
-                        {% else %}
-                            <p>Il n'y a aucune actualité.</p>
-                        {% endfor %}
+                                </a>
+                            {% endfor %}
+                            
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Panel des événements -->
             <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Evènements à venir</h3>
-                    </div>
-                    <div class="list-group">
-                        {% for evenementCourant in evenements %}
-                            <a href="{{ path('sitebde_siteVitrine_details_evenement', {'idEvent':evenementCourant.id}) }}" class="list-group-item">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <img src="{{ asset('images/iconesArticles/' ~ evenementCourant.icone) }}" alt="Logo" class="img-rounded img-responsive">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- Titre du panel -->
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Evénements à venir</h3>
+                        </div>
+                        
+                        <!-- Contenu du panel -->
+                        <div class="list-group">
+                            
+                            <!-- Afficher chaque événement passé en paramètre avec un lien -->
+                            {% for evenementCourant in evenements %}
+                                <a href="{{ path('sitebde_siteVitrine_details_evenement', {'idEvent':evenementCourant.id}) }}" class="list-group-item">
+                                    <div class="row">
+                                        
+                                        <!-- L'icône de l'événement -->
+                                        <div class="col-sm-3">
+                                            <img src="{{ asset('images/iconesArticles/' ~ evenementCourant.icone) }}" alt="Icône" class="img-rounded img-responsive">
+                                        </div>
+                                        
+                                        <!-- Le titre de l'événement -->
+                                        <div class="col-sm-9">
+                                            {{ evenementCourant.dateEvenement|date("d/m/Y") }} : {{ evenementCourant.titre }}
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9">
-                                        {{ evenementCourant.dateEvenement|date("d/m/Y") }} : {{ evenementCourant.titre }}
-                                    </div>
-                                </div>
-                            </a>
-                        {% else %}
-                            <p>Il n'y a aucun évènement.</p>
-                        {% endfor %}
+                                </a>
+                            {% endfor %}
+                            
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
+        
     </div>
 {% endblock %}

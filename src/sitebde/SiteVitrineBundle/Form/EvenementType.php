@@ -26,7 +26,7 @@ class EvenementType extends AbstractType
         $builder
             ->add('titre', textType::class)
             ->add('contenu', textareaType::class, array('label' => 'Description'))
-            ->add('dateEvenement', dateType::class, array('label' => 'Date', 'format' => 'dd/MM/yyyy'));
+            ->add('dateEvenement', dateType::class, array('label' => 'Date', 'format' => 'dd/MM/yyyy', 'widget' => 'choice'));
             
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $evenement = $event->getData();
@@ -39,7 +39,7 @@ class EvenementType extends AbstractType
             // Sinon, modification
             else {
                 $icone = $evenement->getIcone();
-                $formulaire->add('imageFile', FileType::class, array('label' => 'Icône', 'required' => false, 'empty_data' => new File($icone)));
+                $formulaire->add('imageFile', FileType::class, array('label' => 'Icône', 'required' => false));
             }
         });
     }

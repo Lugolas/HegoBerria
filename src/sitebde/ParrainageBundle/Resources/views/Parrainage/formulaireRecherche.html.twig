@@ -1,0 +1,223 @@
+{% extends "sitebdeParrainageBundle::vueMereParrainage.html.twig" %}
+
+{% block boutonRecherche %}
+    <li class="active"><a href="{{path('sitebde_parrainage_recherche_par_critere')}}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+{% endblock %}
+
+
+{% block contenu %}
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Recherche par nom</h4>
+                </div>
+                <div class="panel-body">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                    <script  type="text/javascript" src="../js/typeahead/0.11.1/typeahead.bundle.js"></script>
+                    <script type="text/javascript">
+                    $(document).ready(function(){
+                        // Defining the local dataset
+                        var etudiants = [
+                            {% for etudiant in etudiants %}
+                                "{{ etudiant.prenom }} {{ etudiant.nom }}"
+                                {% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                            ];
+                        
+                        // Constructing the suggestion engine
+                        var etudiants = new Bloodhound({
+                            datumTokenizer: Bloodhound.tokenizers.whitespace,
+                            queryTokenizer: Bloodhound.tokenizers.whitespace,
+                            local: etudiants
+                        });
+                        
+                        // Initializing the typeahead
+                        $('.typeahead').typeahead({
+                            hint: true,
+                            highlight: true, /* Enable substring highlighting */
+                            minLength: 1 /* Specify minimum characters required for showing result */
+                        },
+                        {
+                            name: 'etudiants',
+                            source: etudiants
+                        });
+                    });  
+                    </script>
+                    <form action="{{path('sitebde_parrainage_details_profil_redirection')}}" method="post">
+                        <div class="input-group">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <input id="barreDeRecherche" type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" name="prenomNom" placeholder="Prénom Nom" required>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button id="btn" class="btn btn-default" type="submit">Go !</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="alert alert-info" role="alert">
+                <center>
+                    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                    La recherche par critères ne s'effectue que sur les étudiants de l'autre promotion.
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Recherche par critères</h4>
+                </div>
+                <div class="panel-body">
+                    <form method="post" {{ form_enctype(formulaire) }}>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {{ form_row(formulaire.matieresFortes) }}
+                                <script type="text/javascript">
+                                   var $codeHtmlFormulaireMatieres = document.getElementById('form_matieresFortes');
+                                   var $div;
+                                   var $infosAffichageJSON = {{ infosAffichageJSON|json_encode|raw }};
+                                   var $infosAffichage = JSON.parse($infosAffichageJSON);
+                                   var $inputCheckBox;
+                                   var $tab = new Array();
+                                   
+                                   for (var $i = $infosAffichage.idsMatieres.min  ; $i <= $infosAffichage.idsMatieres.max ; $i++)
+                                   {
+                                       $div  = document.createElement('div');
+                                       $inputCheckBox = document.getElementById('form_matieresFortes_' + $i);
+                                       $categorie = document.createElement("h4");
+                                       $nomMatiere = $inputCheckBox.parentNode.innerHTML;
+                                       $categorie.innerHTML = $infosAffichage.matieres[$i].categorie;
+                                       $label = document.createElement("label");
+                                       $label.setAttribute("class", "");
+                                       $label.innerHTML = $nomMatiere;
+                                       $div.setAttribute('class', 'checkbox');
+                                       if (jQuery.inArray($categorie.innerHTML, $tab) === -1)
+                                       {
+                                           $tab.push($categorie.innerHTML);
+                                           $div.appendChild($categorie);
+                                       }
+                                       $div.appendChild($label);
+                                       $codeHtmlFormulaireMatieres.removeChild($codeHtmlFormulaireMatieres.firstChild);
+                                       $codeHtmlFormulaireMatieres.appendChild($div);
+                                   };
+                                </script>
+                            </div>
+                            <div class="col-sm-6">
+                                {{ form_row(formulaire.matieresFaibles) }}
+                                <script type="text/javascript">
+                                   var $codeHtmlFormulaireMatieres = document.getElementById('form_matieresFaibles');
+                                   var $div;
+                                   var $infosAffichageJSON = {{ infosAffichageJSON|json_encode|raw }};
+                                   var $infosAffichage = JSON.parse($infosAffichageJSON);
+                                   var $inputCheckBox;
+                                   var $tab = new Array();
+                                   
+                                   for (var $i = $infosAffichage.idsMatieres.min  ; $i <= $infosAffichage.idsMatieres.max ; $i++)
+                                   {
+                                       $div  = document.createElement('div');
+                                       $inputCheckBox = document.getElementById('form_matieresFortes_' + $i);
+                                       $categorie = document.createElement("h4");
+                                       $nomMatiere = $inputCheckBox.parentNode.innerHTML;
+                                       $categorie.innerHTML = $infosAffichage.matieres[$i].categorie;
+                                       $label = document.createElement("label");
+                                       $label.setAttribute("class", "");
+                                       $label.innerHTML = $nomMatiere;
+                                       $div.setAttribute('class', 'checkbox');
+                                       if (jQuery.inArray($categorie.innerHTML, $tab) === -1)
+                                       {
+                                           $tab.push($categorie.innerHTML);
+                                           $div.appendChild($categorie);
+                                       }
+                                       $div.appendChild($label);
+                                       $codeHtmlFormulaireMatieres.removeChild($codeHtmlFormulaireMatieres.firstChild);
+                                       $codeHtmlFormulaireMatieres.appendChild($div);
+                                   };
+                                </script>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {{ form_row(formulaire.loisirs) }}
+                                <script type="text/javascript">
+                                   var $codeHtmlFormulaireLoisirs = document.getElementById('form_loisirs');
+                                   var $div;
+                                   var $infosAffichageJSON = {{ infosAffichageJSON|json_encode|raw }};
+                                   var $infosAffichage = JSON.parse($infosAffichageJSON);
+                                   var $inputCheckBox;
+                                   var $tab = new Array();
+                                   
+                                   for (var $i = $infosAffichage.idsLoisirs.min  ; $i <= $infosAffichage.idsLoisirs.max ; $i++)
+                                   {
+                                       $div  = document.createElement('div');
+                                       $inputCheckBox = document.getElementById('form_loisirs_' + $i);
+                                       $categorie = document.createElement("h4");
+                                       $nomLoisir = $inputCheckBox.parentNode.innerHTML;
+                                       $categorie.innerHTML = $infosAffichage.loisirs[$i].categorie;
+                                       $label = document.createElement("label");
+                                       $label.setAttribute("class", "");
+                                       $label.innerHTML = $nomLoisir;
+                                       $div.setAttribute('class', 'checkbox');
+                                       if (jQuery.inArray($categorie.innerHTML, $tab) === -1)
+                                       {
+                                           $tab.push($categorie.innerHTML);
+                                           $div.appendChild($categorie);
+                                       }
+                                       $div.appendChild($label);
+                                       $codeHtmlFormulaireLoisirs.removeChild($codeHtmlFormulaireLoisirs.firstChild);
+                                       $codeHtmlFormulaireLoisirs.appendChild($div);
+                                   };
+                                </script>
+                            </div>
+                            <div class="col-sm-6">
+                                {{ form_row(formulaire.sports) }}
+                                <script type="text/javascript">
+                                   var $codeHtmlFormulaireSports = document.getElementById('form_sports');
+                                   var $div;
+                                   var $infosAffichageJSON = {{ infosAffichageJSON|json_encode|raw }};
+                                   var $infosAffichage = JSON.parse($infosAffichageJSON);
+                                   var $inputCheckBox;
+                                   var $tab = new Array();
+                                   
+                                   for (var $i = $infosAffichage.idsSports.min  ; $i <= $infosAffichage.idsSports.max ; $i++)
+                                   {
+                                       $div  = document.createElement('div');
+                                       $inputCheckBox = document.getElementById('form_sports_' + $i);
+                                       $categorie = document.createElement("h4");
+                                       $nomSport = $inputCheckBox.parentNode.innerHTML;
+                                       $categorie.innerHTML = $infosAffichage.sports[$i].categorie;
+                                       $label = document.createElement("label");
+                                       $label.setAttribute("class", "");
+                                       $label.innerHTML = $nomSport;
+                                       $div.setAttribute('class', 'checkbox');
+                                       if (jQuery.inArray($categorie.innerHTML, $tab) === -1)
+                                       {
+                                           $tab.push($categorie.innerHTML);
+                                           $div.appendChild($categorie);
+                                       }
+                                       $div.appendChild($label);
+                                       $codeHtmlFormulaireSports.removeChild($codeHtmlFormulaireSports.firstChild);
+                                       $codeHtmlFormulaireSports.appendChild($div);
+                                   };
+                                </script>
+                            </div>
+                        </div>
+                        {{ form_rest(formulaire) }}
+                        <center><input type="submit" class="btn btn-success" value="Rechercher des étudiants"/></center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
